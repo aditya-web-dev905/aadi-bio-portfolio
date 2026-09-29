@@ -91,6 +91,27 @@ window.onclick = function(event) {
     }
 }
 
+// ⭐ Click Highlight Effect Function for Cards & Boxes ⭐
+document.addEventListener('click', function(e) {
+    // Check if clicked element is a skill-card or split-box
+    const card = e.target.closest('.skill-card, .split-box');
+    
+    if (card) {
+        // Remove highlight from all cards first
+        document.querySelectorAll('.skill-card, .split-box').forEach(el => {
+            el.classList.remove('active-highlight');
+        });
+        
+        // Add highlight to the clicked card
+        card.classList.add('active-highlight');
+        
+        // Remove highlight automatically after 1.5 seconds so it looks interactive
+        setTimeout(() => {
+            card.classList.remove('active-highlight');
+        }, 1500);
+    }
+});
+
 // WhatsApp Form Submit
 function handleWhatsAppSubmit(event) {
     event.preventDefault();
