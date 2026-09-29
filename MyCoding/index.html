@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Shrivas - Professional Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Aditya Shrivas - Portfolio</title>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Top Marquee Animation -->
+    <!-- Top Marquee -->
     <div class="top-marquee">
         <div class="marquee-content">
-            <span>🚀 Welcome to Aditya Shrivas's Official Portfolio! | Expert Web Developer & Data Entry Specialist | Available for Freelance Projects 💻</span>
+            🚀 Welcome to Aditya Shrivas's Official Portfolio | Web Developer & Data Entry Specialist | Available for Hire!
         </div>
     </div>
 
-    <!-- Header / Navigation -->
+    <!-- Header -->
     <header>
         <div class="logo-container">
             <div class="brand-logo">A</div>
@@ -30,130 +31,134 @@
         </nav>
     </header>
 
-    <!-- Hero / Introduction Section -->
-    <section id="about" class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="about">
         <div class="hero-badge">⚡ Welcome To My Tech Workspace</div>
         <h1 class="hero-title">Hi, I'm Aditya Shrivas</h1>
-        
-        <!-- Moving Animated Text -->
         <div class="typing-container">
             <span id="typed-text"></span><span class="cursor">|</span>
         </div>
-
-        <p class="hero-intro">Main BSc (Bio) First Year ka student hoon (Mehgaon, Bhind college se). Main modern web development aur high-accuracy data entry services provide karta hoon jo aapke business ko digital grow karne mein madad karte hain.</p>
-        
+        <p class="hero-intro">
+            Main BSc (Bio) First Year ka student hoon (Mehgaon, Bhind college se). Main modern web development aur high-accuracy data entry services provide karta hoon jo aapke business ko digital grow karne mein madad karte hain.
+        </p>
         <div class="hero-buttons">
             <a href="#services" class="btn-primary">View My Work</a>
-            <a href="#contact" class="btn-secondary">Hire Me On WhatsApp</a>
+            <a href="https://wa.me/919243266485" target="_blank" class="btn-secondary">Hire Me On WhatsApp</a>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section class="section" id="skills">
         <h2>My Professional Skills</h2>
         <p class="section-subtitle">What I bring to the table</p>
         <div class="skills-container">
             <div class="skill-card">
-                <i class="fas fa-code"></i>
-                <h3>Web Development</h3>
-                <p>HTML5, CSS3, JavaScript, Responsive UI/UX Design & Interactive Layouts.</p>
+                <div class="box-header">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Web Development</h3>
+                </div>
+                <p class="box-desc">HTML5, CSS3, JavaScript, Responsive UI/UX Design & Interactive Layouts.</p>
             </div>
             <div class="skill-card">
-                <i class="fas fa-file-excel"></i>
-                <h3>Data Entry & Office</h3>
-                <p>MS Word, MS Excel, PowerPoint, Fast Typing Expert, PDF to Word Conversion with 100% Accuracy.</p>
+                <div class="box-header">
+                    <i class="fa-solid fa-file-excel"></i>
+                    <h3>Data Entry & Office</h3>
+                </div>
+                <p class="box-desc">MS Word, MS Excel, PowerPoint, Fast Typing Expert, PDF to Word Conversion with 100% Accuracy.</p>
             </div>
         </div>
     </section>
 
-    <!-- Services & Projects Section -->
-    <section id="services" class="section">
+    <!-- Services & Live Projects Section -->
+    <section class="section" id="services">
         <h2>My Services & Live Projects</h2>
         <p class="section-subtitle">Ek taraf Web Development ke live projects aur doosri taraf Data Entry services.</p>
         
         <div class="split-services-container">
-            
-            <!-- Web Development Box -->
+            <!-- Box 1: Web Dev -->
             <div class="split-box">
-                <div class="box-header">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Web Development</h3>
+                <div>
+                    <div class="box-header">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <h3>Web Development</h3>
+                    </div>
+                    <p class="box-desc">Maine modern aur fully responsive websites design ki hain. Neeche diye gaye live projects par click karke unhe live dekh sakte hain:</p>
+                    
+                    <ul class="project-links-list">
+                        <li>
+                            <strong>Luxury Real Estate</strong>
+                            <a href="#" target="_blank" class="live-btn">Visit Live <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                        <li>
+                            <strong>The Royal Bean Cafe</strong>
+                            <a href="#" target="_blank" class="live-btn">Visit Live <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                        <li>
+                            <strong>Ironclad Athletics</strong>
+                            <a href="#" target="_blank" class="live-btn">Visit Live <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </li>
+                    </ul>
                 </div>
-                <p class="box-desc">Maine modern aur fully responsive websites design ki hain. Neeche diye gaye live projects par click karke unhe live dekh sakte hain:</p>
                 
-                <ul class="project-links-list">
-                    <li>
-                        <strong>Luxury Real Estate</strong>
-                        <a href="https://luxuryhome-estates-five.vercel.app/" target="_blank" class="live-btn">Visit Live <i class="fas fa-external-link-alt"></i></a>
-                    </li>
-                    <li>
-                        <strong>The Royal Bean Cafe</strong>
-                        <a href="https://royal-bean-cafe.vercel.app/" target="_blank" class="live-btn">Visit Live <i class="fas fa-external-link-alt"></i></a>
-                    </li>
-                    <li>
-                        <strong>Ironclad Athletics</strong>
-                        <a href="https://ironclad-gym-bhopal.netlify.app/" target="_blank" class="live-btn">Visit Live <i class="fas fa-external-link-alt"></i></a>
-                    </li>
-                </ul>
-
                 <div class="custom-work-prompt">
-                    <p>💡 <em>Note: Yeh websites basic samples hain. Apni pasand ke kisi bhi naye topic par custom website banvani ho toh sampark karein!</em></p>
+                    <p>💡 Note: Yeh websites basic samples hain. Apni pasand ke kisi bhi naye topic par custom website banvani ho toh sampark karein!</p>
                     <button class="btn-detail" onclick="openModal('web')">Read Full Web Details</button>
                 </div>
             </div>
 
-            <!-- Data Entry Box -->
+            <!-- Box 2: Data Entry -->
             <div class="split-box">
-                <div class="box-header">
-                    <i class="fas fa-file-excel"></i>
-                    <h3>Data Entry & Office</h3>
+                <div>
+                    <div class="box-header">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <h3>Data Entry & Office</h3>
+                    </div>
+                    <p class="box-desc">Fast speed aur high accuracy ke sath professional office aur document management services:</p>
+                    
+                    <ul class="project-links-list">
+                        <li>
+                            <strong>MS Word Docs</strong>
+                            <span style="color: #9ca3af; font-size: 10px;">Reports, Typing & Formatting</span>
+                        </li>
+                        <li>
+                            <strong>MS Excel Work</strong>
+                            <span style="color: #9ca3af; font-size: 10px;">Spreadsheets & Formulas</span>
+                        </li>
+                        <li>
+                            <strong>PDF Conversion</strong>
+                            <span style="color: #9ca3af; font-size: 10px;">Fast Typing & Formatting</span>
+                        </li>
+                    </ul>
                 </div>
-                <p class="box-desc">Fast speed aur high accuracy ke sath professional office aur document management services:</p>
                 
-                <ul class="project-links-list">
-                    <li>
-                        <strong>MS Word Docs</strong>
-                        <span>Reports, Typing & Formatting</span>
-                    </li>
-                    <li>
-                        <strong>MS Excel Work</strong>
-                        <span>Spreadsheets & Formulas</span>
-                    </li>
-                    <li>
-                        <strong>PDF Conversion</strong>
-                        <span>Fast Typing & Formatting</span>
-                    </li>
-                </ul>
-
                 <div class="custom-work-prompt">
-                    <p>💡 <em>Aapke data entry ya typing project ko fast aur error-free complete karunga.</em></p>
+                    <p>💡 Aapke data entry ya typing project ko fast aur error-free complete karunga.</p>
                     <button class="btn-detail" onclick="openModal('data')">Read Full Data Details</button>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Modal Popup for Details -->
+    <!-- Modal Popup -->
     <div id="serviceModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 id="modalTitle">Service Title</h3>
+            <h3 id="modalTitle" style="color: #06b6d4; margin-bottom: 10px;"></h3>
             <div id="modalBody"></div>
         </div>
     </div>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
+    <section class="contact-section" id="contact">
         <h2>Get In Touch With Me</h2>
         <p class="contact-msg">Agar aapko koi bhi web development ya data entry ka kaam karwana ho, toh niche form fill karke direct mere WhatsApp par bhej sakte hain.</p>
         
         <div class="social-contact-links">
             <a href="https://wa.me/919243266485" target="_blank" class="social-btn whatsapp-btn">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp (9243266485)
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp (9243266485)
             </a>
-            <a href="https://instagram.com/mr_aadi_singh_.002" target="_blank" class="social-btn instagram-btn">
-                <i class="fab fa-instagram"></i> Follow on Instagram
+            <a href="https://instagram.com" target="_blank" class="social-btn instagram-btn">
+                <i class="fa-brands fa-instagram"></i> Follow on Instagram
             </a>
         </div>
 
@@ -162,25 +167,22 @@
                 <label>1. Aapka Naam (Your Name)</label>
                 <input type="text" id="clientName" placeholder="Apna naam yahan likhein..." required>
             </div>
-            
             <div class="form-group">
                 <label>2. Kaunsa Kaam Karwana Hai?</label>
                 <select id="clientService" required>
-                    <option value="" disabled selected>-- Select Service --</option>
-                    <option value="Web Development">Web Development (Website)</option>
-                    <option value="MS Word">MS Word Typing & Formatting</option>
-                    <option value="MS Excel">MS Excel & Data Entry</option>
-                    <option value="Other Office Work">Other Office / Document Work</option>
+                    <option value="">-- Select Service --</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Data Entry / MS Excel">Data Entry / MS Excel</option>
+                    <option value="MS Word / Typing">MS Word / Typing</option>
+                    <option value="Custom Project">Custom Project</option>
                 </select>
             </div>
-
             <div class="form-group">
                 <label>3. Project Details / Requirements</label>
-                <textarea id="clientMessage" rows="3" placeholder="Apne kaam ki puri detail yahan batayein..." required></textarea>
+                <textarea id="clientMessage" rows="4" placeholder="Apne kaam ki puri detail yahan batayein..." required></textarea>
             </div>
-
-            <button type="submit" class="btn-primary whatsapp-send-btn">
-                <i class="fab fa-whatsapp"></i> Send Message Directly to WhatsApp
+            <button type="submit" class="whatsapp-send-btn">
+                <i class="fa-brands fa-whatsapp"></i> Send Message Directly to WhatsApp
             </button>
         </form>
     </section>

@@ -33,7 +33,7 @@ body {
     100% { transform: translateX(-100%); }
 }
 
-/* Header & Attractive Modern Logo */
+/* Header & Logo */
 header {
     display: flex;
     justify-content: space-between;
@@ -219,6 +219,8 @@ nav a:hover {
     text-align: left;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 /* Split Two-Column Layout */
@@ -245,6 +247,8 @@ nav a:hover {
     justify-content: space-between;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .box-header {
@@ -286,11 +290,6 @@ nav a:hover {
     border: 1px solid #1f2937;
     font-size: 11px;
     gap: 8px;
-    transition: all 0.2s ease;
-}
-
-.project-links-list li:hover {
-    border-color: #06b6d4;
 }
 
 .project-links-list li strong {
@@ -331,10 +330,10 @@ nav a:hover {
     font-weight: bold;
 }
 
-/* ⭐ Click Highlight Glow Effect Class ⭐ */
+/* ⭐ Mobile + Laptop Touch/Click Glow Highlight Effect ⭐ */
 .active-highlight {
     border-color: #06b6d4 !important;
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4) !important;
     background: #162032 !important;
     transform: scale(1.01);
 }

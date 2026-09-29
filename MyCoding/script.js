@@ -38,7 +38,7 @@ function deletingEffect() {
 
 typingEffect();
 
-// Modal Content Data with Emojis
+// Modal Content Data
 const serviceDetails = {
     web: {
         title: "💻 Web Development Projects & Custom Services",
@@ -91,21 +91,20 @@ window.onclick = function(event) {
     }
 }
 
-// ⭐ Click Highlight Effect Function for Cards & Boxes ⭐
-document.addEventListener('click', function(e) {
-    // Check if clicked element is a skill-card or split-box
+// ⭐ Mobile Touch & Laptop Click Glow Highlight Effect ⭐
+document.addEventListener('pointerdown', function(e) {
     const card = e.target.closest('.skill-card, .split-box');
     
     if (card) {
-        // Remove highlight from all cards first
+        // Purane highlighted cards se class remove karein
         document.querySelectorAll('.skill-card, .split-box').forEach(el => {
             el.classList.remove('active-highlight');
         });
         
-        // Add highlight to the clicked card
+        // Naye clicked card par highlight add karein
         card.classList.add('active-highlight');
         
-        // Remove highlight automatically after 1.5 seconds so it looks interactive
+        // 1.5 second baad glow automatic hat jaye
         setTimeout(() => {
             card.classList.remove('active-highlight');
         }, 1500);
