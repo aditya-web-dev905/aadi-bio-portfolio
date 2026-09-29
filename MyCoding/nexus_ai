@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusAI - Futuristic Automation Agency</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #05050a;
+            --card-bg: rgba(20, 20, 35, 0.6);
+            --neon-blue: #00f0ff;
+            --neon-purple: #b000ff;
+            --text-color: #ffffff;
+            --text-muted: #a0a0c0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Glow Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--neon-purple);
+            filter: blur(150px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 40%;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--neon-blue);
+            filter: blur(150px);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(5, 5, 10, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 55px;
+            max-width: 900px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid var(--neon-blue);
+            background: transparent;
+            color: var(--text-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--neon-blue);
+            color: var(--bg-color);
+            box-shadow: 0 0 30px var(--neon-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: var(--neon-blue);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15);
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Contact Section / Form */
+        .contact {
+            padding: 100px 8%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 50px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(10, 10, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-color);
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">NEXUS.AI</div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <h1>Next-Gen <span>AI Automation</span> For Elite Businesses</h1>
+        <p>Transform your workflow with cutting-edge artificial intelligence, autonomous execution, and futuristic UI systems.</p>
+        <a href="#contact" class="btn">Deploy Systems</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Core <span>Capabilities</span></h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3>Autonomous Agents</h3>
+                <p>Deploy self-learning AI workers that handle complex multi-step workflows without human intervention.</p>
+            </div>
+            <div class="card">
+                <h3>Neural Analytics</h3>
+                <p>Predictive data modeling driven by advanced neural networks to scale your revenue exponentially.</p>
+            </div>
+            <div class="card">
+                <h3>Quantum Integration</h3>
+                <p>Seamlessly bridge legacy business infrastructure with hyper-speed decentralized cloud frameworks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact" id="contact">
+        <div class="contact-box">
+            <h2 class="section-title" style="font-size: 28px; margin-bottom: 30px;">Initialize <span>Contact</span></h2>
+            <form action="/submit" method="POST">
+                <div class="form-group">
+                    <label>Client Name</label>
+                    <input type="text" name="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Project Details</label>
+                    <textarea name="message" rows="4" required placeholder="Describe your automation goals"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Transmit Data</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 NEXUS.AI Automation Agency. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

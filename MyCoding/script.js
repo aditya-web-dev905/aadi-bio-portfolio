@@ -1,154 +1,68 @@
-// Scroll Reveal Animation Observer
-document.addEventListener("DOMContentLoaded", function () {
-    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+// State Management
+let currentPoints = 1250;
+let streakCount = 5;
 
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, {
-        threshold: 0.10
-    });
+// Dynamic Leaderboard Data
+const leaderboardData = [
+    { rank: "#1", name: "⚡ Aman Sharma", score: "4,890 PTS" },
+    { rank: "#2", name: "🚀 Priya Verma", score: "4,210 PTS" },
+    { rank: "#3", name: "💡 Rahul Gupta", score: "3,950 PTS" },
+    { rank: "#4", name: "🔥 Neha Singh", score: "3,400 PTS" },
+    { rank: "#5", name: "🌟 Karan Malhotra", score: "3,120 PTS" }
+];
 
-    revealElements.forEach(element => {
-        scrollObserver.observe(element);
-    });
+// Load Leaderboard on Page Startup
+window.addEventListener('DOMContentLoaded', () => {
+    loadLeaderboard();
 });
 
-// Typing Effect with Services
-const words = ["🚀 Web Developer", "📊 Data Entry Specialist", "📝 MS Word Expert & Coder"];
-let i = 0;
+function loadLeaderboard() {
+    const listContainer = document.getElementById('leaderboardList');
+    listContainer.innerHTML = "";
 
-function typingEffect() {
-    let word = words[i].split("");
-    var loopTyping = function() {
-        if (word.length > 0) {
-            document.getElementById('typingEffect').innerHTML += word.shift();
-        } else {
-            setTimeout(deletingEffect, 2000);
-            return false;
-        }
-        setTimeout(loopTyping, 80);
-    };
-    loopTyping();
+    leaderboardData.forEach(user => {
+        const item = document.createElement('div');
+        item.className = 'leaderboard-item';
+        item.innerHTML = `
+            <div class="user-info"><span class="rank">${user.rank}</span> ${user.name}</div>
+            <div class="score">${user.score}</div>
+        `;
+        listContainer.appendChild(item);
+    });
 }
 
-function deletingEffect() {
-    let word = words[i].split("");
-    var loopDeleting = function() {
-        if (word.length > 0) {
-            word.pop();
-            document.getElementById('typingEffect').innerHTML = word.join("");
-        } else {
-            i = (i + 1) % words.length;
-            setTimeout(typingEffect, 400);
-            return false;
-        }
-        setTimeout(loopDeleting, 40);
-    };
-    loopDeleting();
-}
-typingEffect();
+// Puzzle Verification Logic
+function checkAnswer(selectedIndex) {
+    const feedbackEl = document.getElementById('puzzleFeedback');
+    const pointsEl = document.getElementById('userPoints');
+    
+    // Correct option is index 1 (Namak)
+    if (selectedIndex === 1) {
+        feedbackEl.style.color = "var(--neon-green)";
+        feedbackEl.innerHTML = "🎉 Sahi jawab! Aapko +50 points mil gaye hain aur leaderboard update ho gaya hai.";
+        currentPoints += 50;
+        pointsEl.innerText = currentPoints.toLocaleString();
 
-// Theme Toggle Function
-function toggleTheme() {
-    const html = document.documentElement;
-    const btn = document.getElementById('themeToggleBtn');
-    if (html.getAttribute('data-theme') === 'dark') {
-        html.setAttribute('data-theme', 'light');
-        btn.innerHTML = '☀️';
+        // Real-time update user position in leaderboard simulation
+        leaderboardData[2].score = (parseInt(leaderboardData[2].score.replace(/[^0-9]/g, '')) + 50) + " PTS";
+        loadLeaderboard();
     } else {
-        html.setAttribute('data-theme', 'dark');
-        btn.innerHTML = '🌙';
+        feedbackEl.style.color = "var(--neon-pink)";
+        feedbackEl.innerHTML = "❌ Galat jawab! Sahi option 'Namak' hai, dobara try karein.";
     }
 }
 
-// Enhanced Data Entry Modal with Professional Trust Indicators
-function openDataEntryModal() {
-    const content = `
-        <h3>📊 ProData Manager & Entry Suite</h3>
-        <p>Yahan professional MS Excel spreadsheet aur high-accuracy data sorting ka live sample diya gaya hai:</p>
-        
-        <div class="trust-badge-box">
-            ✅ 100% Accuracy Guaranteed | Fast Turnaround | CCA & DCA Verified
-        </div>
+// AI Concept Generator Function
+function generateAITool() {
+    const promptInput = document.getElementById('aiPrompt').value.trim();
+    const outputArea = document.getElementById('aiOutput');
 
-        <table class="excel-table">
-            <tr>
-                <th>ID</th>
-                <th>Client Name</th>
-                <th>Task Type</th>
-                <th>Status</th>
-            </tr>
-            <tr>
-                <td>101</td>
-                <td>Rahul Sharma</td>
-                <td>Excel Sheet Formatting</td>
-                <td>✅ Completed</td>
-            </tr>
-            <tr>
-                <td>102</td>
-                <td>Pooja Verma</td>
-                <td>Data Cleaning & Entry</td>
-                <td>✅ Completed</td>
-            </tr>
-            <tr>
-                <td>103</td>
-                <td>Amit Kumar</td>
-                <td>PDF to Excel Typing</td>
-                <td>✅ Completed</td>
-            </tr>
-        </table>
-        <p style="font-size: 12px; margin-bottom: 12px;">💡 <b>Expertise:</b> Large database sorting, formula calculation, and error-free typing.</p>
-        <a href="https://wa.me/919243266485?text=Hello%20Aditya,%20I%20want%20to%20give%20you%20Data%20Entry%20work!" target="_blank" class="modal-btn">💬 Hire for Data Entry on WhatsApp</a>
-    `;
-    document.getElementById('modalBodyContent').innerHTML = content;
-    document.getElementById('projectModal').style.display = 'flex';
-}
-
-// Enhanced MS Word Modal with Professional Trust Indicators
-function openWordModal() {
-    const content = `
-        <h3>📝 ProDoc Word Suite</h3>
-        <p>Yahan professional MS Word documentation aur official report formatting ka sample preview hai:</p>
-        
-        <div class="trust-badge-box">
-            ✅ Professional Typography | Clean Margins & Layouts
-        </div>
-
-        <div class="word-doc-preview">
-            <b>SUBJECT: Professional Business Report & Documentation</b><br><br>
-            1. Clean typography and structured paragraph layout.<br>
-            2. Proper margin, heading hierarchy, and bullet formatting.<br>
-            3. Suitable for official letters, assignments, resumes, and project documentation.
-        </div>
-        <p style="font-size: 12px; margin-bottom: 12px;">💡 <b>CCA & DCA Certified:</b> Flawless typing speed with zero spelling errors.</p>
-        <a href="https://wa.me/919243266485?text=Hello%20Aditya,%20I%20want%20MS%20Word%20documentation%20work!" target="_blank" class="modal-btn">💬 Hire for Word Work on WhatsApp</a>
-    `;
-    document.getElementById('modalBodyContent').innerHTML = content;
-    document.getElementById('projectModal').style.display, document.getElementById('projectModal').style.display = 'flex';
-}
-
-// Open Normal Web Project Modal
-function openWebModal(title, desc, link) {
-    const content = `
-        <h3>${title}</h3>
-        <p>${desc}</p>
-        <a href="${link}" target="_blank" class="modal-btn">Visit Live Website &rarr;</a>
-    `;
-    document.getElementById('modalBodyContent').innerHTML = content;
-    document.getElementById('projectModal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('projectModal').style.display = 'none';
-}
-
-function closeModalOutside(event) {
-    const modal = document.getElementById('projectModal');
-    if (event.target == modal) {
-        closeModal();
+    if (promptInput === "") {
+        outputArea.style.color = "var(--neon-pink)";
+        outputArea.innerHTML = "⚠️ Pehle koi valid keyword ya naam enter karein!";
+        return;
     }
+
+    outputArea.style.color = "var(--neon-cyan)";
+    outputArea.innerHTML = `✨ Generating Neon Persona for "<strong>${promptInput}</strong>"... Success! Model v4.2 Rendered.`;
 }
