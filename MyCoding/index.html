@@ -18,11 +18,14 @@
 
     <!-- Header / Navigation -->
     <header>
-        <div class="logo">Aditya.Dev</div>
+        <div class="logo-container">
+            <div class="brand-logo"><i class="fas fa-terminal"></i></div>
+            <div class="logo">Aditya.Dev</div>
+        </div>
         <nav>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
-            <a href="#services">Services & Projects</a>
+            <a href="#services">Services</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -93,7 +96,7 @@
                 </ul>
 
                 <div class="custom-work-prompt">
-                    <p>💡 <em>Note: Upar di gayi websites keval basic samples/examples hain jo clients ko dikhane ke liye banayi hain[span_1](start_span)[span_1](end_span). Agar aapko isse bhi behtar, advanced, ya apni pasand ke kisi bhi naye topic par custom website banvani ho, toh turant mujhse sampark karein[span_2](start_span)[span_2](end_span)!</em></p>
+                    <p>💡 <em>Note: Upar di gayi websites keval basic samples/examples hain jo clients ko dikhane ke liye banayi hain. Agar aapko isse bhi behtar, advanced, ya apni pasand ke kisi bhi naye topic par custom website banvani ho, toh turant mujhse sampark karein!</em></p>
                     <button class="btn-detail" onclick="openModal('web')">Read Full Web Details</button>
                 </div>
             </div>
@@ -144,24 +147,21 @@
         <h2>Get In Touch With Me</h2>
         <p class="contact-msg">Agar aapko koi bhi web development ya data entry ka kaam karwana ho, toh niche form fill karke direct mere WhatsApp par bhej sakte hain.</p>
         
-        <!-- Social Links with Correct Number & ID -->
         <div class="social-contact-links">
             <a href="https://wa.me/919243266485" target="_blank" class="social-btn whatsapp-btn">
                 <i class="fab fa-whatsapp"></i> Chat on WhatsApp (9243266485)
             </a>
             <a href="https://instagram.com/mr_aadi_singh_.002" target="_blank" class="social-btn instagram-btn">
-                <i class="fab fa-instagram"></i> Follow on Instagram (@mr_aadi_singh_.002)
+                <i class="fab fa-instagram"></i> Follow on Instagram
             </a>
         </div>
 
         <form class="contact-form" onsubmit="handleWhatsAppSubmit(event)">
-            <!-- Pehla Dibba: Naam -->
             <div class="form-group">
                 <label>1. Aapka Naam (Your Name)</label>
                 <input type="text" id="clientName" placeholder="Apna naam yahan likhein..." required>
             </div>
             
-            <!-- Doosra Dibba: Kaunsa Kaam -->
             <div class="form-group">
                 <label>2. Kaunsa Kaam Karwana Hai? (Select Service)</label>
                 <select id="clientService" required>
@@ -173,7 +173,6 @@
                 </select>
             </div>
 
-            <!-- Teesra Dibba: Detailed Requirement -->
             <div class="form-group">
                 <label>3. Project Details / Requirements</label>
                 <textarea id="clientMessage" rows="4" placeholder="Apne kaam ki puri detail yahan batayein..." required></textarea>
