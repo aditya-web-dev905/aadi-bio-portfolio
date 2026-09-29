@@ -1,2030 +1,442 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA LUXE Mega Store | Enterprise Luxury & Lifestyle E-Commerce</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter & Playfair Display -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#035483',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                            950: '#082f49',
-                        },
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                            700: '#b45309',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Aditya Shrivas | Elite Web Developer & Bio Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-serif-title { font-family: 'Playfair Display', serif; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        @keyframes pulse-subtle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(1.02); }
-        }
-        .badge-pulse { animation: pulse-subtle 2s ease-in-out infinite; }
-        
-        /* Glassmorphism utility */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .dark-glass-panel {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* View Transition Animation */
-        .view-frame {
-            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        :root {
+            --bg-color: #05070b;
+            --card-bg: #0f1420;
+            --card-border: #1e293b;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Card Flip Animation for Interactive Credit Card Visualizer */
-        .perspective-1000 { perspective: 1000px; }
-        .transform-style-3d { transform-style: preserve-3d; }
-        .backface-hidden { backface-visibility: hidden; }
-        .rotate-y-180 { transform: rotateY(180deg); }
 
-        @media print {
-            body * { visibility: hidden; }
-            #printable-invoice-container, #printable-invoice-container * { visibility: visible; }
-            #printable-invoice-container { position: absolute; left: 0; top: 0; width: 100%; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding: 30px 16px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .portfolio-container {
+            width: 100%;
+            max-width: 580px;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.25);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 0 rgba(74, 222, 128, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+
+        .portfolio-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .hero-section h1 {
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .highlight-name {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .location-tag {
+            font-size: 13px;
+            color: var(--text-muted);
+            background: var(--card-bg);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 32px 0 16px 0;
+            color: #f1f5f9;
+        }
+
+        .custom-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 22px;
+            border-radius: 18px;
+            margin-bottom: 16px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 15px 35px -10px var(--accent-glow);
+        }
+
+        .custom-card:hover::before {
+            opacity: 1;
+        }
+
+        .custom-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .custom-card strong {
+            color: var(--text-main);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .skill-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 14px 16px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.4);
+            background: #131b2e;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .project-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+
+        .project-link:hover {
+            gap: 10px;
+            color: #7dd3fc;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            border: none;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #22c55e, #15803d);
+        }
+
+        .instagram-btn {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+        }
+
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+
+        .cta-btn:hover {
+            opacity: 0.95;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        @keyframes waveAnim {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(14deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .wave-emoji {
+            display: inline-block;
+            animation: waveAnim 1.8s infinite;
+            transform-origin: 70% 70%;
+        }
+
+        @media(max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- Global Toast Notifications Container -->
-    <div id="toast-container" class="fixed top-20 right-4 sm:right-6 z-[100] flex flex-col gap-3 pointer-events-none max-w-sm w-full"></div>
-
-    <!-- Top Announcement Bar -->
-    <div class="bg-slate-950 text-white text-xs py-2 px-4 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="hidden lg:flex items-center gap-6 text-slate-300">
-                <span><i class="fa-solid fa-phone text-brand-500 mr-1.5"></i> +1 (800) 555-AURA</span>
-                <span><i class="fa-solid fa-location-dot text-brand-500 mr-1.5"></i> 5th Ave, New York, NY 10022</span>
+    <main class="portfolio-container">
+        
+        <div class="status-header reveal-on-scroll">
+            <div class="live-badge">
+                <div class="pulse-dot"></div>
+                Available for Work
             </div>
+            <div class="portfolio-badge">
+                ✨ BIO PORTFOLIO
+            </div>
+        </div>
+
+        <section class="hero-section reveal-on-scroll">
+            <h1>Hi, I'm <span class="highlight-name">Aditya Shrivas</span> <span class="wave-emoji">👋</span></h1>
+            <p class="subtitle">
+                🚀 Web Developer & 🤖 Tech Creator
+            </p>
+            <div class="location-tag">
+                📍 Bhind, Madhya Pradesh, India
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="reveal-on-scroll">💻 About Me</h2>
             
-            <div class="mx-auto lg:mx-0 font-medium flex items-center gap-2">
-                <span class="bg-gradient-to-r from-amber-500 to-rose-500 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider badge-pulse">Exclusive</span>
-                <span>Complimentary Express Worldwide Shipping | Use Code <span class="text-amber-400 font-extrabold font-mono">SAVE20</span> for 20% OFF</span>
+            <div class="custom-card reveal-on-scroll">
+                <p>
+                    Hello everyone! My name is <strong>Aditya Shrivas</strong>. I am currently pursuing my higher education with a <strong>B.Sc. in Biology</strong>, while actively exploring my deep passion for technology, coding, and digital creation.
+                </p>
+                <p style="margin-top: 12px;">
+                    Along with my science studies, I have successfully completed my <strong>CCA</strong> and am currently pursuing my <strong>DCA</strong> to build solid fundamentals in computer applications.
+                </p>
             </div>
 
-            <div class="hidden sm:flex items-center gap-4 text-slate-300">
-                <!-- Currency Switcher -->
-                <div class="flex items-center gap-1">
-                    <i class="fa-solid fa-coins text-xs text-amber-400"></i>
-                    <select id="currency-select" onchange="changeCurrency(this.value)" class="bg-transparent text-xs text-slate-200 border-none focus:ring-0 cursor-pointer font-semibold">
-                        <option value="USD" class="bg-slate-900 text-white">USD ($)</option>
-                        <option value="EUR" class="bg-slate-900 text-white">EUR (€)</option>
-                        <option value="GBP" class="bg-slate-900 text-white">GBP (£)</option>
-                        <option value="INR" class="bg-slate-900 text-white">INR (₹)</option>
-                    </select>
-                </div>
+            <div class="custom-card reveal-on-scroll" style="border-left: 4px solid #f59e0b;">
+                <p>
+                    🎯 <strong>Current Status:</strong> Main abhi coding seekh raha hoon aur daily practice karke apni web development skills ko advance kar raha hoon!
+                </p>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Main Navigation Bar -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 gap-4">
-                
-                <!-- Logo -->
-                <div class="flex items-center gap-3">
-                    <button id="mobile-menu-toggle" onclick="toggleMobileNavDrawer(true)" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none">
-                        <i class="fa-solid fa-bars-staggered text-xl"></i>
-                    </button>
+        <section class="skills-section">
+            <h2 class="reveal-on-scroll">🛠️ Technical Skills & Expertise</h2>
 
-                    <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-2.5 group">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-slate-950 via-slate-900 to-brand-600 flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition-transform">
-                            A
-                        </div>
-                        <div class="flex flex-col">
-                            <span class="text-2xl font-black tracking-tight text-slate-900 uppercase leading-none font-serif-title">AURA<span class="text-brand-600">LUXE</span></span>
-                            <span class="text-[9px] tracking-[0.25em] text-slate-400 font-bold uppercase mt-1">Mega Storefront</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Predictive Header Search Bar -->
-                <div class="hidden md:flex flex-1 max-w-xl mx-4 relative">
-                    <div class="relative w-full">
-                        <input type="text" id="main-search-input" placeholder="Search 20+ luxury audio, watches, apparel, skincare, OLED displays..." class="w-full h-11 bg-slate-100 text-slate-800 text-xs sm:text-sm pl-4 pr-12 rounded-2xl border border-transparent focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10 transition-all">
-                        <button onclick="executeHeaderSearch()" class="absolute right-1.5 top-1.5 w-8 h-8 rounded-xl bg-slate-900 hover:bg-brand-600 text-white flex items-center justify-center transition-colors">
-                            <i class="fa-solid fa-magnifying-glass text-xs"></i>
-                        </button>
-                    </div>
-
-                    <!-- Search Popup Dropdown -->
-                    <div id="search-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden z-50 p-4">
-                        <div class="flex items-center justify-between text-xs text-slate-400 font-semibold mb-3">
-                            <span>PREDICTIVE SEARCH RESULTS</span>
-                            <span id="search-results-count">0 matches</span>
-                        </div>
-                        <div id="search-results-container" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div>
-                        <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
-                            <span class="text-[11px] font-bold text-slate-400 uppercase">Popular Tags</span>
-                            <div class="flex gap-1.5 flex-wrap">
-                                <span onclick="triggerQuickSearch('Headphones')" class="px-2.5 py-0.5 bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 rounded-full text-[10px] cursor-pointer font-medium">Headphones</span>
-                                <span onclick="triggerQuickSearch('Watch')" class="px-2.5 py-0.5 bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 rounded-full text-[10px] cursor-pointer font-medium">Watches</span>
-                                <span onclick="triggerQuickSearch('Drone')" class="px-2.5 py-0.5 bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 rounded-full text-[10px] cursor-pointer font-medium">Drone</span>
-                                <span onclick="triggerQuickSearch('Jacket')" class="px-2.5 py-0.5 bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 rounded-full text-[10px] cursor-pointer font-medium">Leather</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Nav Actions -->
-                <div class="flex items-center gap-1.5 sm:gap-3">
-                    <button onclick="navigateTo('tracking')" class="hidden xl:flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-brand-600 px-3 py-2 rounded-xl hover:bg-slate-100 transition-colors">
-                        <i class="fa-solid fa-truck-fast text-brand-600 text-sm"></i>
-                        <span>Track Order</span>
-                    </button>
-
-                    <!-- Wishlist Trigger -->
-                    <button onclick="navigateTo('wishlist')" class="relative p-2.5 text-slate-700 hover:text-rose-600 hover:bg-slate-100 rounded-full transition-colors" title="Wishlist">
-                        <i class="fa-regular fa-heart text-xl"></i>
-                        <span id="wishlist-badge" class="absolute top-1 right-1 bg-rose-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
-                    </button>
-
-                    <!-- Cart Drawer Trigger -->
-                    <button onclick="toggleCartDrawer(true)" class="relative p-2.5 text-slate-700 hover:text-brand-600 hover:bg-slate-100 rounded-full transition-colors" title="View Cart">
-                        <i class="fa-solid fa-bag-shopping text-xl"></i>
-                        <span id="cart-badge" class="absolute top-1 right-1 bg-brand-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-                    </button>
-
-                    <!-- User Account Switcher -->
-                    <button onclick="navigateTo('account')" class="flex items-center gap-2 p-1.5 rounded-full hover:bg-slate-100 transition-colors ml-1">
-                        <div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold ring-2 ring-brand-500/30">
-                            SJ
-                        </div>
-                        <div class="hidden lg:flex flex-col text-left">
-                            <span class="text-xs font-bold text-slate-800 leading-none">Sarah J.</span>
-                            <span class="text-[10px] text-brand-600 font-extrabold uppercase">VIP Member</span>
-                        </div>
-                    </button>
-                </div>
+            <div class="skills-grid">
+                <div class="skill-item reveal-on-scroll">💻 HTML5 & CSS3 Architecture</div>
+                <div class="skill-item reveal-on-scroll">⚡ JavaScript Fundamentals</div>
+                <div class="skill-item reveal-on-scroll">🐍 Python Basics & Programming</div>
+                <div class="skill-item reveal-on-scroll">🎓 CCA & DCA (Computer Applications)</div>
+                <div class="skill-item reveal-on-scroll">🤖 AI-Assisted Development & Prompting</div>
+                <div class="skill-item reveal-on-scroll">📱 Responsive UI/UX Layouts</div>
             </div>
-        </div>
+        </section>
 
-        <!-- Desktop Navigation Mega Menu -->
-        <nav class="hidden lg:block border-t border-slate-100 bg-white/90">
-            <div class="max-w-7xl mx-auto px-8">
-                <ul class="flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-600">
-                    <li class="py-3.5"><a href="javascript:void(0)" onclick="navigateTo('home')" class="nav-link-item hover:text-brand-600 transition-colors" id="nav-home">Home</a></li>
-                    <li class="py-3.5"><a href="javascript:void(0)" onclick="navigateTo('catalog')" class="nav-link-item hover:text-brand-600 transition-colors" id="nav-catalog">Mega Store Catalog</a></li>
-                    <li class="py-3.5"><a href="javascript:void(0)" onclick="filterCategoryAndNavigate('electronics')" class="hover:text-brand-600 transition-colors">Electronics</a></li>
-                    <li class="py-3.5"><a href="javascript:void(0)" onclick="filterCategoryAndNavigate('watches')" class="hover:text-brand-600 transition-colors">Luxury Watches</a></li>
-                    <li class="py-3.5"><a href="javascript:void(0)" onclick="filterCategoryAndNavigate('fashion')" class="hover:text-brand-600 transition-colors">Fashion & Apparel</a></li>
-                    <li class="py-3.5"><a href="javascript:void(0)" onclick="filterCategoryAndNavigate('home')" class="hover:text-brand-600 transition-colors">Home & Living</a></li>
-                    <li class="py-3.5"><a href="javascript:void(0)" onclick="filterCategoryAndNavigate('beauty')" class="hover:text-brand-600 transition-colors">Beauty & Care</a></li>
-                    <li class="py-3.5"><a href="javascript:void(0)" onclick="filterCategoryAndNavigate('audio')" class="hover:text-brand-600 transition-colors">Audio & Tech</a></li>
-                    <li class="py-3.5 ml-auto text-rose-600 font-extrabold flex items-center gap-1.5 cursor-pointer" onclick="navigateTo('catalog')">
-                        <i class="fa-solid fa-fire text-amber-500 badge-pulse"></i> Limited Sale
-                    </li>
-                </ul>
+        <section class="projects-section">
+            <h2 class="reveal-on-scroll">💼 Featured Projects</h2>
+
+            <!-- Project 1: IroncladAthletics -->
+            <div class="custom-card project-card reveal-on-scroll">
+                <h3>💪 IroncladAthletics</h3>
+                <p>A professional fitness platform featuring BMI & calorie calculators, membership packages, and modern dark-mode athletic styling.</p>
+                <a href="https://ironclad-gym-bhopal.netlify.app" target="_blank" class="project-link">Visit Live Website &rarr;</a>
             </div>
-        </nav>
-    </header>
 
-    <!-- Main Content Container (SPA Views render dynamically inside here) -->
-    <main id="app-view-container" class="flex-1 min-h-[60vh] view-frame">
-        <!-- Views rendered dynamically via JavaScript -->
+            <!-- Project 2: The Royal Bean Cafe -->
+            <div class="custom-card project-card reveal-on-scroll">
+                <h3>☕ The Royal Bean Cafe</h3>
+                <p>A premium, responsive dark and gold-themed cafe & lounge website featuring rich UI, interactive menus, and WhatsApp booking integration.</p>
+                <a href="https://royal-bean-cafe.vercel.app" target="_blank" class="project-link">Visit Live Website &rarr;</a>
+            </div>
+
+            <!-- Project 3: Vortex AI Platform (Ab upar wale cards ki tarah bilkul simple aur clean) -->
+            <div class="custom-card project-card reveal-on-scroll">
+                <h3>🔮 Vortex AI Platform</h3>
+                <p>A modern SaaS landing page featuring AI tools, a live interactive prompt engine, and modern pricing tiers.</p>
+                <a href="vortex.html" target="_blank" class="project-link">Visit Live Website &rarr;</a>
+            </div>
+        </section>
+
+        <section class="connect-section">
+            <h2 class="reveal-on-scroll">🤝 Let's Connect</h2>
+
+            <div class="custom-card reveal-on-scroll">
+                <p>💡 Aisi hi stunning aur professional website banvane ke liye mujhse contact karein - budget-friendly price mein behtareen design ke sath!</p>
+            </div>
+
+            <div class="action-buttons reveal-on-scroll">
+                <!-- WhatsApp Link Activated -->
+                <a href="https://wa.me/919243266485" target="_blank" class="cta-btn whatsapp-btn">
+                    💬 Chat on WhatsApp
+                </a>
+                <!-- Instagram Profile Link Activated -->
+                <a href="https://instagram.com/mr_aadi_singh_.002" target="_blank" class="cta-btn instagram-btn">
+                    📸 Instagram Profile
+                </a>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Shopping Cart Drawer Overlay & Panel -->
-    <div id="cart-drawer-overlay" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden transition-opacity" onclick="toggleCartDrawer(false)"></div>
-    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
-        <!-- Header -->
-        <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-bag-shopping text-brand-600 text-lg"></i>
-                <h3 class="font-black text-slate-900 text-lg font-serif-title">Shopping Cart</h3>
-                <span id="cart-drawer-count" class="text-xs bg-brand-100 text-brand-700 font-bold px-2.5 py-0.5 rounded-full">0</span>
-            </div>
-            <button onclick="toggleCartDrawer(false)" class="p-2 text-slate-400 hover:text-slate-800 rounded-full">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-        </div>
-
-        <!-- Free Shipping Progress -->
-        <div class="bg-brand-50/80 p-4 border-b border-brand-100">
-            <p id="shipping-progress-text" class="text-xs text-brand-900 font-semibold mb-2">Add $100.00 more for Complimentary Express Shipping!</p>
-            <div class="w-full bg-brand-200/80 h-2 rounded-full overflow-hidden">
-                <div id="shipping-progress-bar" class="bg-brand-600 h-full w-0 transition-all duration-300"></div>
-            </div>
-        </div>
-
-        <!-- Cart Items Scroll Area -->
-        <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-5 space-y-4">
-            <!-- Rendered JS -->
-        </div>
-
-        <!-- Promo Code Section -->
-        <div class="px-5 py-3 bg-slate-50 border-t border-slate-100">
-            <div class="flex gap-2">
-                <input type="text" id="coupon-code-input" placeholder="Promo code (Try SAVE20)" class="flex-1 px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 uppercase font-bold">
-                <button onclick="applyCoupon()" class="px-4 py-2 bg-slate-900 hover:bg-brand-600 text-white text-xs font-bold rounded-xl transition-colors">
-                    Apply
-                </button>
-            </div>
-            <p id="coupon-message" class="text-[11px] font-bold mt-1.5 hidden"></p>
-        </div>
-
-        <!-- Cart Footer -->
-        <div class="p-5 border-t border-slate-100 bg-white space-y-3">
-            <div class="flex justify-between text-xs text-slate-500 font-medium">
-                <span>Subtotal</span>
-                <span id="cart-summary-subtotal" class="font-bold text-slate-800">$0.00</span>
-            </div>
-            <div id="coupon-discount-row" class="flex justify-between text-xs text-emerald-600 font-bold hidden">
-                <span>Promo Discount</span>
-                <span id="cart-summary-discount">-$0.00</span>
-            </div>
-            <div class="flex justify-between text-xs text-slate-500 font-medium">
-                <span>Estimated Express Shipping</span>
-                <span id="cart-summary-shipping" class="font-bold text-slate-800">$0.00</span>
-            </div>
-            <div class="border-t border-slate-100 pt-2 flex justify-between text-base font-black text-slate-900">
-                <span>Estimated Total</span>
-                <span id="cart-summary-total">$0.00</span>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2 pt-2">
-                <button onclick="navigateTo('cart'); toggleCartDrawer(false);" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl text-xs transition-all">
-                    View Full Cart
-                </button>
-                <button onclick="navigateTo('checkout'); toggleCartDrawer(false);" class="w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-2xl shadow-lg transition-all text-xs flex items-center justify-center gap-1.5">
-                    <span>Checkout</span>
-                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile Side Navigation Drawer -->
-    <div id="mobile-nav-overlay" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden" onclick="toggleMobileNavDrawer(false)"></div>
-    <div id="mobile-nav-drawer" class="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 flex flex-col p-6 space-y-6">
-        <div class="flex justify-between items-center border-b border-slate-100 pb-4">
-            <span class="text-xl font-black font-serif-title uppercase">AURA<span class="text-brand-600">LUXE</span></span>
-            <button onclick="toggleMobileNavDrawer(false)" class="text-slate-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-
-        <nav class="space-y-3 text-sm font-bold text-slate-800">
-            <a href="javascript:void(0)" onclick="navigateTo('home'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-house mr-3 text-slate-400"></i> Home</a>
-            <a href="javascript:void(0)" onclick="navigateTo('catalog'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-store mr-3 text-slate-400"></i> Mega Catalog (20+)</a>
-            <a href="javascript:void(0)" onclick="filterCategoryAndNavigate('electronics'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-laptop mr-3 text-slate-400"></i> Electronics</a>
-            <a href="javascript:void(0)" onclick="filterCategoryAndNavigate('watches'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-clock mr-3 text-slate-400"></i> Luxury Watches</a>
-            <a href="javascript:void(0)" onclick="filterCategoryAndNavigate('fashion'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-shirt mr-3 text-slate-400"></i> Fashion & Apparel</a>
-            <a href="javascript:void(0)" onclick="filterCategoryAndNavigate('home'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-chair mr-3 text-slate-400"></i> Home & Living</a>
-            <a href="javascript:void(0)" onclick="filterCategoryAndNavigate('beauty'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-pump-soap mr-3 text-slate-400"></i> Beauty & Care</a>
-            <a href="javascript:void(0)" onclick="filterCategoryAndNavigate('audio'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-headphones mr-3 text-slate-400"></i> Audio & Tech</a>
-            <a href="javascript:void(0)" onclick="navigateTo('wishlist'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-regular fa-heart mr-3 text-slate-400"></i> Wishlist</a>
-            <a href="javascript:void(0)" onclick="navigateTo('tracking'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-truck-fast mr-3 text-slate-400"></i> Track Order</a>
-            <a href="javascript:void(0)" onclick="navigateTo('account'); toggleMobileNavDrawer(false);" class="block py-2 hover:text-brand-600"><i class="fa-solid fa-user mr-3 text-slate-400"></i> VIP Dashboard</a>
-        </nav>
-    </div>
-
-    <!-- Mobile Bottom Sticky Navigation Bar -->
-    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 py-2 px-4 z-40 flex justify-between items-center shadow-lg">
-        <button onclick="navigateTo('home')" class="flex flex-col items-center text-slate-700 hover:text-brand-600">
-            <i class="fa-solid fa-house text-lg"></i>
-            <span class="text-[10px] font-bold mt-0.5">Home</span>
-        </button>
-        <button onclick="navigateTo('catalog')" class="flex flex-col items-center text-slate-700 hover:text-brand-600">
-            <i class="fa-solid fa-grid-2 text-lg"></i>
-            <span class="text-[10px] font-bold mt-0.5">Catalog</span>
-        </button>
-        <button onclick="navigateTo('wishlist')" class="flex flex-col items-center text-slate-700 hover:text-brand-600 relative">
-            <i class="fa-regular fa-heart text-lg"></i>
-            <span class="text-[10px] font-bold mt-0.5">Saved</span>
-        </button>
-        <button onclick="toggleCartDrawer(true)" class="flex flex-col items-center text-slate-700 hover:text-brand-600 relative">
-            <i class="fa-solid fa-bag-shopping text-lg"></i>
-            <span class="text-[10px] font-bold mt-0.5">Cart</span>
-        </button>
-        <button onclick="navigateTo('account')" class="flex flex-col items-center text-slate-700 hover:text-brand-600">
-            <i class="fa-solid fa-user text-lg"></i>
-            <span class="text-[10px] font-bold mt-0.5">Account</span>
-        </button>
-    </div>
-
-    <!-- Global Footer -->
-    <footer class="bg-slate-950 text-slate-400 pt-16 pb-24 lg:pb-8 border-t border-slate-900 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
-                <div class="lg:col-span-2 space-y-4">
-                    <div class="flex items-center gap-2">
-                        <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white font-black text-xl">A</div>
-                        <span class="text-xl font-black text-white font-serif-title uppercase">AURA<span class="text-brand-500">LUXE</span></span>
-                    </div>
-                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
-                        AuraLuxe Enterprise Mega Store is a premiere global destination delivering high-fidelity spatial audio, Swiss horology, luxury apparel, smart ergonomics, organic skincare, and tech gadgets worldwide.
-                    </p>
-                    <div class="flex items-center gap-3 text-slate-400 text-sm">
-                        <a href="#" class="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Quick Navigation</h4>
-                    <ul class="space-y-2.5 text-xs">
-                        <li><a href="javascript:void(0)" onclick="navigateTo('home')" class="hover:text-white transition-colors">Home Storefront</a></li>
-                        <li><a href="javascript:void(0)" onclick="navigateTo('catalog')" class="hover:text-white transition-colors">Mega Catalog (20+)</a></li>
-                        <li><a href="javascript:void(0)" onclick="navigateTo('wishlist')" class="hover:text-white transition-colors">Saved Wishlist</a></li>
-                        <li><a href="javascript:void(0)" onclick="navigateTo('cart')" class="hover:text-white transition-colors">My Cart</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Customer Care</h4>
-                    <ul class="space-y-2.5 text-xs">
-                        <li><a href="javascript:void(0)" onclick="navigateTo('tracking')" class="hover:text-white transition-colors">Track Shipment</a></li>
-                        <li><a href="javascript:void(0)" onclick="navigateTo('account')" class="hover:text-white transition-colors">VIP Order History</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">30-Day Money Back</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Concierge Desk</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Payment Gateways</h4>
-                    <div class="flex flex-wrap gap-3 text-2xl text-slate-500">
-                        <i class="fa-brands fa-cc-visa hover:text-white transition-colors"></i>
-                        <i class="fa-brands fa-cc-mastercard hover:text-white transition-colors"></i>
-                        <i class="fa-brands fa-cc-apple-pay hover:text-white transition-colors"></i>
-                        <i class="fa-brands fa-cc-paypal hover:text-white transition-colors"></i>
-                        <i class="fa-solid fa-qrcode hover:text-white transition-colors"></i>
-                    </div>
-                    <p class="text-[10px] text-slate-500 mt-3"><i class="fa-solid fa-shield-halved text-emerald-500 mr-1"></i> Encrypted 256-Bit SSL Protection</p>
-                </div>
-            </div>
-
-            <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-                <p>&copy; 2026 AuraLuxe Enterprise Platform. All rights reserved.</p>
-                <div class="flex gap-6 text-slate-500">
-                    <a href="#" class="hover:text-slate-300">Privacy Policy</a>
-                    <a href="#" class="hover:text-slate-300">Terms of Service</a>
-                    <a href="#" class="hover:text-slate-300">Cookie Settings</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // 20+ Comprehensive Luxury Product Database
-        const PRODUCTS_DB = [
-            {
-                id: 1,
-                title: "Aura Sound Pro Spatial ANC Headphones",
-                brand: "Aura Acoustic",
-                category: "electronics",
-                price: 199.99,
-                oldPrice: 249.99,
-                rating: 4.9,
-                reviewsCount: 248,
-                inStock: true,
-                badge: "Top Seller",
-                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800",
-                gallery: [
-                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800",
-                    "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&q=80&w=800",
-                    "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&q=80&w=800"
-                ],
-                description: "Precision-engineered active noise cancelling headphones featuring custom 40mm titanium drivers, spatial head tracking, and ultra-luxurious memory foam ear cushions.",
-                specs: { "Battery": "40 Hours", "Connectivity": "Bluetooth 5.3 & 3.5mm", "Weight": "250g", "Noise Control": "Adaptive ANC" },
-                colors: ["#0f172a", "#94a3b8", "#f59e0b"],
-                sizes: ["Standard"]
-            },
-            {
-                id: 2,
-                title: "Monarch Skeleton Automatic Swiss Watch",
-                brand: "Vanguard Horology",
-                category: "watches",
-                price: 499.00,
-                oldPrice: 650.00,
-                rating: 5.0,
-                reviewsCount: 89,
-                inStock: true,
-                badge: "Luxury Edition",
-                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800",
-                gallery: [
-                    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800",
-                    "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800"
-                ],
-                description: "Exhibition skeleton watch with automatic Swiss movement, scratch-resistant sapphire crystal glass, and genuine alligator leather strap.",
-                specs: { "Movement": "Automatic Swiss Calibre", "Water Resistance": "100 Meters", "Case": "42mm Stainless", "Glass": "Sapphire Crystal" },
-                colors: ["#78350f", "#0284c7", "#1e293b"],
-                sizes: ["42mm"]
-            },
-            {
-                id: 3,
-                title: "Handcrafted Italian Nappa Leather Jacket",
-                brand: "Maison Luxe",
-                category: "fashion",
-                price: 349.50,
-                oldPrice: 420.00,
-                rating: 4.8,
-                reviewsCount: 112,
-                inStock: true,
-                badge: "Handmade",
-                image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=800",
-                gallery: [
-                    "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=800",
-                    "https://images.unsplash.com/photo-1520975954732-35dd22299614?auto=format&fit=crop&q=80&w=800"
-                ],
-                description: "Full-grain Italian Nappa leather motorcycle jacket with custom brass zippers, silk lining, and modern slim silhouette.",
-                specs: { "Material": "100% Nappa Leather", "Lining": "Satin Silk", "Fit": "Tailored Slim Fit", "Origin": "Florence, Italy" },
-                colors: ["#0f172a", "#78350f"],
-                sizes: ["S", "M", "L", "XL"]
-            },
-            {
-                id: 4,
-                title: "Botanical Pure Hyaluronic Hydrating Serum",
-                brand: "Aura Skincare",
-                category: "beauty",
-                price: 58.00,
-                oldPrice: 75.00,
-                rating: 4.9,
-                reviewsCount: 310,
-                inStock: true,
-                badge: "Organic",
-                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800",
-                gallery: [
-                    "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800",
-                    "https://images.unsplash.com/photo-1608248597261-833244709139?auto=format&fit=crop&q=80&w=800"
-                ],
-                description: "Deep moisture-locking facial serum enriched with triple-weight hyaluronic acid, rosehip oil extract, and Vitamin C boosters.",
-                specs: { "Volume": "50ml / 1.7 fl oz", "Skin Type": "All Skin Types", "Formula": "Cruelty & Paraben Free", "Origin": "France" },
-                colors: ["#38bdf8"],
-                sizes: ["50ml"]
-            },
-            {
-                id: 5,
-                title: "Flagship Smartwatch Ultra 2 Titanium",
-                brand: "Aura Tech",
-                category: "electronics",
-                price: 299.99,
-                oldPrice: 380.00,
-                rating: 4.8,
-                reviewsCount: 175,
-                inStock: true,
-                badge: "New Flagship",
-                image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&q=80&w=800",
-                gallery: [
-                    "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&q=80&w=800"
-                ],
-                description: "Aerospace-grade titanium smartwatch with continuous ECG, dual-frequency GPS, and 1000-nit AMOLED display.",
-                specs: { "Display": "1.9-inch AMOLED", "Battery": "Up to 14 Days", "Waterproof": "10 ATM", "Body": "Titanium" },
-                colors: ["#94a3b8", "#0f172a", "#ea580c"],
-                sizes: ["49mm"]
-            },
-            {
-                id: 6,
-                title: "Artisan Espresso Barista Coffee Machine",
-                brand: "Artisan Living",
-                category: "home",
-                price: 389.00,
-                oldPrice: 450.00,
-                rating: 4.9,
-                reviewsCount: 142,
-                inStock: true,
-                badge: "Popular",
-                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=800",
-                gallery: [
-                    "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=800"
-                ],
-                description: "19-bar Italian pressure pump espresso maker with micro-foam steam wand and precision PID temperature control.",
-                specs: { "Pressure": "19 Bar", "Water Tank": "2.0 Liters", "Material": "Brushed Stainless Steel", "Power": "1500W" },
-                colors: ["#cbd5e1", "#0f172a"],
-                sizes: ["Standard"]
-            },
-            {
-                id: 7,
-                title: "OLED 4K Curved Gaming Monitor 240Hz",
-                brand: "Aura Tech",
-                category: "electronics",
-                price: 649.00,
-                oldPrice: 799.00,
-                rating: 5.0,
-                reviewsCount: 94,
-                inStock: true,
-                badge: "Ultimate Tech",
-                image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80&w=800"],
-                description: "34-inch QD-OLED curved gaming display with 0.03ms response time, HDR1000 true black contrast, and RGB backlighting.",
-                specs: { "Resolution": "3840 x 2160 OLED", "Refresh": "240Hz", "Response": "0.03ms", "Curve": "1800R" },
-                colors: ["#0f172a"],
-                sizes: ["34-Inch"]
-            },
-            {
-                id: 8,
-                title: "NextGen Smartphone Pro Max 512GB",
-                brand: "Aura Tech",
-                category: "electronics",
-                price: 599.00,
-                oldPrice: 699.00,
-                rating: 4.9,
-                reviewsCount: 420,
-                inStock: true,
-                badge: "Hot Deal",
-                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800"],
-                description: "Pro camera system with 108MP main sensor, periscope 10x optical zoom, titanium frame, and satellite connectivity.",
-                specs: { "Storage": "512GB", "RAM": "16GB", "Camera": "108MP Triple", "Processor": "Aura Octa-Core" },
-                colors: ["#1e293b", "#e2e8f0", "#38bdf8"],
-                sizes: ["512GB"]
-            },
-            {
-                id: 9,
-                title: "Pro Aerial Drone 4K HDR Camera",
-                brand: "Aura Aerial",
-                category: "electronics",
-                price: 499.00,
-                oldPrice: 599.00,
-                rating: 4.8,
-                reviewsCount: 88,
-                inStock: true,
-                badge: "Aerial",
-                image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&q=80&w=800"],
-                description: "3-axis motorized gimbal drone with 4K/60fps video, omnidirectional obstacle sensing, and 45-min flight time.",
-                specs: { "Video": "4K HDR 60fps", "Flight Time": "45 Mins", "Range": "15 km", "Weight": "249g" },
-                colors: ["#f8fafc", "#0f172a"],
-                sizes: ["Standard Combo"]
-            },
-            {
-                id: 10,
-                title: "Chronograph Rose Gold Edition Watch",
-                brand: "Vanguard Horology",
-                category: "watches",
-                price: 420.00,
-                oldPrice: 510.00,
-                rating: 4.9,
-                reviewsCount: 62,
-                inStock: true,
-                badge: "Rose Gold",
-                image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800"],
-                description: "18k Rose Gold PVD coated stainless steel watch with tachymeter sub-dials and sapphire crystal lens.",
-                specs: { "Case": "44mm Rose Gold", "Movement": "Japanese Quartz Chrono", "Water Resistance": "50m" },
-                colors: ["#f59e0b", "#0f172a"],
-                sizes: ["44mm"]
-            },
-            {
-                id: 11,
-                title: "Modern Minimalist Titanium Mesh Watch",
-                brand: "Vanguard Horology",
-                category: "watches",
-                price: 210.00,
-                oldPrice: 280.00,
-                rating: 4.7,
-                reviewsCount: 51,
-                inStock: true,
-                badge: "Minimalist",
-                image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&q=80&w=800"],
-                description: "Ultra-slim 6mm case with breathable titanium mesh strap and quick-release clasp system.",
-                specs: { "Thickness": "6mm Slim", "Strap": "Titanium Mesh", "Movement": "Swiss Quartz" },
-                colors: ["#94a3b8", "#0f172a"],
-                sizes: ["40mm"]
-            },
-            {
-                id: 12,
-                title: "Premium Cashmere Knit Sweater",
-                brand: "Maison Luxe",
-                category: "fashion",
-                price: 185.00,
-                oldPrice: 220.00,
-                rating: 4.9,
-                reviewsCount: 130,
-                inStock: true,
-                badge: "100% Cashmere",
-                image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=800"],
-                description: "Mongolian 100% pure Grade-A cashmere crewneck sweater, exceptionally soft, warm, and lightweight.",
-                specs: { "Fabric": "100% Grade-A Cashmere", "Care": "Dry Clean Only", "Origin": "Mongolia" },
-                colors: ["#e2e8f0", "#78350f", "#0369a1"],
-                sizes: ["S", "M", "L", "XL"]
-            },
-            {
-                id: 13,
-                title: "Urban Streetwear Heavyweight Hoodie",
-                brand: "VogueStep",
-                category: "fashion",
-                price: 95.00,
-                oldPrice: 120.00,
-                rating: 4.8,
-                reviewsCount: 205,
-                inStock: true,
-                badge: "Streetwear",
-                image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&q=80&w=800"],
-                description: "500 GSM heavyweight organic cotton fleece pullover hoodie with double-lined hood and drop shoulders.",
-                specs: { "Weight": "500 GSM Organic Cotton", "Fit": "Relaxed Oversized", "Pockets": "Kangaroo Front" },
-                colors: ["#0f172a", "#64748b"],
-                sizes: ["M", "L", "XL"]
-            },
-            {
-                id: 14,
-                title: "Designer Polarized Titanium Sunglasses",
-                brand: "Maison Luxe",
-                category: "fashion",
-                price: 165.00,
-                oldPrice: 210.00,
-                rating: 4.9,
-                reviewsCount: 78,
-                inStock: true,
-                badge: "UV400",
-                image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&q=80&w=800"],
-                description: "Featherlight Japanese titanium frame sunglasses with HD polarized UV400 anti-glare TAC lenses.",
-                specs: { "Lens": "Polarized TAC UV400", "Frame": "Japanese Titanium", "Weight": "18g" },
-                colors: ["#0f172a", "#f59e0b"],
-                sizes: ["Standard"]
-            },
-            {
-                id: 15,
-                title: "Ergonomic Mesh Executive Office Chair",
-                brand: "Artisan Living",
-                category: "home",
-                price: 299.00,
-                oldPrice: 380.00,
-                rating: 4.8,
-                reviewsCount: 167,
-                inStock: true,
-                badge: "Ergonomic",
-                image: "https://images.unsplash.com/photo-1580481072645-022f9a6d8310?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1580481072645-022f9a6d8310?auto=format&fit=crop&q=80&w=800"],
-                description: "Full dynamic lumbar support mesh chair with 4D adjustable armrests, 135-degree recline, and aluminum base.",
-                specs: { "Support": "Dynamic Adaptive Lumbar", "Armrests": "4D Multi-directional", "Weight Capacity": "150kg" },
-                colors: ["#0f172a", "#64748b"],
-                sizes: ["Standard"]
-            },
-            {
-                id: 16,
-                title: "Smart Minimalist Ambient Wood Lamp",
-                brand: "Artisan Living",
-                category: "home",
-                price: 110.00,
-                oldPrice: 145.00,
-                rating: 4.7,
-                reviewsCount: 88,
-                inStock: true,
-                badge: "Smart Light",
-                image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&q=80&w=800"],
-                description: "Hand-carved walnut wood ring ambient light with touch dimming, app sync, and wireless phone charging base.",
-                specs: { "Light": "16 Million RGB Colors", "Wireless Charger": "15W Fast Charge", "Body": "Walnut Wood" },
-                colors: ["#78350f"],
-                sizes: ["Standard"]
-            },
-            {
-                id: 17,
-                title: "Velvet Modern Designer Lounge Chair",
-                brand: "Artisan Living",
-                category: "home",
-                price: 320.00,
-                oldPrice: 399.00,
-                rating: 4.9,
-                reviewsCount: 45,
-                inStock: true,
-                badge: "Luxury Home",
-                image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=800"],
-                description: "Plush emerald velvet armchair with brushed brass steel legs and ergonomic deep-seat cushion.",
-                specs: { "Upholstery": "High-Density Velvet", "Frame": "Solid Wood & Stainless Brass", "Seat Depth": "60cm" },
-                colors: ["#047857", "#0f172a"],
-                sizes: ["Single Armchair"]
-            },
-            {
-                id: 18,
-                title: "Luxurious Parfum de Luxe Signature 100ml",
-                brand: "Aura Skincare",
-                category: "beauty",
-                price: 145.00,
-                oldPrice: 180.00,
-                rating: 5.0,
-                reviewsCount: 112,
-                inStock: true,
-                badge: "Parfum",
-                image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800"],
-                description: "Captivating eau de parfum blended with notes of rare agarwood, ambergris, Bulgarian rose, and smoked vanilla.",
-                specs: { "Concentration": "22% Eau de Parfum", "Volume": "100ml / 3.4 oz", "Scent Profile": "Woody Oriental Rose" },
-                colors: ["#f59e0b"],
-                sizes: ["100ml"]
-            },
-            {
-                id: 19,
-                title: "Wireless Ergonomic Precision Mouse Pro",
-                brand: "Aura Tech",
-                category: "audio",
-                price: 79.99,
-                oldPrice: 99.99,
-                rating: 4.8,
-                reviewsCount: 220,
-                inStock: true,
-                badge: "Tech Essential",
-                image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&q=80&w=800"],
-                description: "Precision 8000 DPI sensor wireless mouse with quiet electromagnetic wheel and multi-device Bluetooth switching.",
-                specs: { "DPI": "8000 DPI Track-Anywhere", "Battery": "70 Days", "Weight": "141g" },
-                colors: ["#0f172a", "#94a3b8"],
-                sizes: ["Standard"]
-            },
-            {
-                id: 20,
-                title: "Hi-Fi Studio Earbuds Pro ANC",
-                brand: "Aura Acoustic",
-                category: "audio",
-                price: 129.00,
-                oldPrice: 159.00,
-                rating: 4.9,
-                reviewsCount: 180,
-                inStock: true,
-                badge: "Spatial Audio",
-                image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=800",
-                gallery: ["https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=800"],
-                description: "True wireless earbuds with active noise cancellation, LDAC high-res audio codec, and wireless charging case.",
-                specs: { "Audio Codec": "LDAC, AAC, SBC", "Battery": "32 Hours Total", "Water Resistance": "IPX5" },
-                colors: ["#0f172a", "#f8fafc"],
-                sizes: ["Standard"]
-            }
-        ];
+        // Scroll reveal animation observer
+        document.addEventListener("DOMContentLoaded", function () {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
 
-        // Global Application State Management
-        let AppState = {
-            currentView: 'home', // home | catalog | product-detail | cart | checkout | order-confirmation | tracking | wishlist | account
-            activeProductId: 1,
-            cart: [
-                { productId: 1, qty: 1, selectedColor: '#0f172a', selectedSize: 'Standard' },
-                { productId: 4, qty: 2, selectedColor: '#38bdf8', selectedSize: '50ml' }
-            ],
-            wishlist: [2, 5, 18],
-            currency: 'USD',
-            currencyRates: { 
-                USD: { symbol: '$', rate: 1.0 }, 
-                EUR: { symbol: '€', rate: 0.92 }, 
-                GBP: { symbol: '£', rate: 0.79 }, 
-                INR: { symbol: '₹', rate: 83.5 } 
-            },
-            couponApplied: null, // { code: 'SAVE20', discount: 0.20 }
-            catalogFilters: {
-                category: 'all',
-                searchQuery: '',
-                maxPrice: 800,
-                minRating: 0,
-                inStockOnly: false,
-                sort: 'featured'
-            },
-            orders: [
-                {
-                    orderId: 'AL-98421',
-                    date: 'Sep 26, 2026',
-                    items: [
-                        { title: 'Aura Sound Pro Spatial ANC Headphones', price: 199.99, qty: 1 }
-                    ],
-                    subtotal: 199.99,
-                    tax: 16.00,
-                    shipping: 0,
-                    total: 215.99,
-                    status: 'Dispatched & In Transit',
-                    paymentMethod: 'Credit Card (**** 4242)',
-                    shippingAddress: {
-                        name: 'Sarah Jenkins',
-                        email: 'sarah.j@auraluxe.com',
-                        address: '742 Evergreen Terrace',
-                        city: 'New York',
-                        zip: '10022'
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
                     }
-                }
-            ],
-            placedOrderData: null,
-            activeCheckoutStep: 1, // 1: Shipping, 2: Payment Gateway, 3: Review
-            selectedPaymentGateway: 'card', // card | upi | paypal | cod
-            cardDetails: { number: '4532 •••• •••• 8892', holder: 'SARAH JENKINS', expiry: '08/28', cvv: '888' },
-            upiMethod: 'qr', // qr | gpay | phonepe
-            upiTimerSeconds: 300,
-            otpCode: ''
-        };
-
-        // Utility Price Formatter
-        function formatPrice(amount) {
-            const curr = AppState.currencyRates[AppState.currency];
-            const converted = (amount * curr.rate).toFixed(2);
-            return `${curr.symbol}${converted}`;
-        }
-
-        function changeCurrency(newCurr) {
-            AppState.currency = newCurr;
-            renderActiveView();
-            updateCartBadgeUI();
-            showToast(`Currency switched to ${newCurr}`);
-        }
-
-        // Single Page Router Navigator
-        function navigateTo(viewName, params = {}) {
-            AppState.currentView = viewName;
-            if (params.productId) AppState.activeProductId = params.productId;
-            if (params.category) AppState.catalogFilters.category = params.category;
-            if (params.search) AppState.catalogFilters.searchQuery = params.search;
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            renderActiveView();
-            updateNavigationActiveStates();
-        }
-
-        function filterCategoryAndNavigate(cat) {
-            AppState.catalogFilters.category = cat;
-            AppState.catalogFilters.searchQuery = '';
-            navigateTo('catalog');
-        }
-
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            const icon = type === 'success' ? 'fa-circle-check text-emerald-400' : 'fa-triangle-exclamation text-amber-400';
-            
-            toast.className = "bg-slate-900/95 backdrop-blur-md text-white text-xs font-bold px-4 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700/80 pointer-events-auto transform translate-y-2 opacity-0 transition-all duration-300";
-            toast.innerHTML = `<i class="fa-solid ${icon} text-base"></i><span>${message}</span>`;
-            
-            container.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.remove('translate-y-2', 'opacity-0');
-            }, 10);
-
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                setTimeout(() => toast.remove(), 300);
-            }, 3200);
-        }
-
-        function addToCart(productId, qty = 1, color = null, size = null) {
-            const prod = PRODUCTS_DB.find(p => p.id === productId);
-            if (!prod) return;
-
-            const selectedColor = color || (prod.colors ? prod.colors[0] : null);
-            const selectedSize = size || (prod.sizes ? prod.sizes[0] : null);
-
-            const existing = AppState.cart.find(item => item.productId === productId && item.selectedColor === selectedColor && item.selectedSize === selectedSize);
-            if (existing) {
-                existing.qty += qty;
-            } else {
-                AppState.cart.push({ productId, qty, selectedColor, selectedSize });
-            }
-
-            updateCartBadgeUI();
-            showToast(`Added "${prod.title}" to cart!`);
-        }
-
-        function removeFromCart(index) {
-            AppState.cart.splice(index, 1);
-            updateCartBadgeUI();
-            if (AppState.currentView === 'cart') renderActiveView();
-        }
-
-        function updateCartQty(index, delta) {
-            if (AppState.cart[index]) {
-                AppState.cart[index].qty += delta;
-                if (AppState.cart[index].qty <= 0) {
-                    removeFromCart(index);
-                } else {
-                    updateCartBadgeUI();
-                    if (AppState.currentView === 'cart') renderActiveView();
-                }
-            }
-        }
-
-        function toggleWishlist(productId) {
-            const idx = AppState.wishlist.indexOf(productId);
-            const prod = PRODUCTS_DB.find(p => p.id === productId);
-
-            if (idx > -1) {
-                AppState.wishlist.splice(idx, 1);
-                showToast(`Removed from Wishlist`);
-            } else {
-                AppState.wishlist.push(productId);
-                showToast(`Saved "${prod.title}" to Wishlist!`);
-            }
-
-            updateWishlistBadgeUI();
-            if (AppState.currentView === 'wishlist' || AppState.currentView === 'catalog' || AppState.currentView === 'home' || AppState.currentView === 'product-detail') {
-                renderActiveView();
-            }
-        }
-
-        function applyCoupon() {
-            const input = document.getElementById('coupon-code-input').value.trim().toUpperCase();
-            const msg = document.getElementById('coupon-message');
-
-            if (input === 'SAVE20') {
-                AppState.couponApplied = { code: 'SAVE20', discount: 0.20 };
-                msg.textContent = "Coupon 'SAVE20' Applied (20% Off)!";
-                msg.className = "text-[11px] font-bold mt-1.5 text-emerald-600 block";
-                showToast("20% Promo Discount Applied!");
-            } else if (input === 'AURA10') {
-                AppState.couponApplied = { code: 'AURA10', discount: 0.10 };
-                msg.textContent = "Coupon 'AURA10' Applied (10% Off)!";
-                msg.className = "text-[11px] font-bold mt-1.5 text-emerald-600 block";
-                showToast("10% Discount Applied!");
-            } else {
-                msg.textContent = "Invalid promo code. Try 'SAVE20'";
-                msg.className = "text-[11px] font-bold mt-1.5 text-rose-500 block";
-            }
-            updateCartBadgeUI();
-            if (AppState.currentView === 'cart') renderActiveView();
-        }
-
-        function toggleCartDrawer(open) {
-            const drawer = document.getElementById('cart-drawer');
-            const overlay = document.getElementById('cart-drawer-overlay');
-            if (open) {
-                updateCartBadgeUI();
-                overlay.classList.remove('hidden');
-                drawer.classList.remove('translate-x-full');
-            } else {
-                overlay.classList.add('hidden');
-                drawer.classList.add('translate-x-full');
-            }
-        }
-
-        function toggleMobileNavDrawer(open) {
-            const drawer = document.getElementById('mobile-nav-drawer');
-            const overlay = document.getElementById('mobile-nav-overlay');
-            if (open) {
-                overlay.classList.remove('hidden');
-                drawer.classList.remove('-translate-x-full');
-            } else {
-                overlay.classList.add('hidden');
-                drawer.classList.add('-translate-x-full');
-            }
-        }
-
-        function updateCartBadgeUI() {
-            const totalItems = AppState.cart.reduce((sum, item) => sum + item.qty, 0);
-            document.getElementById('cart-badge').textContent = totalItems;
-            document.getElementById('cart-drawer-count').textContent = totalItems;
-
-            let subtotal = 0;
-            AppState.cart.forEach(item => {
-                const prod = PRODUCTS_DB.find(p => p.id === item.productId);
-                if (prod) subtotal += prod.price * item.qty;
+                });
+            }, {
+                threshold: 0.12
             });
 
-            const threshold = 100.00;
-            const progBar = document.getElementById('shipping-progress-bar');
-            const progText = document.getElementById('shipping-progress-text');
-
-            if (subtotal >= threshold || subtotal === 0) {
-                progBar.style.width = '100%';
-                progText.textContent = subtotal === 0 ? "Add $100.00 for FREE Express Shipping" : "🎉 Free Express Shipping Unlocked!";
-            } else {
-                const rem = threshold - subtotal;
-                progBar.style.width = `${(subtotal / threshold) * 100}%`;
-                progText.textContent = `Add ${formatPrice(rem)} more for FREE Express Shipping!`;
-            }
-
-            const drawerContainer = document.getElementById('cart-drawer-items');
-            drawerContainer.innerHTML = '';
-
-            if (AppState.cart.length === 0) {
-                drawerContainer.innerHTML = `
-                    <div class="text-center py-12 text-slate-400">
-                        <i class="fa-solid fa-bag-shopping text-4xl mb-3 text-slate-300"></i>
-                        <p class="text-xs font-bold">Your cart is empty.</p>
-                        <button onclick="navigateTo('catalog'); toggleCartDrawer(false);" class="mt-4 px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-xl">Explore Mega Catalog</button>
-                    </div>`;
-            } else {
-                AppState.cart.forEach((item, idx) => {
-                    const prod = PRODUCTS_DB.find(p => p.id === item.productId);
-                    if (!prod) return;
-
-                    const row = document.createElement('div');
-                    row.className = "flex gap-3 p-3 bg-slate-50 rounded-2xl border border-slate-100 items-center";
-                    row.innerHTML = `
-                        <img src="${prod.image}" class="w-14 h-14 rounded-xl object-cover bg-white">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="text-xs font-bold text-slate-800 truncate">${prod.title}</h4>
-                            <div class="flex items-center gap-2 text-[10px] text-slate-400">
-                                <span>Size: ${item.selectedSize}</span>
-                            </div>
-                            <span class="text-xs font-black text-slate-900">${formatPrice(prod.price)}</span>
-                            <div class="flex items-center gap-2 mt-1">
-                                <button onclick="updateCartQty(${idx}, -1)" class="w-5 h-5 bg-white border rounded text-xs font-bold text-slate-600 hover:bg-slate-100">-</button>
-                                <span class="text-xs font-bold">${item.qty}</span>
-                                <button onclick="updateCartQty(${idx}, 1)" class="w-5 h-5 bg-white border rounded text-xs font-bold text-slate-600 hover:bg-slate-100">+</button>
-                            </div>
-                        </div>
-                        <button onclick="removeFromCart(${idx})" class="text-slate-400 hover:text-rose-500 p-1">
-                            <i class="fa-solid fa-trash-can text-xs"></i>
-                        </button>
-                    `;
-                    drawerContainer.appendChild(row);
-                });
-            }
-
-            let discountAmount = AppState.couponApplied ? subtotal * AppState.couponApplied.discount : 0;
-            let shippingFee = (subtotal >= threshold || subtotal === 0) ? 0 : 15.00;
-            let grandTotal = subtotal - discountAmount + shippingFee;
-
-            document.getElementById('cart-summary-subtotal').textContent = formatPrice(subtotal);
-            document.getElementById('cart-summary-discount').textContent = `-${formatPrice(discountAmount)}`;
-            document.getElementById('cart-summary-shipping').textContent = shippingFee === 0 ? "FREE" : formatPrice(shippingFee);
-            document.getElementById('cart-summary-total').textContent = formatPrice(grandTotal);
-
-            if (AppState.couponApplied) {
-                document.getElementById('coupon-discount-row').classList.remove('hidden');
-            } else {
-                document.getElementById('coupon-discount-row').classList.add('hidden');
-            }
-        }
-
-        function updateWishlistBadgeUI() {
-            const badge = document.getElementById('wishlist-badge');
-            badge.textContent = AppState.wishlist.length;
-            badge.classList.toggle('hidden', AppState.wishlist.length === 0);
-        }
-
-        function updateNavigationActiveStates() {
-            document.querySelectorAll('.nav-link-item').forEach(el => el.classList.remove('text-brand-600'));
-            const activeNav = document.getElementById(`nav-${AppState.currentView}`);
-            if (activeNav) activeNav.classList.add('text-brand-600');
-        }
-
-        const mainSearchInput = document.getElementById('main-search-input');
-        const searchDropdown = document.getElementById('search-dropdown');
-        const searchResultsContainer = document.getElementById('search-results-container');
-
-        mainSearchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            if (query.length < 2) {
-                searchDropdown.classList.add('hidden');
-                return;
-            }
-
-            const matches = PRODUCTS_DB.filter(p => 
-                p.title.toLowerCase().includes(query) || 
-                p.brand.toLowerCase().includes(query) || 
-                p.category.toLowerCase().includes(query) ||
-                p.description.toLowerCase().includes(query)
-            );
-
-            document.getElementById('search-results-count').textContent = `${matches.length} matches`;
-            searchResultsContainer.innerHTML = '';
-
-            if (matches.length === 0) {
-                searchResultsContainer.innerHTML = `<p class="text-xs text-slate-400 py-2">No luxury items matched "${query}".</p>`;
-            } else {
-                matches.forEach(m => {
-                    const row = document.createElement('div');
-                    row.className = "p-2 hover:bg-slate-50 rounded-xl cursor-pointer flex items-center justify-between transition-colors";
-                    row.onclick = () => {
-                        searchDropdown.classList.add('hidden');
-                        navigateTo('product-detail', { productId: m.id });
-                    };
-                    row.innerHTML = `
-                        <div class="flex items-center gap-3">
-                            <img src="${m.image}" class="w-10 h-10 rounded-lg object-cover bg-slate-100">
-                            <div>
-                                <h4 class="text-xs font-bold text-slate-800">${m.title}</h4>
-                                <span class="text-[10px] text-slate-400 uppercase font-semibold">${m.brand} • ${m.category}</span>
-                            </div>
-                        </div>
-                        <span class="text-xs font-black text-brand-600">${formatPrice(m.price)}</span>
-                    `;
-                    searchResultsContainer.appendChild(row);
-                });
-            }
-            searchDropdown.classList.remove('hidden');
+            revealElements.forEach(element => {
+                scrollObserver.observe(element);
+            });
         });
-
-        function triggerQuickSearch(term) {
-            mainSearchInput.value = term;
-            executeHeaderSearch();
-        }
-
-        function executeHeaderSearch() {
-            const term = mainSearchInput.value.trim();
-            searchDropdown.classList.add('hidden');
-            AppState.catalogFilters.searchQuery = term;
-            navigateTo('catalog');
-        }
-
-        function renderHomeView() {
-            const dealProd = PRODUCTS_DB[0]; // Headphones
-            return `
-                <!-- Hero Banner Section -->
-                <section class="relative bg-slate-950 text-white overflow-hidden py-16 lg:py-24">
-                    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            <div class="space-y-6 text-center lg:text-left">
-                                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-amber-400 text-xs font-bold uppercase tracking-widest">
-                                    <i class="fa-solid fa-crown text-amber-400"></i> Enterprise Flagship Storefront
-                                </span>
-                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-serif-title tracking-tight leading-tight">
-                                    Redefining Luxury & <br><span class="bg-gradient-to-r from-brand-400 via-sky-300 to-amber-300 bg-clip-text text-transparent">Craftsmanship</span>
-                                </h1>
-                                <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                                    Explore over 20+ precision-crafted audio drivers, Swiss horology, Italian leather, ergonomic design, and 4K tech.
-                                </p>
-                                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                                    <button onclick="navigateTo('catalog')" class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-2xl shadow-xl shadow-brand-600/30 hover:scale-105 transition-all text-xs uppercase tracking-wider">
-                                        Explore Mega Catalog <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                                    </button>
-                                    <button onclick="navigateTo('product-detail', { productId: 1 })" class="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-2xl border border-slate-700 transition-all text-xs uppercase tracking-wider">
-                                        View Spotlight Item (${formatPrice(dealProd.price)})
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="relative flex justify-center">
-                                <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border border-slate-800 group cursor-pointer" onclick="navigateTo('product-detail', { productId: 1 })">
-                                    <img src="${dealProd.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-6">
-                                        <div class="text-white">
-                                            <span class="text-xs text-brand-400 font-extrabold uppercase">${dealProd.brand}</span>
-                                            <h3 class="text-xl font-bold font-serif-title">${dealProd.title}</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Value Pillars Bar -->
-                <section class="border-b border-slate-200 bg-white py-8">
-                    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center lg:text-left divide-y lg:divide-y-0 lg:divide-x divide-slate-100">
-                            <div class="flex items-center gap-4 p-2 justify-center lg:justify-start">
-                                <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-truck-fast"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900 text-xs uppercase">Express Shipping</h4>
-                                    <p class="text-xs text-slate-500">Free on orders above $100</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4 p-2 pt-4 lg:pt-2 justify-center lg:justify-start">
-                                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900 text-xs uppercase">256-Bit SSL Protection</h4>
-                                    <p class="text-xs text-slate-500">Encrypted card & UPI checkout</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4 p-2 pt-4 lg:pt-2 justify-center lg:justify-start">
-                                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-rotate-left"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900 text-xs uppercase">30-Day Money Back</h4>
-                                    <p class="text-xs text-slate-500">Hassle-free luxury returns</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4 p-2 pt-4 lg:pt-2 justify-center lg:justify-start">
-                                <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-headset"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900 text-xs uppercase">24/7 VIP Concierge</h4>
-                                    <p class="text-xs text-slate-500">Dedicated luxury support</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Deal of the Day Live Countdown Banner -->
-                <section class="py-12 bg-gradient-to-r from-slate-900 via-brand-950 to-slate-900 text-white">
-                    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
-                        <div class="space-y-2 text-center md:text-left">
-                            <span class="text-amber-400 text-xs font-black uppercase tracking-widest"><i class="fa-solid fa-bolt mr-1"></i> Deal of the Day</span>
-                            <h2 class="text-2xl sm:text-3xl font-black font-serif-title">Flash Sale: Monarch Skeleton Watch</h2>
-                            <p class="text-slate-400 text-xs">Save $151.00 on authentic Swiss exhibition movement today only.</p>
-                        </div>
-
-                        <!-- Live Countdown Timer -->
-                        <div class="flex items-center gap-3">
-                            <div class="bg-slate-800 border border-slate-700 px-4 py-2.5 rounded-2xl text-center min-w-[60px]">
-                                <span id="timer-hours" class="text-xl font-black text-amber-400 font-mono">08</span>
-                                <span class="block text-[9px] uppercase font-bold text-slate-400">Hours</span>
-                            </div>
-                            <span class="text-xl font-black text-slate-600">:</span>
-                            <div class="bg-slate-800 border border-slate-700 px-4 py-2.5 rounded-2xl text-center min-w-[60px]">
-                                <span id="timer-mins" class="text-xl font-black text-amber-400 font-mono">42</span>
-                                <span class="block text-[9px] uppercase font-bold text-slate-400">Mins</span>
-                            </div>
-                            <span class="text-xl font-black text-slate-600">:</span>
-                            <div class="bg-slate-800 border border-slate-700 px-4 py-2.5 rounded-2xl text-center min-w-[60px]">
-                                <span id="timer-secs" class="text-xl font-black text-amber-400 font-mono">19</span>
-                                <span class="block text-[9px] uppercase font-bold text-slate-400">Secs</span>
-                            </div>
-                        </div>
-
-                        <button onclick="navigateTo('product-detail', { productId: 2 })" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-2xl text-xs uppercase tracking-wider transition-all">
-                            Claim Deal Now
-                        </button>
-                    </div>
-                </section>
-
-                <!-- Trending Products Grid Section -->
-                <section class="py-16 bg-slate-50">
-                    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
-                            <div>
-                                <span class="text-brand-600 text-xs font-black uppercase tracking-widest">Curated Catalog</span>
-                                <h2 class="text-3xl font-black text-slate-900 font-serif-title mt-1">Trending Luxury Selections</h2>
-                            </div>
-                            <button onclick="navigateTo('catalog')" class="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1.5 uppercase tracking-wider">
-                                View All 20+ Products <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            ${PRODUCTS_DB.slice(0, 8).map(p => renderProductCardHTML(p)).join('')}
-                        </div>
-                    </div>
-                </section>
-            `;
-        }
-
-        function renderProductCardHTML(p) {
-            const isWish = AppState.wishlist.includes(p.id);
-            const discount = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
-
-            return `
-                <div class="bg-white rounded-3xl p-4 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-50 mb-4 cursor-pointer" onclick="navigateTo('product-detail', { productId: ${p.id} })">
-                            <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            
-                            <span class="absolute top-3 left-3 bg-rose-500 text-white text-[10px] font-black px-2.5 py-1 rounded-lg">-${discount}%</span>
-
-                            <button onclick="event.stopPropagation(); toggleWishlist(${p.id});" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-600 hover:text-rose-500 transition-colors shadow-sm">
-                                <i class="${isWish ? 'fa-solid fa-heart text-rose-500' : 'fa-regular fa-heart'}"></i>
-                            </button>
-                        </div>
-
-                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">${p.brand}</span>
-                        <h3 onclick="navigateTo('product-detail', { productId: ${p.id} })" class="text-xs font-bold text-slate-900 line-clamp-1 mt-0.5 cursor-pointer hover:text-brand-600">${p.title}</h3>
-
-                        <div class="flex items-center gap-1.5 mt-2">
-                            <i class="fa-solid fa-star text-amber-400 text-xs"></i>
-                            <span class="text-xs font-bold text-slate-800">${p.rating}</span>
-                            <span class="text-[11px] text-slate-400">(${p.reviewsCount})</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <span class="text-base font-black text-slate-900">${formatPrice(p.price)}</span>
-                            <span class="text-xs text-slate-400 line-through ml-1">${formatPrice(p.oldPrice)}</span>
-                        </div>
-                        <button onclick="addToCart(${p.id})" class="p-2.5 bg-brand-50 text-brand-600 hover:bg-brand-600 hover:text-white rounded-xl transition-all" title="Add to Cart">
-                            <i class="fa-solid fa-cart-plus text-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderCatalogView() {
-            const f = AppState.catalogFilters;
-            let filtered = PRODUCTS_DB.filter(p => {
-                if (f.category !== 'all' && p.category !== f.category) return false;
-                if (f.searchQuery && !p.title.toLowerCase().includes(f.searchQuery.toLowerCase()) && !p.brand.toLowerCase().includes(f.searchQuery.toLowerCase())) return false;
-                if (p.price > f.maxPrice) return false;
-                if (p.rating < f.minRating) return false;
-                if (f.inStockOnly && !p.inStock) return false;
-                return true;
-            });
-
-            if (f.sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
-            if (f.sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
-            if (f.sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
-
-            return `
-                <div class="py-10 bg-slate-50 min-h-screen">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="mb-8">
-                            <span class="text-brand-600 font-extrabold text-xs uppercase tracking-widest">Mega Catalog Explorer</span>
-                            <h1 class="text-3xl font-black text-slate-900 font-serif-title mt-1">Shop All 20+ Products</h1>
-                        </div>
-
-                        <div class="flex flex-col lg:flex-row gap-8">
-                            <!-- Sidebar Filters -->
-                            <aside class="w-full lg:w-64 shrink-0 bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm h-fit space-y-6">
-                                <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-                                    <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2 uppercase tracking-wider">
-                                        <i class="fa-solid fa-sliders text-brand-600"></i> Filters
-                                    </h3>
-                                    <button onclick="resetCatalogFilters()" class="text-xs font-semibold text-brand-600 hover:text-brand-700">Reset</button>
-                                </div>
-
-                                <!-- Category Filter -->
-                                <div class="space-y-2">
-                                    <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Category</h4>
-                                    <div class="space-y-2">
-                                        ${['all', 'electronics', 'watches', 'fashion', 'home', 'beauty', 'audio'].map(cat => `
-                                            <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer">
-                                                <input type="radio" name="cat-radio" value="${cat}" ${f.category === cat ? 'checked' : ''} onchange="updateCatalogFilter('category', '${cat}')" class="text-brand-600">
-                                                <span class="capitalize">${cat === 'all' ? 'All Collections' : cat}</span>
-                                            </label>
-                                        `).join('')}
-                                    </div>
-                                </div>
-
-                                <!-- Price Range Filter -->
-                                <div class="space-y-3 pt-4 border-t border-slate-100">
-                                    <div class="flex justify-between items-center">
-                                        <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Max Price</h4>
-                                        <span class="text-xs font-black text-slate-900">${formatPrice(f.maxPrice)}</span>
-                                    </div>
-                                    <input type="range" min="50" max="800" step="25" value="${f.maxPrice}" oninput="updateCatalogFilter('maxPrice', parseFloat(this.value))" class="w-full accent-brand-600 cursor-pointer">
-                                </div>
-
-                                <!-- Rating Filter -->
-                                <div class="space-y-2 pt-4 border-t border-slate-100">
-                                    <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Minimum Rating</h4>
-                                    <select onchange="updateCatalogFilter('minRating', parseFloat(this.value))" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-700 font-semibold focus:outline-none">
-                                        <option value="0" ${f.minRating === 0 ? 'selected' : ''}>All Ratings</option>
-                                        <option value="4.8" ${f.minRating === 4.8 ? 'selected' : ''}>4.8 Stars & Above</option>
-                                        <option value="4.9" ${f.minRating === 4.9 ? 'selected' : ''}>4.9 Stars & Above</option>
-                                    </select>
-                                </div>
-                            </aside>
-
-                            <!-- Catalog Content Area -->
-                            <div class="flex-1 space-y-6">
-                                <!-- Top Bar Sort & Count -->
-                                <div class="bg-white p-4 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4">
-                                    <div class="text-xs font-bold text-slate-600">
-                                        Showing <span class="text-brand-600 font-extrabold">${filtered.length}</span> items
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <span class="text-xs font-extrabold text-slate-400 uppercase">Sort By:</span>
-                                        <select onchange="updateCatalogFilter('sort', this.value)" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 cursor-pointer">
-                                            <option value="featured" ${f.sort === 'featured' ? 'selected' : ''}>Featured Picks</option>
-                                            <option value="price-low" ${f.sort === 'price-low' ? 'selected' : ''}>Price: Low to High</option>
-                                            <option value="price-high" ${f.sort === 'price-high' ? 'selected' : ''}>Price: High to Low</option>
-                                            <option value="rating" ${f.sort === 'rating' ? 'selected' : ''}>Highest Rated</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!-- Catalog Grid -->
-                                ${filtered.length === 0 ? `
-                                    <div class="bg-white rounded-3xl p-12 text-center text-slate-400 font-semibold">
-                                        <i class="fa-solid fa-filter-circle-xmark text-4xl mb-3 text-slate-300"></i>
-                                        <p class="text-sm">No items matched your specific filter selections.</p>
-                                        <button onclick="resetCatalogFilters()" class="mt-4 px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-xl">Reset All Filters</button>
-                                    </div>
-                                ` : `
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                        ${filtered.map(p => renderProductCardHTML(p)).join('')}
-                                    </div>
-                                `}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function updateCatalogFilter(key, value) {
-            AppState.catalogFilters[key] = value;
-            renderActiveView();
-        }
-
-        function resetCatalogFilters() {
-            AppState.catalogFilters = {
-                category: 'all',
-                searchQuery: '',
-                maxPrice: 800,
-                minRating: 0,
-                inStockOnly: false,
-                sort: 'featured'
-            };
-            renderActiveView();
-        }
-
-        function renderProductDetailView() {
-            const prod = PRODUCTS_DB.find(p => p.id === AppState.activeProductId) || PRODUCTS_DB[0];
-            const isWish = AppState.wishlist.includes(prod.id);
-
-            return `
-                <div class="py-12 bg-white">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <button onclick="navigateTo('catalog')" class="mb-6 text-xs font-bold text-slate-500 hover:text-brand-600 flex items-center gap-2">
-                            <i class="fa-solid fa-arrow-left"></i> Back to Catalog
-                        </button>
-
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                            <!-- Image Gallery -->
-                            <div class="space-y-4">
-                                <div class="w-full aspect-square rounded-3xl overflow-hidden bg-slate-50 border border-slate-200">
-                                    <img id="detail-main-img" src="${prod.image}" class="w-full h-full object-cover">
-                                </div>
-                                <div class="flex gap-3 overflow-x-auto pb-2">
-                                    ${prod.gallery.map(imgUrl => `
-                                        <button onclick="document.getElementById('detail-main-img').src = '${imgUrl}'" class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-slate-200 hover:border-brand-600 shrink-0">
-                                            <img src="${imgUrl}" class="w-full h-full object-cover">
-                                        </button>
-                                    `).join('')}
-                                </div>
-                            </div>
-
-                            <!-- Product Info -->
-                            <div class="space-y-6">
-                                <div>
-                                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1 rounded-md">${prod.brand}</span>
-                                    <h1 class="text-3xl font-black text-slate-900 font-serif-title mt-3">${prod.title}</h1>
-                                    
-                                    <div class="flex items-center gap-3 mt-3">
-                                        <div class="flex text-amber-400 text-xs">
-                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <span class="text-xs font-bold text-slate-800">${prod.rating}</span>
-                                        <span class="text-xs text-slate-400 font-medium">(${prod.reviewsCount} Customer Reviews)</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-baseline gap-4 pt-2 border-t border-slate-100">
-                                    <span class="text-3xl font-black text-slate-900">${formatPrice(prod.price)}</span>
-                                    <span class="text-sm text-slate-400 line-through">${formatPrice(prod.oldPrice)}</span>
-                                </div>
-
-                                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">${prod.description}</p>
-
-                                <!-- Color Selector -->
-                                ${prod.colors ? `
-                                    <div class="space-y-2">
-                                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Color Options</h4>
-                                        <div class="flex gap-2">
-                                            ${prod.colors.map((c, i) => `
-                                                <button onclick="selectProductVariantColor(this, '${c}')" class="w-8 h-8 rounded-full border-2 ${i === 0 ? 'border-brand-600 ring-2 ring-brand-500/20' : 'border-slate-200'}" style="background-color: ${c}"></button>
-                                            `).join('')}
-                                        </div>
-                                    </div>
-                                ` : ''}
-
-                                <!-- Size Selector -->
-                                ${prod.sizes ? `
-                                    <div class="space-y-2">
-                                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Available Sizes</h4>
-                                        <div class="flex gap-2">
-                                            ${prod.sizes.map((s, i) => `
-                                                <button onclick="selectProductVariantSize(this, '${s}')" class="px-4 py-2 border rounded-xl text-xs font-bold ${i === 0 ? 'bg-slate-900 text-white border-slate-900' : 'bg-slate-50 text-slate-700 border-slate-200'}">${s}</button>
-                                            `).join('')}
-                                        </div>
-                                    </div>
-                                ` : ''}
-
-                                <!-- Specifications Table -->
-                                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
-                                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Technical Specifications</h4>
-                                    <div class="grid grid-cols-2 gap-2 text-xs">
-                                        ${Object.entries(prod.specs).map(([key, val]) => `
-                                            <div><span class="text-slate-400">${key}:</span> <span class="font-bold text-slate-800">${val}</span></div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-
-                                <!-- Action Buttons -->
-                                <div class="pt-4 flex items-center gap-4">
-                                    <button onclick="addToCart(${prod.id})" class="flex-1 py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-2xl shadow-xl transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2">
-                                        <i class="fa-solid fa-bag-shopping"></i> Add to Cart
-                                    </button>
-                                    <button onclick="toggleWishlist(${prod.id})" class="p-4 bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-600 rounded-2xl transition-all">
-                                        <i class="${isWish ? 'fa-solid fa-heart text-rose-500 text-xl' : 'fa-regular fa-heart text-xl'}"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderCartView() {
-            let subtotal = 0;
-            AppState.cart.forEach(item => {
-                const prod = PRODUCTS_DB.find(p => p.id === item.productId);
-                if (prod) subtotal += prod.price * item.qty;
-            });
-
-            let discount = AppState.couponApplied ? subtotal * AppState.couponApplied.discount : 0;
-            let shipping = (subtotal >= 100 || subtotal === 0) ? 0 : 15.00;
-            let total = subtotal - discount + shipping;
-
-            return `
-                <div class="py-12 bg-slate-50 min-h-screen">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h1 class="text-3xl font-black text-slate-900 font-serif-title mb-8">Shopping Cart Breakdown</h1>
-
-                        ${AppState.cart.length === 0 ? `
-                            <div class="bg-white rounded-3xl p-12 text-center text-slate-400">
-                                <i class="fa-solid fa-bag-shopping text-5xl mb-4 text-slate-300"></i>
-                                <h3 class="text-lg font-bold text-slate-800">Your cart is currently empty</h3>
-                                <button onclick="navigateTo('catalog')" class="mt-6 px-8 py-3 bg-brand-600 text-white font-bold text-xs uppercase tracking-wider rounded-2xl">Browse Products</button>
-                            </div>
-                        ` : `
-                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                                <div class="lg:col-span-2 space-y-4">
-                                    ${AppState.cart.map((item, idx) => {
-                                        const prod = PRODUCTS_DB.find(p => p.id === item.productId);
-                                        if (!prod) return '';
-                                        return `
-                                            <div class="bg-white p-4 rounded-3xl border border-slate-200/80 shadow-sm flex items-center justify-between gap-4">
-                                                <img src="${prod.image}" class="w-20 h-20 rounded-2xl object-cover bg-slate-50">
-                                                <div class="flex-1 min-w-0">
-                                                    <span class="text-[10px] font-extrabold text-slate-400 uppercase">${prod.brand}</span>
-                                                    <h3 class="text-sm font-bold text-slate-900 truncate">${prod.title}</h3>
-                                                    <span class="text-sm font-black text-slate-900">${formatPrice(prod.price)}</span>
-                                                </div>
-                                                <div class="flex items-center gap-3">
-                                                    <button onclick="updateCartQty(${idx}, -1)" class="w-8 h-8 rounded-xl bg-slate-100 font-bold text-slate-700">-</button>
-                                                    <span class="text-sm font-extrabold">${item.qty}</span>
-                                                    <button onclick="updateCartQty(${idx}, 1)" class="w-8 h-8 rounded-xl bg-slate-100 font-bold text-slate-700">+</button>
-                                                </div>
-                                                <button onclick="removeFromCart(${idx})" class="text-slate-400 hover:text-rose-500 p-2">
-                                                    <i class="fa-solid fa-trash-can"></i>
-                                                </button>
-                                            </div>
-                                        `;
-                                    }).join('')}
-                                </div>
-
-                                <!-- Order Summary Box -->
-                                <div class="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm h-fit space-y-4">
-                                    <h3 class="font-bold text-slate-900 text-base uppercase font-serif-title">Order Summary</h3>
-                                    <div class="space-y-2 text-xs text-slate-600 pt-2 border-t border-slate-100">
-                                        <div class="flex justify-between"><span>Subtotal</span><span class="font-bold text-slate-900">${formatPrice(subtotal)}</span></div>
-                                        <div class="flex justify-between"><span>Discount</span><span class="font-bold text-emerald-600">-${formatPrice(discount)}</span></div>
-                                        <div class="flex justify-between"><span>Express Shipping</span><span class="font-bold text-slate-900">${shipping === 0 ? 'FREE' : formatPrice(shipping)}</span></div>
-                                    </div>
-                                    <div class="pt-3 border-t border-slate-100 flex justify-between text-base font-black text-slate-900">
-                                        <span>Total</span><span>${formatPrice(total)}</span>
-                                    </div>
-                                    <button onclick="navigateTo('checkout')" class="w-full py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-2xl shadow-xl transition-all text-xs uppercase tracking-wider">
-                                        Proceed to Checkout <i class="fa-solid fa-arrow-right ml-1"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        `}
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderCheckoutView() {
-            let subtotal = 0;
-            AppState.cart.forEach(item => {
-                const prod = PRODUCTS_DB.find(p => p.id === item.productId);
-                if (prod) subtotal += prod.price * item.qty;
-            });
-            let discount = AppState.couponApplied ? subtotal * AppState.couponApplied.discount : 0;
-            let total = subtotal - discount;
-
-            return `
-                <div class="py-12 bg-slate-50 min-h-screen">
-                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h1 class="text-3xl font-black text-slate-900 font-serif-title mb-8 flex items-center gap-3">
-                            <i class="fa-solid fa-lock text-brand-600"></i> VIP Express Checkout
-                        </h1>
-
-                        <!-- Checkout Wizard Tabs -->
-                        <div class="flex justify-between items-center mb-8 border-b border-slate-200 pb-4 text-xs font-bold uppercase">
-                            <span class="${AppState.activeCheckoutStep === 1 ? 'text-brand-600 border-b-2 border-brand-600 pb-4' : 'text-slate-400'}">1. Shipping Address</span>
-                            <span class="${AppState.activeCheckoutStep === 2 ? 'text-brand-600 border-b-2 border-brand-600 pb-4' : 'text-slate-400'}">2. Payment Gateway</span>
-                            <span class="${AppState.activeCheckoutStep === 3 ? 'text-brand-600 border-b-2 border-brand-600 pb-4' : 'text-slate-400'}">3. Final Review</span>
-                        </div>
-
-                        <form onsubmit="handleCheckoutFormSubmit(event)" class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm space-y-8">
-                            
-                            ${AppState.activeCheckoutStep === 1 ? `
-                                <!-- Step 1: Shipping Address -->
-                                <div class="space-y-4">
-                                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-400">Shipping Details</h3>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <input type="text" id="chk-name" required value="Sarah Jenkins" placeholder="Full Name" class="p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500">
-                                        <input type="email" id="chk-email" required value="sarah.j@auraluxe.com" placeholder="Email Address" class="p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500">
-                                        <input type="text" id="chk-address" required value="742 Evergreen Terrace" placeholder="Street Address" class="sm:col-span-2 p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500">
-                                        <input type="text" id="chk-city" required value="New York" placeholder="City" class="p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500">
-                                        <input type="text" id="chk-zip" required value="10022" placeholder="ZIP Code" class="p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500">
-                                    </div>
-                                    <button type="button" onclick="setCheckoutStep(2)" class="w-full py-4 bg-slate-900 hover:bg-brand-600 text-white font-bold rounded-2xl text-xs uppercase tracking-wider transition-colors mt-4">
-                                        Continue to Payment Gateway <i class="fa-solid fa-arrow-right ml-1"></i>
-                                    </button>
-                                </div>
-                            ` : ''}
-
-                            ${AppState.activeCheckoutStep === 2 ? `
-                                <!-- Step 2: Payment Gateway Options -->
-                                <div class="space-y-6">
-                                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-400">Select Payment Gateway</h3>
-                                    
-                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                                        <button type="button" onclick="switchPaymentGateway('card')" class="p-3 rounded-2xl border ${AppState.selectedPaymentGateway === 'card' ? 'border-brand-600 bg-brand-50/50 text-brand-700' : 'border-slate-200'} text-xs font-bold flex flex-col items-center gap-2">
-                                            <i class="fa-regular fa-credit-card text-lg"></i> Credit/Debit
-                                        </button>
-                                        <button type="button" onclick="switchPaymentGateway('upi')" class="p-3 rounded-2xl border ${AppState.selectedPaymentGateway === 'upi' ? 'border-brand-600 bg-brand-50/50 text-brand-700' : 'border-slate-200'} text-xs font-bold flex flex-col items-center gap-2">
-                                            <i class="fa-solid fa-qrcode text-lg"></i> UPI / QR Code
-                                        </button>
-                                        <button type="button" onclick="switchPaymentGateway('paypal')" class="p-3 rounded-2xl border ${AppState.selectedPaymentGateway === 'paypal' ? 'border-brand-600 bg-brand-50/50 text-brand-700' : 'border-slate-200'} text-xs font-bold flex flex-col items-center gap-2">
-                                            <i class="fa-brands fa-paypal text-lg"></i> PayPal
-                                        </button>
-                                        <button type="button" onclick="switchPaymentGateway('cod')" class="p-3 rounded-2xl border ${AppState.selectedPaymentGateway === 'cod' ? 'border-brand-600 bg-brand-50/50 text-brand-700' : 'border-slate-200'} text-xs font-bold flex flex-col items-center gap-2">
-                                            <i class="fa-solid fa-hand-holding-dollar text-lg"></i> Cash on Delivery
-                                        </button>
-                                    </div>
-
-                                    <!-- Gateway Visualizer Container -->
-                                    <div class="pt-4 border-t border-slate-100">
-                                        ${renderSelectedGatewayUI()}
-                                    </div>
-
-                                    <div class="flex gap-4">
-                                        <button type="button" onclick="setCheckoutStep(1)" class="w-1/3 py-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl text-xs uppercase tracking-wider">Back</button>
-                                        <button type="button" onclick="setCheckoutStep(3)" class="w-2/3 py-4 bg-slate-900 hover:bg-brand-600 text-white font-bold rounded-2xl text-xs uppercase tracking-wider transition-colors">Review Order</button>
-                                    </div>
-                                </div>
-                            ` : ''}
-
-                            ${AppState.activeCheckoutStep === 3 ? `
-                                <!-- Step 3: Order Review & Finalization -->
-                                <div class="space-y-6">
-                                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-400">Order Summary Review</h3>
-                                    
-                                    <div class="bg-slate-50 p-4 rounded-2xl text-xs space-y-2 border border-slate-100">
-                                        <div class="flex justify-between font-bold text-slate-800"><span>Items Total</span><span>${formatPrice(subtotal)}</span></div>
-                                        <div class="flex justify-between font-bold text-emerald-600"><span>Discount</span><span>-${formatPrice(discount)}</span></div>
-                                        <div class="flex justify-between font-bold text-slate-800"><span>Shipping</span><span>FREE</span></div>
-                                        <div class="pt-2 border-t border-slate-200 flex justify-between font-black text-sm text-slate-900"><span>Final Total</span><span>${formatPrice(total)}</span></div>
-                                    </div>
-
-                                    <div class="flex gap-4">
-                                        <button type="button" onclick="setCheckoutStep(2)" class="w-1/3 py-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl text-xs uppercase tracking-wider">Back</button>
-                                        <button type="submit" class="w-2/3 py-4 bg-brand-600 hover:bg-brand-500 text-white font-black rounded-2xl text-xs uppercase tracking-wider shadow-xl transition-all flex items-center justify-center gap-2">
-                                            <i class="fa-solid fa-lock"></i> Authorize & Place Order (${formatPrice(total)})
-                                        </button>
-                                    </div>
-                                </div>
-                            ` : ''}
-
-                        </form>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderSelectedGatewayUI() {
-            if (AppState.selectedPaymentGateway === 'card') {
-                return `
-                    <!-- Live Interactive Card Preview -->
-                    <div class="space-y-4">
-                        <div class="w-full max-w-sm mx-auto h-44 bg-gradient-to-tr from-slate-950 via-slate-900 to-brand-700 text-white p-5 rounded-2xl shadow-xl flex flex-col justify-between relative overflow-hidden">
-                            <div class="flex justify-between items-center">
-                                <i class="fa-solid fa-microchip text-amber-400 text-2xl"></i>
-                                <span class="font-serif-title font-black italic tracking-widest text-sm">VISA</span>
-                            </div>
-                            <div id="card-preview-num" class="font-mono text-base tracking-widest font-bold text-slate-200">${AppState.cardDetails.number}</div>
-                            <div class="flex justify-between text-[10px] uppercase font-bold text-slate-300">
-                                <div>
-                                    <span class="block text-[8px] text-slate-400">Cardholder</span>
-                                    <span id="card-preview-holder">${AppState.cardDetails.holder}</span>
-                                </div>
-                                <div>
-                                    <span class="block text-[8px] text-slate-400">Expires</span>
-                                    <span id="card-preview-exp">${AppState.cardDetails.expiry}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3 text-xs pt-2">
-                            <input type="text" placeholder="Card Number" oninput="updateCardPreview('number', this.value)" value="4532 8892 1092 8892" class="col-span-2 p-3 bg-slate-50 border border-slate-200 rounded-xl font-mono">
-                            <input type="text" placeholder="MM/YY" oninput="updateCardPreview('expiry', this.value)" value="08/28" class="p-3 bg-slate-50 border border-slate-200 rounded-xl font-mono">
-                            <input type="password" placeholder="CVV" maxlength="3" value="888" class="p-3 bg-slate-50 border border-slate-200 rounded-xl font-mono">
-                        </div>
-                    </div>
-                `;
-            } else if (AppState.selectedPaymentGateway === 'upi') {
-                return `
-                    <div class="text-center space-y-4 py-2">
-                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 inline-block">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=auraluxe@bank&pn=AuraLuxe" class="mx-auto rounded-lg">
-                        </div>
-                        <p class="text-xs text-slate-500 font-semibold">Scan QR with Google Pay, PhonePe, or Paytm</p>
-                        <span class="text-xs font-extrabold text-amber-600 bg-amber-50 px-3 py-1 rounded-full"><i class="fa-regular fa-clock mr-1"></i> QR Expires in 04:59</span>
-                    </div>
-                `;
-            } else if (AppState.selectedPaymentGateway === 'paypal') {
-                return `
-                    <div class="text-center py-6 space-y-3">
-                        <i class="fa-brands fa-paypal text-4xl text-sky-600"></i>
-                        <p class="text-xs font-bold text-slate-700">You will be redirected to PayPal to complete one-click authorization.</p>
-                    </div>
-                `;
-            } else {
-                return `
-                    <div class="space-y-3 py-2">
-                        <p class="text-xs text-slate-600 font-medium">Verify mobile number for Cash on Delivery authorization:</p>
-                        <div class="flex gap-2">
-                            <input type="text" value="+1 (555) 019-2831" class="flex-1 p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold">
-                            <button type="button" onclick="showToast('OTP sent to phone: 4920')" class="px-4 py-3 bg-slate-900 text-white text-xs font-bold rounded-xl">Send OTP</button>
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
-        function setCheckoutStep(step) {
-            AppState.activeCheckoutStep = step;
-            renderActiveView();
-        }
-
-        function switchPaymentGateway(gw) {
-            AppState.selectedPaymentGateway = gw;
-            renderActiveView();
-        }
-
-        function updateCardPreview(field, val) {
-            if (field === 'number') {
-                AppState.cardDetails.number = val || '•••• •••• •••• ••••';
-                document.getElementById('card-preview-num').textContent = AppState.cardDetails.number;
-            } else if (field === 'expiry') {
-                AppState.cardDetails.expiry = val || 'MM/YY';
-                document.getElementById('card-preview-exp').textContent = AppState.cardDetails.expiry;
-            }
-        }
-
-        function handleCheckoutFormSubmit(e) {
-            e.preventDefault();
-
-            let subtotal = 0;
-            AppState.cart.forEach(item => {
-                const prod = PRODUCTS_DB.find(p => p.id === item.productId);
-                if (prod) subtotal += prod.price * item.qty;
-            });
-            let discount = AppState.couponApplied ? subtotal * AppState.couponApplied.discount : 0;
-            let total = subtotal - discount;
-
-            const orderId = 'AL-' + Math.floor(10000 + Math.random() * 90000);
-            const newOrder = {
-                orderId,
-                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-                items: AppState.cart.map(item => {
-                    const prod = PRODUCTS_DB.find(p => p.id === item.productId);
-                    return { title: prod.title, price: prod.price, qty: item.qty };
-                }),
-                subtotal,
-                discount,
-                total,
-                status: 'Order Placed & Processing',
-                paymentMethod: AppState.selectedPaymentGateway.toUpperCase(),
-                shippingAddress: '742 Evergreen Terrace, New York, NY 10022'
-            };
-
-            AppState.orders.unshift(newOrder);
-            AppState.placedOrderData = newOrder;
-            AppState.cart = [];
-            updateCartBadgeUI();
-
-            showToast("Payment Successful! Order Confirmed.");
-            navigateTo('order-confirmation');
-        }
-
-        function renderOrderConfirmationView() {
-            const ord = AppState.placedOrderData || AppState.orders[0];
-            return `
-                <div class="py-12 bg-slate-50 min-h-screen">
-                    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/80 shadow-sm text-center space-y-6">
-                            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
-                                <i class="fa-solid fa-check"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs font-black text-brand-600 uppercase tracking-widest">Order Success</span>
-                                <h1 class="text-3xl font-black text-slate-900 font-serif-title mt-1">Thank You For Your Order!</h1>
-                                <p class="text-xs text-slate-500 mt-2">Order Tracking Reference: <span class="font-mono font-black text-slate-800">${ord.orderId}</span></p>
-                            </div>
-
-                            <!-- Printable Invoice Area -->
-                            <div id="printable-invoice-container" class="bg-slate-50 p-6 rounded-2xl text-left border border-slate-200 text-xs space-y-4">
-                                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
-                                    <span class="font-black text-slate-900 text-sm font-serif-title uppercase">AURA<span class="text-brand-600">LUXE</span> INVOICE</span>
-                                    <span class="font-mono text-slate-500">${ord.date}</span>
-                                </div>
-                                <div class="space-y-2">
-                                    ${ord.items.map(i => `
-                                        <div class="flex justify-between font-semibold text-slate-700">
-                                            <span>${i.qty}x ${i.title}</span>
-                                            <span>${formatPrice(i.price * i.qty)}</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                                <div class="pt-3 border-t border-slate-200 flex justify-between font-black text-sm text-slate-900">
-                                    <span>Total Paid</span>
-                                    <span>${formatPrice(ord.total)}</span>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                                <button onclick="window.print()" class="flex-1 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl text-xs uppercase tracking-wider">
-                                    <i class="fa-solid fa-print mr-1"></i> Print Invoice
-                                </button>
-                                <button onclick="navigateTo('tracking')" class="flex-1 py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-2xl text-xs uppercase tracking-wider shadow-lg">
-                                    Track Order Progress
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderTrackingView() {
-            const latest = AppState.orders[0];
-            return `
-                <div class="py-12 bg-slate-50 min-h-screen">
-                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                        <div>
-                            <span class="text-brand-600 font-extrabold text-xs uppercase tracking-widest">Real-time Order Status</span>
-                            <h1 class="text-3xl font-black text-slate-900 font-serif-title mt-1">Live Order Tracking</h1>
-                        </div>
-
-                        <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm space-y-8">
-                            <div class="flex flex-col sm:flex-row justify-between sm:items-center pb-6 border-b border-slate-100 gap-2">
-                                <div>
-                                    <span class="text-xs text-slate-400 font-semibold">Tracking Number</span>
-                                    <h3 class="text-lg font-black text-slate-900 font-mono">${latest.orderId}</h3>
-                                </div>
-                                <span class="px-3.5 py-1.5 bg-brand-50 text-brand-700 text-xs font-black rounded-full w-fit">${latest.status}</span>
-                            </div>
-
-                            <!-- Visual Step-by-Step Timeline -->
-                            <div class="grid grid-cols-4 gap-2 relative">
-                                <div class="text-center space-y-2">
-                                    <div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center mx-auto font-bold text-sm shadow-md"><i class="fa-solid fa-check"></i></div>
-                                    <span class="block text-[11px] font-bold text-slate-800">Order Placed</span>
-                                </div>
-                                <div class="text-center space-y-2">
-                                    <div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center mx-auto font-bold text-sm shadow-md"><i class="fa-solid fa-box"></i></div>
-                                    <span class="block text-[11px] font-bold text-slate-800">Packed</span>
-                                </div>
-                                <div class="text-center space-y-2">
-                                    <div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center mx-auto font-bold text-sm shadow-md badge-pulse"><i class="fa-solid fa-truck"></i></div>
-                                    <span class="block text-[11px] font-black text-brand-600">In Transit</span>
-                                </div>
-                                <div class="text-center space-y-2">
-                                    <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto font-bold text-sm"><i class="fa-solid fa-house"></i></div>
-                                    <span class="block text-[11px] font-bold text-slate-400">Delivered</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderWishlistView() {
-            const wishProds = PRODUCTS_DB.filter(p => AppState.wishlist.includes(p.id));
-            return `
-                <div class="py-12 bg-slate-50 min-h-screen">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                        <div>
-                            <span class="text-brand-600 font-extrabold text-xs uppercase tracking-widest">Saved Items</span>
-                            <h1 class="text-3xl font-black text-slate-900 font-serif-title mt-1">My VIP Wishlist (${wishProds.length})</h1>
-                        </div>
-
-                        ${wishProds.length === 0 ? `
-                            <div class="bg-white rounded-3xl p-12 text-center text-slate-400 font-semibold">
-                                <i class="fa-regular fa-heart text-5xl mb-4 text-slate-300"></i>
-                                <p class="text-sm">Your wishlist is currently empty.</p>
-                                <button onclick="navigateTo('catalog')" class="mt-4 px-6 py-3 bg-slate-900 text-white text-xs font-bold rounded-2xl">Browse Products</button>
-                            </div>
-                        ` : `
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                ${wishProds.map(p => renderProductCardHTML(p)).join('')}
-                            </div>
-                        `}
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderAccountView() {
-            return `
-                <div class="py-12 bg-slate-50 min-h-screen">
-                    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                        <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm flex items-center gap-6">
-                            <div class="w-20 h-20 rounded-full bg-slate-900 text-white flex items-center justify-center font-black text-2xl ring-4 ring-brand-500/20">
-                                SJ
-                            </div>
-                            <div>
-                                <span class="bg-brand-50 text-brand-700 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase">VIP Black Member</span>
-                                <h2 class="text-2xl font-black text-slate-900 font-serif-title mt-1">Sarah Jenkins</h2>
-                                <p class="text-xs text-slate-400">sarah.j@auraluxe.com • New York, NY</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">
-                            <h3 class="font-bold text-slate-900 text-base font-serif-title uppercase">Recent VIP Order History</h3>
-                            <div class="space-y-3">
-                                ${AppState.orders.map(o => `
-                                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-between text-xs">
-                                        <div>
-                                            <span class="font-bold text-slate-800 font-mono">${o.orderId}</span>
-                                            <span class="block text-slate-400">${o.date}</span>
-                                        </div>
-                                        <span class="font-black text-slate-900">${formatPrice(o.total)}</span>
-                                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 font-bold rounded-full text-[10px]">${o.status}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Main Dynamic SPA Router Render Function
-        function renderActiveView() {
-            const container = document.getElementById('app-view-container');
-            
-            if (AppState.currentView === 'home') {
-                container.innerHTML = renderHomeView();
-            } else if (AppState.currentView === 'catalog') {
-                container.innerHTML = renderCatalogView();
-            } else if (AppState.currentView === 'product-detail') {
-                container.innerHTML = renderProductDetailView();
-            } else if (AppState.currentView === 'cart') {
-                container.innerHTML = renderCartView();
-            } else if (AppState.currentView === 'checkout') {
-                container.innerHTML = renderCheckoutView();
-            } else if (AppState.currentView === 'order-confirmation') {
-                container.innerHTML = renderOrderConfirmationView();
-            } else if (AppState.currentView === 'tracking') {
-                container.innerHTML = renderTrackingView();
-            } else if (AppState.currentView === 'wishlist') {
-                container.innerHTML = renderWishlistView();
-            } else if (AppState.currentView === 'account') {
-                container.innerHTML = renderAccountView();
-            }
-        }
-
-        window.onload = function() {
-            renderActiveView();
-            updateCartBadgeUI();
-            updateWishlistBadgeUI();
-
-            // Deal of the Day Live Timer Decrement Engine
-            setInterval(() => {
-                const s = document.getElementById('timer-secs');
-                if (s) {
-                    let secVal = parseInt(s.textContent, 10);
-                    if (secVal > 0) {
-                        s.textContent = String(secVal - 1).padStart(2, '0');
-                    } else {
-                        s.textContent = "59";
-                    }
-                }
-            }, 1000);
-        };
     </script>
 </body>
 </html>
