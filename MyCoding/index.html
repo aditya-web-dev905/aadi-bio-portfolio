@@ -26,23 +26,23 @@
         body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
         
         /* Dark Theme Styling */
-        body.dark { background-color: #090d16; color: #f1f5f9; }
+        body.dark { background-color: #07090e; color: #f1f5f9; }
         .dark .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(13, 19, 32, 0.8);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
         }
         .dark .inner-card {
-            background: rgba(30, 41, 59, 0.5);
+            background: rgba(20, 30, 48, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         /* Light Theme Styling (White Theme) */
         body.light { background-color: #f8fafc; color: #0f172a; }
         .light .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(0, 0, 0, 0.08);
@@ -74,14 +74,14 @@
 
     <main class="w-full max-w-lg mx-auto space-y-6 pb-12">
         
-        <!-- Top Status Bar -->
+        <!-- Top Status Bar with Trust Badge -->
         <div class="flex items-center justify-between">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold shadow-sm">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                Available for Work
+                Available for Hire
             </div>
 
             <!-- Theme Switcher Button -->
@@ -106,8 +106,26 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center sm:justify-start gap-1.5 text-slate-400 text-xs font-medium pt-1">
-                <i class="fa-solid fa-location-dot text-rose-500"></i> Bhind, Madhya Pradesh, India
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-slate-400 text-xs font-medium pt-1">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot text-rose-500"></i> Bhind, MP</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-shield-check text-emerald-400"></i> 100% Verified Quality</span>
+            </div>
+        </div>
+
+        <!-- Trust Badges Bar -->
+        <div class="grid grid-cols-3 gap-2">
+            <div class="glass-panel p-3 rounded-2xl text-center space-y-1">
+                <i class="fa-solid fa-bolt text-amber-400 text-sm"></i>
+                <div class="text-[11px] font-bold">Fast Delivery</div>
+            </div>
+            <div class="glass-panel p-3 rounded-2xl text-center space-y-1">
+                <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                <div class="text-[11px] font-bold">100% Accuracy</div>
+            </div>
+            <div class="glass-panel p-3 rounded-2xl text-center space-y-1">
+                <i class="fa-solid fa-headset text-sky-400 text-sm"></i>
+                <div class="text-[11px] font-bold">24/7 Support</div>
             </div>
         </div>
 
@@ -117,15 +135,15 @@
                 <i class="fa-solid fa-user-shield"></i> About Me
             </h2>
             <div class="space-y-2 text-xs sm:text-sm leading-relaxed opacity-90">
-                <p>Hello! Main <strong>Aditya Shrivas</strong> hoon. Main ek passionate web developer aur data entry specialist hoon jo clients ke liye high-quality digital solutions aur clean data management services provide karta hoon.</p>
-                <p>Mera maqsad aapke business ya personal project ko professional look dena aur accurate results deliver karna hai.</p>
+                <p>Hello! Main <strong>Aditya Shrivas</strong> hoon. Main ek professional web developer aur data entry specialist hoon. Main clients ko high-performance custom websites aur error-free data management solutions provide karta hoon.</p>
+                <p>Mera focus hamesha quality work aur client satisfaction par rehta hai taaki aapko behtareen result mil sake.</p>
             </div>
         </div>
 
         <!-- Professional Skills Section -->
         <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
             <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
-                <i class="fa-solid fa-screwdriver-wrench"></i> Professional Skills
+                <i class="fa-solid fa-screwdriver-wrench"></i> Professional Skills & Services
             </h2>
             
             <div class="grid grid-cols-1 gap-3">
@@ -133,14 +151,14 @@
                     <h3 class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
                         <i class="fa-solid fa-code"></i> Web Development
                     </h3>
-                    <p class="text-xs opacity-80">HTML, CSS, JavaScript, Responsive Layouts, and Modern Custom Website Design.</p>
+                    <p class="text-xs opacity-80">HTML, CSS, JavaScript, Responsive Mobile-Friendly Design, & Modern UI Layouts.</p>
                 </div>
 
                 <div class="inner-card p-3.5 rounded-xl space-y-2">
                     <h3 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
                         <i class="fa-solid fa-table"></i> Data Entry & Office Work
                     </h3>
-                    <p class="text-xs opacity-80">MS Excel Spreadsheets, Formulas, MS Word Documentation, Fast Typing, & Data Cleaning.</p>
+                    <p class="text-xs opacity-80">MS Excel Spreadsheets, VLOOKUP Formulas, MS Word Documentation, & Fast Typing.</p>
                 </div>
             </div>
         </div>
@@ -188,7 +206,7 @@
                 <!-- Excel Sample Card -->
                 <div class="inner-card p-4 rounded-xl space-y-2">
                     <h3 class="text-sm font-bold flex items-center gap-1.5 text-emerald-400">📊 MS Excel Data Management Suite</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Click here to see how I organize spreadsheets, manage entries, and apply automated formulas.</p>
+                    <p class="text-xs opacity-80 leading-relaxed">Click here to check my professional spreadsheet organization and automated formula structuring.</p>
                     <button onclick="openExcelDetails()" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 pt-1 cursor-pointer">
                         View Excel Work Interface &rarr;
                     </button>
@@ -197,7 +215,7 @@
                 <!-- Word Sample Card -->
                 <div class="inner-card p-4 rounded-xl space-y-2">
                     <h3 class="text-sm font-bold flex items-center gap-1.5 text-blue-400">📝 MS Word Professional Document Suite</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Click here to see my document typing, official report formatting, and layout styles.</p>
+                    <p class="text-xs opacity-80 leading-relaxed">Click here to check my official report formatting, typography layout, and typing samples.</p>
                     <button onclick="openWordDetails()" class="inline-flex items-center gap-1 text-xs font-bold text-blue-400 hover:text-blue-300 pt-1 cursor-pointer">
                         View MS Word Work Interface &rarr;
                     </button>
@@ -205,17 +223,17 @@
             </div>
         </div>
 
-        <!-- Let's Connect Section -->
+        <!-- Let's Connect & Direct Quick Hire Section -->
         <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
             <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
-                <i class="fa-solid fa-handshake"></i> Let's Connect For Work
+                <i class="fa-solid fa-handshake"></i> Let's Connect For Your Project
             </h2>
             <p class="text-xs opacity-90 leading-relaxed">
-                Aapko apni website banvani ho ya koi data entry / office ka kaam karwana ho, aap mujhse seedha contact kar sakte hain! Affordable price aur behtareen quality ki guarantee.
+                Aapko apni naye business ke liye website banvani ho ya koi data entry project complete karwana ho, mujhse seedha WhatsApp ya Instagram par contact karein!
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <a href="https://wa.me/919999999999?text=Hi%20Aditya,%20I%20want%20to%20discuss%20a%20project%20with%20you." target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-900/20">
+                <a href="https://wa.me/919999999999?text=Hi%20Aditya,%20I%20want%20to%20discuss%20a%20project%20with%20you." target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-900/25">
                     <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp
                 </a>
                 <a href="https://instagram.com/" target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl insta-gradient text-white font-bold text-xs transition-colors shadow-lg">
@@ -241,7 +259,7 @@
             </div>
 
             <div class="pt-3 border-t border-slate-700/50 flex items-center justify-between">
-                <span class="text-[11px] text-slate-400 italic">Want quality work? Hire me today!</span>
+                <span class="text-[11px] text-slate-400 italic">Looking for quality work? Let's talk!</span>
                 <button onclick="closeModalWindow()" class="py-2.5 px-5 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition-colors cursor-pointer">
                     Close Window
                 </button>
@@ -309,15 +327,15 @@
             const htmlContent = `
                 <div class="inner-card p-3.5 rounded-xl space-y-2">
                     <p class="font-bold text-emerald-400 text-xs">📊 Mera Data Entry Aur Spreadsheet Kaam:</p>
-                    <p class="opacity-90 text-[11px] leading-relaxed">Main Excel par bade se bada data ekdum clean formatting aur 100% accuracy ke sath manage karta hoon taaki clients ko ek professional sheet mile.</p>
+                    <p class="opacity-90 text-[11px] leading-relaxed">Main Excel par raw data ko clean formatting, structured tables aur automated formulas ke sath manage karta hoon taaki clients ko 100% accurate result mile.</p>
                 </div>
                 <div class="inner-card p-3 rounded-xl space-y-2 text-[11px]">
                     <p class="font-bold text-sky-400">✨ Key Highlights & Expertise:</p>
                     <ul class="list-disc list-inside space-y-1 opacity-80">
-                        <li>Data Organization & Cleaning</li>
+                        <li>Data Organization, Cleaning & Formatting</li>
                         <li>Advanced Formulas (SUM, VLOOKUP, AVERAGE)</li>
-                        <li>PDF / Image to Excel Conversion</li>
-                        <li>Clean Table Borders & Color Formatting</li>
+                        <li>PDF / Image to Excel Data Conversion</li>
+                        <li>Professional Table Borders & Color Styles</li>
                     </ul>
                 </div>
                 <p class="text-[11px] text-slate-400 italic">"Agar aapko bhi Excel report ya data entry ka koi kaam karwana hai, toh aap mujhe WhatsApp par message kar sakte hain."</p>
@@ -341,23 +359,4 @@
                         <li>Fast & Error-Free Document Typing</li>
                         <li>Professional Paragraph Spacing & Margins</li>
                         <li>Handwritten Notes to Digital Word Setup</li>
-                        <li>Print & PDF Ready Output</li>
-                    </ul>
-                </div>
-                <p class="text-[11px] text-slate-400 italic">"Kisi bhi tarah ke document typing ya file formatting ke kaam ke liye aap mujhe seedha connect kar sakte hain."</p>
-            `;
-            document.getElementById("modal-content-body").innerHTML = htmlContent;
-            document.getElementById("info-modal").classList.remove("hidden");
-        }
-
-        function closeModalWindow() {
-            document.getElementById("info-modal").classList.add("hidden");
-        }
-
-        // Initialize Typewriter on Load
-        window.addEventListener("DOMContentLoaded", () => {
-            runTypewriter();
-        });
-    </script>
-</body>
-</html>
+                        <li>Print & PDF Ready Output<
