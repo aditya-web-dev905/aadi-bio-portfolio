@@ -1,442 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Shrivas | Elite Web Developer & Bio Portfolio</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        :root {
-            --bg-color: #05070b;
-            --card-bg: #0f1420;
-            --card-border: #1e293b;
-            --accent-glow: rgba(56, 189, 248, 0.15);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary: #38bdf8;
-            --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            padding: 30px 16px;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .portfolio-container {
-            width: 100%;
-            max-width: 580px;
-        }
-
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-
-        .reveal-on-scroll.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .status-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(34, 197, 94, 0.1);
-            color: #4ade80;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(34, 197, 94, 0.25);
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #4ade80;
-            border-radius: 50%;
-            box-shadow: 0 0 0 rgba(74, 222, 128, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
-        }
-
-        .portfolio-badge {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--primary);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(56, 189, 248, 0.25);
-        }
-
-        .hero-section {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .hero-section h1 {
-            font-size: 30px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
-
-        .highlight-name {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .location-tag {
-            font-size: 13px;
-            color: var(--text-muted);
-            background: var(--card-bg);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
-        }
-
-        h2 {
-            font-size: 18px;
-            font-weight: 700;
-            margin: 32px 0 16px 0;
-            color: #f1f5f9;
-        }
-
-        .custom-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 22px;
-            border-radius: 18px;
-            margin-bottom: 16px;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .custom-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .custom-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 15px 35px -10px var(--accent-glow);
-        }
-
-        .custom-card:hover::before {
-            opacity: 1;
-        }
-
-        .custom-card p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .custom-card strong {
-            color: var(--text-main);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .skill-item {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 14px 16px;
-            border-radius: 14px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-3px);
-            border-color: rgba(56, 189, 248, 0.4);
-            background: #131b2e;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .project-card h3 {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #ffffff;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 14px;
-            font-size: 13px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            transition: gap 0.2s ease, color 0.2s ease;
-        }
-
-        .project-link:hover {
-            gap: 10px;
-            color: #7dd3fc;
-        }
-
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .cta-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-align: center;
-            padding: 16px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 14px;
-            text-decoration: none;
-            color: #ffffff;
-            transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            cursor: pointer;
-            border: none;
-        }
-
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #22c55e, #15803d);
-        }
-
-        .instagram-btn {
-            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-        }
-
-        .cta-btn:active {
-            transform: scale(0.98);
-        }
-
-        .cta-btn:hover {
-            opacity: 0.95;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        }
-
-        @keyframes waveAnim {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(14deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        .wave-emoji {
-            display: inline-block;
-            animation: waveAnim 1.8s infinite;
-            transform-origin: 70% 70%;
-        }
-
-        @media(max-width: 480px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
+    <title>Aditya Shrivas | Bio Portfolio & Developer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
             }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .instagram-gradient {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center justify-between p-4 sm:p-6">
 
-    <main class="portfolio-container">
+    <!-- Main Wrapper Container -->
+    <main class="w-full max-w-lg mx-auto space-y-6 pb-12">
         
-        <div class="status-header reveal-on-scroll">
-            <div class="live-badge">
-                <div class="pulse-dot"></div>
+        <!-- Top Header Status Bar -->
+        <div class="flex items-center justify-between">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 Available for Work
             </div>
-            <div class="portfolio-badge">
-                ✨ BIO PORTFOLIO
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card text-amber-400 text-xs font-semibold">
+                <i class="fa-solid fa-sparkles text-[10px]"></i> BIO PORTFOLIO
+            </div>
+            <div class="w-9 h-9 rounded-full glass-card flex items-center justify-center text-amber-300 text-sm">
+                <i class="fa-solid fa-moon"></i>
             </div>
         </div>
 
-        <section class="hero-section reveal-on-scroll">
-            <h1>Hi, I'm <span class="highlight-name">Aditya Shrivas</span> <span class="wave-emoji">👋</span></h1>
-            <p class="subtitle">
-                🚀 Web Developer & 🤖 Tech Creator
-            </p>
-            <div class="location-tag">
-                📍 Bhind, Madhya Pradesh, India
+        <!-- Hero Intro Section -->
+        <div class="space-y-3 pt-2">
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">Aditya Shrivas</span> 👋
+            </h1>
+            <div class="flex items-center gap-2 text-slate-300 font-medium text-sm">
+                <span>🚀 Web Developer</span>
             </div>
-        </section>
+            <div class="flex items-center gap-1.5 text-slate-400 text-xs font-medium">
+                <i class="fa-solid fa-location-dot text-rose-500"></i> Bhind, Madhya Pradesh, India
+            </div>
+        </div>
 
-        <section class="about-section">
-            <h2 class="reveal-on-scroll">💻 About Me</h2>
+        <!-- About Me Section -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i class="fa-solid fa-laptop text-sky-400"></i> About Me
+            </h2>
+            <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                <p>Hello everyone! My name is <strong>Aditya Shrivas</strong>. I am currently pursuing my higher education with a <strong>B.Sc. in Biology</strong>, while actively exploring my deep passion for technology, coding, and digital creation.</p>
+                <p>Along with my studies, I specialize in web development, professional typing, and office management tasks with high accuracy and dedication.</p>
+            </div>
+        </div>
+
+        <!-- Professional Skills Section -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i class="fa-solid fa-screwdriver-wrench text-sky-400"></i> Professional Skills
+            </h2>
             
-            <div class="custom-card reveal-on-scroll">
-                <p>
-                    Hello everyone! My name is <strong>Aditya Shrivas</strong>. I am currently pursuing my higher education with a <strong>B.Sc. in Biology</strong>, while actively exploring my deep passion for technology, coding, and digital creation.
+            <div class="space-y-3">
+                <!-- Skill Group 1 -->
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-laptop-code"></i> Web Development
+                    </h3>
+                    <div class="space-y-1.5 text-xs text-slate-300">
+                        <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
+                            <i class="fa-solid fa-globe text-sky-400"></i> HTML, CSS & JavaScript
+                        </div>
+                        <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
+                            <i class="fa-solid fa-rocket text-amber-400"></i> Custom Website Creation
+                        </div>
+                        <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
+                            <i class="fa-solid fa-palette text-pink-400"></i> Clean & Modern Design
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Group 2 -->
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-chart-column"></i> Data Entry & Office Work
+                    </h3>
+                    <div class="space-y-1.5 text-xs text-slate-300">
+                        <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
+                            <i class="fa-solid fa-file-excel text-emerald-400"></i> MS Excel & Spreadsheet Work
+                        </div>
+                        <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
+                            <i class="fa-solid fa-file-word text-blue-400"></i> MS Word & Document Typing
+                        </div>
+                        <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
+                            <i class="fa-solid fa-bolt text-amber-400"></i> Fast & Accurate Typing Work
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Live Web Development Projects Section -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i class="fa-solid fa-rocket text-sky-400"></i> My Live Web Development Projects
+            </h2>
+
+            <div class="space-y-3">
+                <!-- Project 1 -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
+                        💪 IroncladAthletics
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        A professional fitness platform featuring BMI & calorie calculators, membership packages, and modern dark-mode athletic styling.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
+                        View Live Website &rarr;
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
+                        ☕ The Royal Bean Cafe
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        A premium, responsive dark and gold-themed cafe & lounge website featuring rich UI, interactive menus, and WhatsApp booking integration.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
+                        View Live Website &rarr;
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
+                        🏡 Luxury Home Estates
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        A high-end real estate web platform showcasing luxury properties, modern layouts, and immersive property exploration.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
+                        View Live Website &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Entry & Office Works (Samples) Section -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i class="fa-solid fa-chart-pie text-sky-400"></i> Data Entry & Office Works (Samples)
+            </h2>
+
+            <div class="space-y-3">
+                <!-- Sample 1 -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
+                        📊 ProData Manager & Entry Suite
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Professional data entry, MS Excel spreadsheets, and accurate document typing service sample with verified accuracy.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
+                        View Live Excel Sample Sheet &rarr;
+                    </a>
+                </div>
+
+                <!-- Sample 2 -->
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
+                        📝 ProDoc Word Suite
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Professional MS Word document formatting, official business reports, and clean typographic layout sample.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
+                        View MS Word Document Sample &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Let's Connect Section -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i class="fa-solid fa-handshake text-amber-400"></i> Let's Connect
+            </h2>
+            <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+                <p class="flex items-start gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-400 mt-0.5"></i>
+                    <span>Web Development, Data Entry, ya koi bhi office computer work ke liye mujhse contact karein - affordable price mein best quality service ke sath!</span>
                 </p>
-                <p style="margin-top: 12px;">
-                    Along with my science studies, I have successfully completed my <strong>CCA</strong> and am currently pursuing my <strong>DCA</strong> to build solid fundamentals in computer applications.
-                </p>
+                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 italic text-slate-300">
+                    ✨ "Kisi bhi tarah ka kaam karwana ho, toh bina kisi jhik-jhik ke seedha mujhe message karein!"
+                </div>
             </div>
 
-            <div class="custom-card reveal-on-scroll" style="border-left: 4px solid #f59e0b;">
-                <p>
-                    🎯 <strong>Current Status:</strong> Main abhi coding seekh raha hoon aur daily practice karke apni web development skills ko advance kar raha hoon!
-                </p>
-            </div>
-        </section>
-
-        <section class="skills-section">
-            <h2 class="reveal-on-scroll">🛠️ Technical Skills & Expertise</h2>
-
-            <div class="skills-grid">
-                <div class="skill-item reveal-on-scroll">💻 HTML5 & CSS3 Architecture</div>
-                <div class="skill-item reveal-on-scroll">⚡ JavaScript Fundamentals</div>
-                <div class="skill-item reveal-on-scroll">🐍 Python Basics & Programming</div>
-                <div class="skill-item reveal-on-scroll">🎓 CCA & DCA (Computer Applications)</div>
-                <div class="skill-item reveal-on-scroll">🤖 AI-Assisted Development & Prompting</div>
-                <div class="skill-item reveal-on-scroll">📱 Responsive UI/UX Layouts</div>
-            </div>
-        </section>
-
-        <section class="projects-section">
-            <h2 class="reveal-on-scroll">💼 Featured Projects</h2>
-
-            <!-- Project 1: IroncladAthletics -->
-            <div class="custom-card project-card reveal-on-scroll">
-                <h3>💪 IroncladAthletics</h3>
-                <p>A professional fitness platform featuring BMI & calorie calculators, membership packages, and modern dark-mode athletic styling.</p>
-                <a href="https://ironclad-gym-bhopal.netlify.app" target="_blank" class="project-link">Visit Live Website &rarr;</a>
-            </div>
-
-            <!-- Project 2: The Royal Bean Cafe -->
-            <div class="custom-card project-card reveal-on-scroll">
-                <h3>☕ The Royal Bean Cafe</h3>
-                <p>A premium, responsive dark and gold-themed cafe & lounge website featuring rich UI, interactive menus, and WhatsApp booking integration.</p>
-                <a href="https://royal-bean-cafe.vercel.app" target="_blank" class="project-link">Visit Live Website &rarr;</a>
-            </div>
-
-            <!-- Project 3: Vortex AI Platform (Ab upar wale cards ki tarah bilkul simple aur clean) -->
-            <div class="custom-card project-card reveal-on-scroll">
-                <h3>🔮 Vortex AI Platform</h3>
-                <p>A modern SaaS landing page featuring AI tools, a live interactive prompt engine, and modern pricing tiers.</p>
-                <a href="vortex.html" target="_blank" class="project-link">Visit Live Website &rarr;</a>
-            </div>
-        </section>
-
-        <section class="connect-section">
-            <h2 class="reveal-on-scroll">🤝 Let's Connect</h2>
-
-            <div class="custom-card reveal-on-scroll">
-                <p>💡 Aisi hi stunning aur professional website banvane ke liye mujhse contact karein - budget-friendly price mein behtareen design ke sath!</p>
-            </div>
-
-            <div class="action-buttons reveal-on-scroll">
-                <!-- WhatsApp Link Activated -->
-                <a href="https://wa.me/919243266485" target="_blank" class="cta-btn whatsapp-btn">
-                    💬 Chat on WhatsApp
+            <!-- Action Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <a href="https://wa.me/" target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-900/20">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp
                 </a>
-                <!-- Instagram Profile Link Activated -->
-                <a href="https://instagram.com/mr_aadi_singh_.002" target="_blank" class="cta-btn instagram-btn">
-                    📸 Instagram Profile
+                <a href="https://instagram.com/" target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl instagram-gradient text-white font-bold text-xs transition-colors shadow-lg">
+                    <i class="fa-brands fa-instagram text-base"></i> Instagram Profile
                 </a>
             </div>
-        </section>
+        </div>
 
     </main>
 
-    <script>
-        // Scroll reveal animation observer
-        document.addEventListener("DOMContentLoaded", function () {
-            const revealElements = document.querySelectorAll('.reveal-on-scroll');
-
-            const scrollObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
-                });
-            }, {
-                threshold: 0.12
-            });
-
-            revealElements.forEach(element => {
-                scrollObserver.observe(element);
-            });
-        });
-    </script>
 </body>
 </html>
