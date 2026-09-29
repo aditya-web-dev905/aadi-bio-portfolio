@@ -45,11 +45,11 @@ const serviceDetails = {
         content: `
             <p>🌟 Yeh mere kuch sample live projects hain jo maine clients ko dikhane ke liye design kiye hain:</p>
             <ul>
-                <li>🏡 <strong>Luxury Real Estate Platform:</strong> Modern property showcase aur booking UI.</li>
+                <li>🏡 <strong>Luxury Real Estate:</strong> Modern property showcase aur booking UI.</li>
                 <li>☕ <strong>The Royal Bean Cafe:</strong> Interactive restaurant menu aur table reservation system.</li>
-                <li>💪 <strong>Ironclad Athletics Gym:</strong> Fitness portal with membership plans.</li>
+                <li>💪 <strong>Ironclad Athletics:</strong> Fitness portal with membership plans.</li>
             </ul>
-            <p>🚀 <strong>Custom Order Note:</strong> Yeh sabhi websites keval sample ke taur par hain. Agar aapko apni pasand ke kisi bhi naye topic, business, ya isse bhi kahin zyada advanced aur behtar custom website banvani ho, toh turant WhatsApp par mujhse sampark karein!</p>
+            <p>🚀 <strong>Custom Order Note:</strong> Yeh websites sample hain. Agar aapko apni pasand ke kisi bhi naye topic par custom website banvani ho, toh WhatsApp par sampark karein!</p>
         `
     },
     data: {
@@ -57,11 +57,11 @@ const serviceDetails = {
         content: `
             <p>💼 Professional office aur data entry services jo main pure focus ke sath provide karta hoon:</p>
             <ul>
-                <li>📝 <strong>MS Word:</strong> Professional documents formatting, typing, reports, aur PDF-to-Word conversion.</li>
-                <li>📈 <strong>MS Excel:</strong> Spreadsheet management, data cleaning, formulas, aur reports generation.</li>
-                <li>⚡ <strong>Typing & Conversion:</strong> High-speed typing aur 100% accuracy ke sath file formatting.</li>
+                <li>📝 <strong>MS Word:</strong> Professional documents formatting, typing, reports.</li>
+                <li>📈 <strong>MS Excel:</strong> Spreadsheet management, data cleaning, formulas.</li>
+                <li>⚡ <strong>Typing & Conversion:</strong> High-speed typing aur 100% accuracy.</li>
             </ul>
-            <p>🎯 <strong>Quality Guarantee:</strong> Aapka har ek data entry aur typing project pure focus aur fast speed ke sath complete kiya jayega.</p>
+            <p>🎯 <strong>Quality Guarantee:</strong> Aapka har ek data entry project pure focus aur fast speed ke sath complete kiya jayega.</p>
         `
     }
 };
