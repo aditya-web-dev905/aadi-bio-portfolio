@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth dark" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,100 +23,141 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
-        .glass-card {
-            background: rgba(17, 24, 39, 0.7);
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        
+        /* Dark Theme Default */
+        body.dark { background-color: #0b0f19; color: #f3f4f6; }
+        .dark .glass-card {
+            background: rgba(17, 24, 39, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
+        /* Light Theme Alternate */
+        body.light { background-color: #f8fafc; color: #1e293b; }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+        .light .inner-box {
+            background: rgba(241, 245, 249, 0.8) !important;
+            border-color: rgba(203, 213, 225, 0.8) !important;
+            color: #334155 !important;
+        }
+
         .instagram-gradient {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: #38bdf8;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-between p-4 sm:p-6">
+<body class="dark min-h-screen flex flex-col items-center justify-between p-4 sm:p-6">
 
     <!-- Main Wrapper Container -->
     <main class="w-full max-w-lg mx-auto space-y-6 pb-12">
         
         <!-- Top Header Status Bar -->
         <div class="flex items-center justify-between">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Available for Work
+            <!-- Available Status Badge (Fully Fixed & Animated) -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold shadow-sm">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Available for Work[span_0](start_span)[span_0](end_span)
             </div>
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card text-amber-400 text-xs font-semibold">
-                <i class="fa-solid fa-sparkles text-[10px]"></i> BIO PORTFOLIO
+
+            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card text-amber-400 text-xs font-semibold">
+                <i class="fa-solid fa-sparkles text-[10px]"></i> BIO PORTFOLIO[span_1](start_span)[span_1](end_span)
             </div>
-            <div class="w-9 h-9 rounded-full glass-card flex items-center justify-center text-amber-300 text-sm">
-                <i class="fa-solid fa-moon"></i>
-            </div>
+
+            <!-- Theme Toggle Button (Fully Activated) -->
+            <button onclick="toggleTheme()" id="theme-toggle-btn" class="w-9 h-9 rounded-full glass-card flex items-center justify-center text-amber-300 text-sm hover:scale-105 transition-transform cursor-pointer" title="Switch Theme">
+                <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
         </div>
 
         <!-- Hero Intro Section -->
         <div class="space-y-3 pt-2">
-            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white flex items-center gap-2">
-                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">Aditya Shrivas</span> 👋
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight flex items-center gap-2">
+                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">Aditya Shrivas</span> 👋[span_2](start_span)[span_2](end_span)
             </h1>
-            <div class="flex items-center gap-2 text-slate-300 font-medium text-sm">
-                <span>🚀 Web Developer</span>
+            
+            <!-- Dynamic Typing Text Container (Fully Fixed & Working) -->
+            <div class="flex items-center gap-2 text-slate-300 font-semibold text-sm h-6">
+                <span id="typewriter-text" class="text-sky-400"></span><span class="typewriter-cursor">&nbsp;</span>
             </div>
-            <div class="flex items-center gap-1.5 text-slate-400 text-xs font-medium">
-                <i class="fa-solid fa-location-dot text-rose-500"></i> Bhind, Madhya Pradesh, India
+
+            <div class="flex items-center gap-1.5 text-slate-400 text-xs font-medium pt-1">
+                <i class="fa-solid fa-location-dot text-rose-500"></i> Bhind, Madhya Pradesh, India[span_3](start_span)[span_3](end_span)
             </div>
         </div>
 
         <!-- About Me Section -->
         <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                <i class="fa-solid fa-laptop text-sky-400"></i> About Me
+            <h2 class="text-sm font-bold uppercase tracking-wider text-sky-400 flex items-center gap-2">
+                <i class="fa-solid fa-laptop"></i> About Me
             </h2>
-            <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                <p>Hello everyone! My name is <strong>Aditya Shrivas</strong>. I am currently pursuing my higher education with a <strong>B.Sc. in Biology</strong>, while actively exploring my deep passion for technology, coding, and digital creation.</p>
-                <p>Along with my studies, I specialize in web development, professional typing, and office management tasks with high accuracy and dedication.</p>
+            <div class="space-y-3 text-xs sm:text-sm leading-relaxed font-normal opacity-9opath">
+                <p>Hello everyone! My name is <strong>Aditya Shrivas</strong>. I am currently pursuing my higher education with a <strong>B.Sc. in Biology</strong>, while actively exploring my deep passion for technology, coding, and digital creation[span_4](start_span)[span_4](end_span).</p>
+                <p>Along with my studies, I specialize in web development, professional typing, and office management tasks with high accuracy and dedication[span_5](start_span)[span_5](end_span).</p>
             </div>
         </div>
 
         <!-- Professional Skills Section -->
         <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                <i class="fa-solid fa-screwdriver-wrench text-sky-400"></i> Professional Skills
+            <h2 class="text-sm font-bold uppercase tracking-wider text-sky-400 flex items-center gap-2">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Professional Skills
             </h2>
             
             <div class="space-y-3">
                 <!-- Skill Group 1 -->
-                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                <div class="inner-box p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
                     <h3 class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
                         <i class="fa-solid fa-laptop-code"></i> Web Development
                     </h3>
-                    <div class="space-y-1.5 text-xs text-slate-300">
+                    <div class="space-y-1.5 text-xs">
                         <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
-                            <i class="fa-solid fa-globe text-sky-400"></i> HTML, CSS & JavaScript
+                            <i class="fa-solid fa-globe text-sky-400"></i> HTML, CSS & JavaScript[span_6](start_span)[span_6](end_span)
                         </div>
                         <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
-                            <i class="fa-solid fa-rocket text-amber-400"></i> Custom Website Creation
+                            <i class="fa-solid fa-rocket text-amber-400"></i> Custom Website Creation[span_7](start_span)[span_7](end_span)
                         </div>
                         <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
-                            <i class="fa-solid fa-palette text-pink-400"></i> Clean & Modern Design
+                            <i class="fa-solid fa-palette text-pink-400"></i> Clean & Modern Design[span_8](start_span)[span_8](end_span)
                         </div>
                     </div>
                 </div>
 
                 <!-- Skill Group 2 -->
-                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                <div class="inner-box p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
                     <h3 class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
                         <i class="fa-solid fa-chart-column"></i> Data Entry & Office Work
                     </h3>
-                    <div class="space-y-1.5 text-xs text-slate-300">
+                    <div class="space-y-1.5 text-xs">
                         <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
-                            <i class="fa-solid fa-file-excel text-emerald-400"></i> MS Excel & Spreadsheet Work
+                            <i class="fa-solid fa-file-excel text-emerald-400"></i> MS Excel & Spreadsheet Work[span_9](start_span)[span_9](end_span)
                         </div>
                         <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
-                            <i class="fa-solid fa-file-word text-blue-400"></i> MS Word & Document Typing
+                            <i class="fa-solid fa-file-word text-blue-400"></i> MS Word & Document Typing[span_10](start_span)[span_10](end_span)
                         </div>
                         <div class="p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 flex items-center gap-2">
-                            <i class="fa-solid fa-bolt text-amber-400"></i> Fast & Accurate Typing Work
+                            <i class="fa-solid fa-bolt text-amber-400"></i> Fast & Accurate Typing Work[span_11](start_span)[span_11](end_span)
                         </div>
                     </div>
                 </div>
@@ -125,47 +166,47 @@
 
         <!-- My Live Web Development Projects Section -->
         <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                <i class="fa-solid fa-rocket text-sky-400"></i> My Live Web Development Projects
+            <h2 class="text-sm font-bold uppercase tracking-wider text-sky-400 flex items-center gap-2">
+                <i class="fa-solid fa-rocket"></i> My Live Web Development Projects
             </h2>
 
             <div class="space-y-3">
                 <!-- Project 1 -->
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-                        💪 IroncladAthletics
+                <div class="inner-box p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold flex items-center gap-1.5">
+                        💪 IroncladAthletics[span_12](start_span)[span_12](end_span)
                     </h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        A professional fitness platform featuring BMI & calorie calculators, membership packages, and modern dark-mode athletic styling.
+                    <p class="text-xs opacity-80 leading-relaxed">
+                        A professional fitness platform featuring BMI & calorie calculators, membership packages, and modern dark-mode athletic styling[span_13](start_span)[span_13](end_span).
                     </p>
-                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
-                        View Live Website &rarr;
+                    <a href="javascript:void(0)" onclick="openLiveModal('IroncladAthletics')" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
+                        View Live Website &rarr;[span_14](start_span)[span_14](end_span)
                     </a>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-                        ☕ The Royal Bean Cafe
+                <div class="inner-box p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold flex items-center gap-1.5">
+                        ☕ The Royal Bean Cafe[span_15](start_span)[span_15](end_span)
                     </h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        A premium, responsive dark and gold-themed cafe & lounge website featuring rich UI, interactive menus, and WhatsApp booking integration.
+                    <p class="text-xs opacity-80 leading-relaxed">
+                        A premium, responsive dark and gold-themed cafe & lounge website featuring rich UI, interactive menus, and WhatsApp booking integration[span_16](start_span)[span_16](end_span).
                     </p>
-                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
-                        View Live Website &rarr;
+                    <a href="javascript:void(0)" onclick="openLiveModal('The Royal Bean Cafe')" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
+                        View Live Website &rarr;[span_17](start_span)[span_17](end_span)
                     </a>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-                        🏡 Luxury Home Estates
+                <div class="inner-box p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold flex items-center gap-1.5">
+                        🏡 Luxury Home Estates[span_18](start_span)[span_18](end_span)
                     </h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        A high-end real estate web platform showcasing luxury properties, modern layouts, and immersive property exploration.
+                    <p class="text-xs opacity-80 leading-relaxed">
+                        A high-end real estate web platform showcasing luxury properties, modern layouts, and immersive property exploration[span_19](start_span)[span_19](end_span).
                     </p>
-                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
-                        View Live Website &rarr;
+                    <a href="javascript:void(0)" onclick="openLiveModal('Luxury Home Estates')" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
+                        View Live Website &rarr;[span_20](start_span)[span_20](end_span)
                     </a>
                 </div>
             </div>
@@ -173,34 +214,34 @@
 
         <!-- Data Entry & Office Works (Samples) Section -->
         <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                <i class="fa-solid fa-chart-pie text-sky-400"></i> Data Entry & Office Works (Samples)
+            <h2 class="text-sm font-bold uppercase tracking-wider text-sky-400 flex items-center gap-2">
+                <i class="fa-solid fa-chart-pie"></i> Data Entry & Office Works (Samples)[span_21](start_span)[span_21](end_span)
             </h2>
 
             <div class="space-y-3">
                 <!-- Sample 1 -->
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-                        📊 ProData Manager & Entry Suite
+                <div class="inner-box p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold flex items-center gap-1.5">
+                        📊 ProData Manager & Entry Suite[span_22](start_span)[span_22](end_span)
                     </h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Professional data entry, MS Excel spreadsheets, and accurate document typing service sample with verified accuracy.
+                    <p class="text-xs opacity-80 leading-relaxed">
+                        Professional data entry, MS Excel spreadsheets, and accurate document typing service sample with verified accuracy[span_23](start_span)[span_23](end_span).
                     </p>
-                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
-                        View Live Excel Sample Sheet &rarr;
+                    <a href="javascript:void(0)" onclick="openLiveModal('Excel Sample Sheet')" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
+                        View Live Excel Sample Sheet &rarr;[span_24](start_span)[span_24](end_span)
                     </a>
                 </div>
 
                 <!-- Sample 2 -->
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
-                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-                        📝 ProDoc Word Suite
+                <div class="inner-box p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 space-y-2">
+                    <h3 class="text-sm font-bold flex items-center gap-1.5">
+                        📝 ProDoc Word Suite[span_25](start_span)[span_25](end_span)
                     </h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Professional MS Word document formatting, official business reports, and clean typographic layout sample.
+                    <p class="text-xs opacity-80 leading-relaxed">
+                        Professional MS Word document formatting, official business reports, and clean typographic layout sample[span_26](start_span)[span_26](end_span).
                     </p>
-                    <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
-                        View MS Word Document Sample &rarr;
+                    <a href="javascript:void(0)" onclick="openLiveModal('Word Document Sample')" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
+                        View MS Word Document Sample &rarr;[span_27](start_span)[span_27](end_span)
                     </a>
                 </div>
             </div>
@@ -208,31 +249,103 @@
 
         <!-- Let's Connect Section -->
         <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                <i class="fa-solid fa-handshake text-amber-400"></i> Let's Connect
+            <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <i class="fa-solid fa-handshake"></i> Let's Connect[span_28](start_span)[span_28](end_span)
             </h2>
-            <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+            <div class="space-y-3 text-xs leading-relaxed opacity-90">
                 <p class="flex items-start gap-2">
                     <i class="fa-solid fa-lightbulb text-amber-400 mt-0.5"></i>
-                    <span>Web Development, Data Entry, ya koi bhi office computer work ke liye mujhse contact karein - affordable price mein best quality service ke sath!</span>
+                    <span>Web Development, Data Entry, ya koi bhi office computer work ke liye mujhse contact karein - affordable price mein best quality service ke sath[span_29](start_span)[span_29](end_span)!</span>
                 </p>
-                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 italic text-slate-300">
-                    ✨ "Kisi bhi tarah ka kaam karwana ho, toh bina kisi jhik-jhik ke seedha mujhe message karein!"
+                <div class="inner-box p-3 rounded-xl bg-slate-900/80 border border-slate-800 italic opacity-90">
+                    ✨ "Kisi bhi tarah ka kaam karwana ho, toh bina kisi jhik-jhik ke seedha mujhe message karein[span_30](start_span)!"[span_30](end_span)
                 </div>
             </div>
 
-            <!-- Action Buttons -->
+            <!-- Fully Activated Action Buttons (WhatsApp & Instagram Links) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <a href="https://wa.me/" target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-900/20">
-                    <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp
+                <a href="https://wa.me/919999999999?text=Hi%20Aditya,%20I%20want%20to%20discuss%20a%20project%20with%20you." target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-900/20">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp[span_31](start_span)[span_31](end_span)
                 </a>
                 <a href="https://instagram.com/" target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl instagram-gradient text-white font-bold text-xs transition-colors shadow-lg">
-                    <i class="fa-brands fa-instagram text-base"></i> Instagram Profile
+                    <i class="fa-brands fa-instagram text-base"></i> Instagram Profile[span_32](start_span)[span_32](end_span)
                 </a>
             </div>
         </div>
 
     </main>
 
-</body>
-</html>
+    <!-- Popup Notification Modal for Projects -->
+    <div id="project-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card rounded-2xl p-6 max-w-sm w-full space-y-4 text-center">
+            <h3 id="modal-title" class="text-base font-bold text-white">Project View</h3>
+            <p class="text-xs text-slate-300">Yeh project live preview mode mein hai. Aap direct WhatsApp par message karke iska live demo link maang sakte hain!</p>
+            <button onclick="closeLiveModal()" class="w-full py-2.5 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold rounded-xl transition-colors">
+                Okay / Close
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Typewriter, Theme Toggle & Modal -->
+    <script>
+        // 1. Typewriter Animation Logic for Titles
+        const titles = ["🚀 Web Developer[span_33](start_span)[span_33](end_span)", "💻 Full Stack Learner", "📊 Data Entry Expert[span_34](start_span)[span_34](end_span)", "⚡ Office Automation Specialist"];
+        let titleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const pauseTime = 2000;
+
+        function typeWriter() {
+            const currentTitle = titles[titleIndex];
+            const targetElement = document.getElementById("typewriter-text");
+            if (!targetElement) return;
+
+            if (isDeleting) {
+                targetElement.innerText = currentTitle.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                targetElement.innerText = currentTitle.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? deletingSpeed : typingSpeed;
+
+            if (!isDeleting && charIndex === currentTitle.length) {
+                typeSpeed = pauseTime;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                titleIndex = (titleIndex + 1) % titles.length;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // 2. Dark / Light Theme Toggle Logic
+        function toggleTheme() {
+            const root = document.getElementById("html-root");
+            const body = document.body;
+            const icon = document.getElementById("theme-icon");
+
+            if (body.classList.contains("dark")) {
+                body.classList.remove("dark");
+                body.classList.add("light");
+                root.classList.remove("dark");
+                icon.className = "fa-solid fa-sun";
+            } else {
+                body.classList.remove("light");
+                body.classList.add("dark");
+                root.classList.add("dark");
+                icon.className = "fa-solid fa-moon";
+            }
+        }
+
+        // 3. Modal Actions for Live Links
+        function openLiveModal(projectName) {
+            document.getElementById("modal-title").innerText = projectName;
+            document.getElementById("project-modal").classList.remove("hidden");
+        }
+
+        function closeLiveMo
