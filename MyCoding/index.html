@@ -116,8 +116,8 @@
                 <i class="fa-solid fa-laptop"></i> About Me
             </h2>
             <div class="space-y-3 text-xs sm:text-sm leading-relaxed font-normal opacity-90">
-                <p>Hello everyone! My name is <strong>Aditya Shrivas</strong>. I am currently pursuing my higher education with a <strong>B.Sc. in Biology</strong>, while actively learning and building modern web development projects and professional data entry systems.</p>
-                <p>My goal is to deliver clean, accurate, and high-quality digital solutions for clients looking for web design and office administration work.</p>
+                <p>Hello everyone! My name is <strong>Aditya Shrivas</strong>. Main abhi web development sikh raha hoon aur sath hi professional data entry aur office management ka kaam bhi kar raha hoon.</p>
+                <p>Mera maqsad clients ko behtareen websites aur 100% accurate data entry solutions provide karna hai.</p>
             </div>
         </div>
 
@@ -206,7 +206,7 @@
                     <h3 class="text-sm font-bold flex items-center gap-1.5">📊 ProData Manager & Entry Suite</h3>
                     <p class="text-xs opacity-80 leading-relaxed">Professional data entry, MS Excel spreadsheets, and accurate document typing service sample with verified accuracy.</p>
                     <a href="javascript:void(0)" onclick="openExcelModal()" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
-                        View Excel Sample Preview &rarr;
+                        View Excel Sample Details &rarr;
                     </a>
                 </div>
 
@@ -215,7 +215,7 @@
                     <h3 class="text-sm font-bold flex items-center gap-1.5">📝 ProDoc Word Suite</h3>
                     <p class="text-xs opacity-80 leading-relaxed">Professional MS Word document formatting, official business reports, and clean typographic layout sample.</p>
                     <a href="javascript:void(0)" onclick="openWordModal()" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
-                        View MS Word Sample Preview &rarr;
+                        View MS Word Sample Details &rarr;
                     </a>
                 </div>
             </div>
@@ -263,16 +263,10 @@
                 <!-- Dynamic Content Will Load Here -->
             </div>
 
-            <div class="pt-2 flex items-center justify-between gap-3 border-t border-slate-700/50 pt-3">
-                <span class="text-[11px] text-slate-400">Want this type of work done?</span>
-                <div class="flex gap-2">
-                    <a id="modal-order-btn" href="https://wa.me/919999999999?text=Hi%20Aditya,%20I%20saw%20your%20data%20entry%20sample%20and%20want%20to%20give%20work." target="_blank" class="py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl transition-colors text-center shadow-lg shadow-emerald-900/20 flex items-center gap-1.5">
-                        <i class="fa-brands fa-whatsapp text-sm"></i> Hire Me
-                    </a>
-                    <button onclick="closeSampleModal()" class="py-2.5 px-4 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition-colors">
-                        Close
-                    </button>
-                </div>
+            <div class="pt-2 flex justify-end border-t border-slate-700/50 pt-3">
+                <button onclick="closeSampleModal()" class="py-2.5 px-6 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition-colors cursor-pointer">
+                    Close Preview
+                </button>
             </div>
         </div>
     </div>
@@ -330,37 +324,45 @@
             }
         }
 
-        // Excel Sample Detailed Interactive Preview
+        // Excel Sample Detailed Interface
         function openExcelModal() {
-            document.getElementById("modal-title").innerHTML = `<i class="fa-solid fa-file-excel text-emerald-400"></i> Live Excel Spreadsheet Sample`;
+            document.getElementById("modal-title").innerHTML = `<i class="fa-solid fa-file-excel text-emerald-400"></i> MS Excel Data Entry & Spreadsheet Work`;
             
             const content = `
                 <div class="inner-box p-3 rounded-xl space-y-2">
-                    <p class="font-semibold text-emerald-400 text-xs">📊 Data Organization & Formula Calculation</p>
-                    <p class="opacity-80 text-[11px] leading-relaxed">Yeh ek live sample format hai jo dikhata hai ki main client ka raw data kaise clean tables aur formulas ke sath manage karta hoon:</p>
+                    <p class="font-semibold text-emerald-400 text-xs">📊 Mera Data Entry Kaam Aur Tarika</p>
+                    <p class="opacity-90 text-[11px] leading-relaxed">Main Excel mein raw data ko clean tables, formatting aur formulas ke sath organize karta hoon taaki client ko data samajhne mein koi mushkil na ho.</p>
                 </div>
-                <div class="overflow-x-auto rounded-lg border border-slate-700">
-                    <table class="w-full text-left text-[11px]">
-                        <thead class="bg-slate-800 text-slate-300">
-                            <tr>
-                                <th class="p-2">ID</th>
-                                <th class="p-2">Client Name</th>
-                                <th class="p-2">Project Type</th>
-                                <th class="p-2">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-700/50">
-                            <tr>
-                                <td class="p-2">#101</td>
-                                <td class="p-2">Rahul Sharma</td>
-                                <td class="p-2">Web Design</td>
-                                <td class="p-2 text-emerald-400 font-semibold">Completed</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2">#102</td>
-                                <td class="p-2">Priya Verma</td>
-                                <td class="p-2">Excel Entry</td>
-                                <td class="p-2 text-emerald-400 font-semibold">Verified</td>
-                            </tr>
-                            <tr>
-                                <td class="p-2"
+                <div class="space-y-2 text-[11px]">
+                    <div class="inner-box p-2.5 rounded-lg">
+                        <strong>✨ Main Features:</strong>
+                        <ul class="list-disc list-inside mt-1 space-y-1 opacity-80">
+                            <li>Clean Data Entry & Formatting (100% Accuracy)</li>
+                            <li>Formulas & Calculations (SUM, VLOOKUP, etc.)</li>
+                            <li>PDF/CSV se Excel conversion</li>
+                            <li>Fast delivery with neat table design</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 italic">"Agar aapko bhi apne business ya personal use ke liye Excel report banwani hai, toh aap mujhe direct WhatsApp par contact kar sakte hain!"</p>
+            `;
+            document.getElementById("modal-body-content").innerHTML = content;
+            document.getElementById("sample-modal").classList.remove("hidden");
+        }
+
+        // Word Sample Detailed Interface
+        function openWordModal() {
+            document.getElementById("modal-title").innerHTML = `<i class="fa-solid fa-file-word text-blue-400"></i> MS Word Typing & Document Formatting`;
+            
+            const content = `
+                <div class="inner-box p-3 rounded-xl space-y-2">
+                    <p class="font-semibold text-blue-400 text-xs">📝 Professional Typing & Document Layout</p>
+                    <p class="opacity-90 text-[11px] leading-relaxed">Main official letters, project reports, notes aur agreements ko clean typography, proper margins aur headings ke sath type karta hoon.</p>
+                </div>
+                <div class="space-y-2 text-[11px]">
+                    <div class="inner-box p-2.5 rounded-lg">
+                        <strong>✨ Main Features:</strong>
+                        <ul class="list-disc list-inside mt-1 space-y-1 opacity-80">
+                            <li>Fast & Error-free Document Typing</li>
+                            <li>Professional Font Styling & Spacing</li>
+                            <li>Hand
