@@ -1,372 +1,195 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark" id="html-root">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Shrivas | Professional Bio Portfolio</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
+    <title>Aditya Shrivas - Professional Portfolio</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
-        
-        /* Dark Theme Styling */
-        body.dark { background-color: #07090e; color: #f1f5f9; }
-        .dark .glass-panel {
-            background: rgba(13, 19, 32, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
-        }
-        .dark .inner-card {
-            background: rgba(20, 30, 48, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        /* Light Theme Styling (White Theme) */
-        body.light { background-color: #f8fafc; color: #0f172a; }
-        .light .glass-panel {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.05);
-        }
-        .light .inner-card {
-            background: rgba(241, 245, 249, 0.9);
-            border: 1px solid rgba(203, 213, 225, 0.8);
-            color: #1e293b;
-        }
-
-        .insta-gradient {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-
-        .cursor-blink {
-            display: inline-block;
-            width: 2px;
-            background-color: #38bdf8;
-            animation: blink 0.8s infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Click Ripple Effect Animation */
-        .click-ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(56, 189, 248, 0.4);
-            transform: scale(0);
-            animation: ripple-effect 0.6s linear;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        @keyframes ripple-effect {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-    </style>
 </head>
-<body class="dark min-h-screen flex flex-col items-center justify-between p-4 sm:p-6 relative">
+<body>
 
-    <main class="w-full max-w-lg mx-auto space-y-6 pb-12 z-10">
-        
-        <!-- Top Status Bar with Trust Badge -->
-        <div class="flex items-center justify-between">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold shadow-sm">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                Available for Hire
-            </div>
-
-            <!-- Theme Switcher Button -->
-            <button id="theme-btn" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-amber-400 text-sm hover:scale-110 transition-transform cursor-pointer shadow-sm" title="Toggle Theme">
-                <i id="theme-icon" class="fa-solid fa-moon"></i>
-            </button>
-        </div>
-
-        <!-- Header Profile Section -->
-        <div class="glass-panel rounded-3xl p-6 space-y-4 text-center sm:text-left">
-            <div class="flex flex-col sm:flex-row items-center gap-4">
-                <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center text-white text-3xl font-black shadow-lg shadow-sky-500/20">
-                    AS
-                </div>
-                <div class="space-y-1 text-center sm:text-left">
-                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                        Aditya Shrivas
-                    </h1>
-                    <!-- Typewriter Text -->
-                    <div class="flex items-center justify-center sm:justify-start gap-2 font-semibold text-xs sm:text-sm h-6">
-                        <span id="typewriter-target" class="text-sky-400"></span><span class="cursor-blink">&nbsp;</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-slate-400 text-xs font-medium pt-1">
-                <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot text-rose-500"></i> Bhind, MP</span>
-                <span>•</span>
-                <span class="flex items-center gap-1"><i class="fa-solid fa-shield-check text-emerald-400"></i> 100% Verified Quality</span>
-            </div>
-        </div>
-
-        <!-- Trust Badges Bar -->
-        <div class="grid grid-cols-3 gap-2">
-            <div class="glass-panel p-3 rounded-2xl text-center space-y-1">
-                <i class="fa-solid fa-bolt text-amber-400 text-sm"></i>
-                <div class="text-[11px] font-bold">Fast Delivery</div>
-            </div>
-            <div class="glass-panel p-3 rounded-2xl text-center space-y-1">
-                <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
-                <div class="text-[11px] font-bold">100% Accuracy</div>
-            </div>
-            <div class="glass-panel p-3 rounded-2xl text-center space-y-1">
-                <i class="fa-solid fa-headset text-sky-400 text-sm"></i>
-                <div class="text-[11px] font-bold">24/7 Support</div>
-            </div>
-        </div>
-
-        <!-- About Me Section -->
-        <div class="glass-panel rounded-2xl p-5 space-y-3 shadow-xl">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
-                <i class="fa-solid fa-user-shield"></i> About Me
-            </h2>
-            <div class="space-y-2 text-xs sm:text-sm leading-relaxed opacity-90">
-                <p>Hello! Main <strong>Aditya Shrivas</strong> hoon. Main ek professional web developer aur data entry specialist hoon. Main clients ko high-performance custom websites aur error-free data management solutions provide karta hoon.</p>
-                <p>Mera focus hamesha quality work aur client satisfaction par rehta hai taaki aapko behtareen result mil sake.</p>
-            </div>
-        </div>
-
-        <!-- Professional Skills Section -->
-        <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
-                <i class="fa-solid fa-screwdriver-wrench"></i> Professional Skills & Services
-            </h2>
-            
-            <div class="grid grid-cols-1 gap-3">
-                <div class="inner-card p-3.5 rounded-xl space-y-2">
-                    <h3 class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
-                        <i class="fa-solid fa-code"></i> Web Development
-                    </h3>
-                    <p class="text-xs opacity-80">HTML, CSS, JavaScript, Responsive Mobile-Friendly Design, & Modern UI Layouts.</p>
-                </div>
-
-                <div class="inner-card p-3.5 rounded-xl space-y-2">
-                    <h3 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
-                        <i class="fa-solid fa-table"></i> Data Entry & Office Work
-                    </h3>
-                    <p class="text-xs opacity-80">MS Excel Spreadsheets, VLOOKUP Formulas, MS Word Documentation, & Fast Typing.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Live Web Development Projects -->
-        <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
-                <i class="fa-solid fa-rocket"></i> My Live Web Development Projects
-            </h2>
-
-            <div class="space-y-3">
-                <div class="inner-card p-4 rounded-xl space-y-2">
-                    <h3 class="text-sm font-bold flex items-center gap-1.5">💪 IroncladAthletics</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">A professional fitness platform featuring BMI & calorie calculators, membership packages, and modern dark-mode athletic styling.</p>
-                    <a href="https://ironclad-gym-bhopal.netlify.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
-                        View Live Website &rarr;
-                    </a>
-                </div>
-
-                <div class="inner-card p-4 rounded-xl space-y-2">
-                    <h3 class="text-sm font-bold flex items-center gap-1.5">☕ The Royal Bean Cafe</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">A premium, responsive dark and gold-themed cafe & lounge website featuring rich UI, interactive menus, and WhatsApp booking integration.</p>
-                    <a href="https://royal-bean-cafe.vercel.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
-                        View Live Website &rarr;
-                    </a>
-                </div>
-
-                <div class="inner-card p-4 rounded-xl space-y-2">
-                    <h3 class="text-sm font-bold flex items-center gap-1.5">🏡 Luxury Home Estates</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">A high-end real estate web platform showcasing luxury properties, modern layouts, and immersive property exploration.</p>
-                    <a href="https://luxuryhome-estates-five.vercel.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
-                        View Live Website &rarr;
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Data Entry & Office Works (Interactive Samples) -->
-        <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
-                <i class="fa-solid fa-briefcase"></i> Data Entry & Office Work (Samples)
-            </h2>
-
-            <div class="space-y-3">
-                <!-- Excel Sample Card -->
-                <div class="inner-card p-4 rounded-xl space-y-2">
-                    <h3 class="text-sm font-bold flex items-center gap-1.5 text-emerald-400">📊 MS Excel Data Management Suite</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Click here to check my professional spreadsheet organization and automated formula structuring.</p>
-                    <button id="excel-btn" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 pt-1 cursor-pointer">
-                        View Excel Work Interface &rarr;
-                    </button>
-                </div>
-
-                <!-- Word Sample Card -->
-                <div class="inner-card p-4 rounded-xl space-y-2">
-                    <h3 class="text-sm font-bold flex items-center gap-1.5 text-blue-400">📝 MS Word Professional Document Suite</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Click here to check my official report formatting, typography layout, and typing samples.</p>
-                    <button id="word-btn" class="inline-flex items-center gap-1 text-xs font-bold text-blue-400 hover:text-blue-300 pt-1 cursor-pointer">
-                        View MS Word Work Interface &rarr;
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Let's Connect & Direct Quick Hire Section -->
-        <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
-                <i class="fa-solid fa-handshake"></i> Let's Connect For Your Project
-            </h2>
-            <p class="text-xs opacity-90 leading-relaxed">
-                Aapko apni naye business ke liye website banvani ho ya koi data entry project complete karwana ho, mujhse seedha WhatsApp ya Instagram par contact karein!
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <a href="https://wa.me/919999999999?text=Hi%20Aditya,%20I%20want%20to%20discuss%20a%20project%20with%20you." target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-900/25">
-                    <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp
-                </a>
-                <a href="https://instagram.com/" target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl insta-gradient text-white font-bold text-xs transition-colors shadow-lg">
-                    <i class="fa-brands fa-instagram text-base"></i> Instagram Profile
-                </a>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Professional Popup Modal for Excel / Word Details -->
-    <div id="info-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl border border-sky-500/30">
-            <div class="flex items-center justify-between border-b border-slate-700/50 pb-3">
-                <h3 id="modal-heading" class="text-sm sm:text-base font-bold text-sky-400 flex items-center gap-2"></h3>
-                <button id="modal-close-top" class="w-8 h-8 rounded-full inner-card flex items-center justify-center text-slate-400 hover:text-white cursor-pointer">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            
-            <div id="modal-content-body" class="space-y-3 text-xs sm:text-sm">
-                <!-- Content injected dynamically -->
-            </div>
-
-            <div class="pt-3 border-t border-slate-700/50 flex items-center justify-between">
-                <span class="text-[11px] text-slate-400 italic">Looking for quality work? Let's talk!</span>
-                <button id="modal-close-btn" class="py-2.5 px-5 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition-colors cursor-pointer">
-                    Close Window
-                </button>
-            </div>
+    <!-- Top Marquee Animation -->
+    <div class="top-marquee">
+        <div class="marquee-content">
+            <span>🚀 Welcome to Aditya Shrivas's Official Portfolio! | Expert Web Developer & Data Entry Specialist | Available for Freelance Projects 💻</span>
         </div>
     </div>
 
-    <!-- JavaScript Actions (Fully Event-Bound) -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // 1. Typewriter Animation Script
-            const rolesList = ["Web Developer", "Data Entry Specialist", "MS Excel & Word Expert", "Custom Website Creator"];
-            let rIndex = 0;
-            let cIndex = 0;
-            let deletingActive = false;
-            const typewriterElem = document.getElementById("typewriter-target");
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">Aditya.Dev</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#services">Services & Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-            function runTypewriter() {
-                if (!typewriterElem) return;
-                const activeRole = rolesList[rIndex];
+    <!-- Hero / Introduction Section -->
+    <section id="about" class="hero">
+        <div class="hero-badge">⚡ Welcome To My Tech Workspace</div>
+        <h1 class="hero-title">Hi, I'm Aditya Shrivas</h1>
+        
+        <!-- Moving Animated Text -->
+        <div class="typing-container">
+            <span id="typed-text"></span><span class="cursor">|</span>
+        </div>
 
-                if (deletingActive) {
-                    typewriterElem.innerText = activeRole.substring(0, cIndex - 1);
-                    cIndex--;
-                } else {
-                    typewriterElem.innerText = activeRole.substring(0, cIndex + 1);
-                    cIndex++;
-                }
+        <p class="hero-intro">Main BSc (Bio) First Year ka student hoon (Mehgaon, Bhind college se). Main modern web development aur high-accuracy data entry services provide karta hoon jo aapke business ko digital grow karne mein madad karte hain.</p>
+        
+        <div class="hero-buttons">
+            <a href="#services" class="btn-primary">View My Work</a>
+            <a href="#contact" class="btn-secondary">Hire Me On WhatsApp</a>
+        </div>
+    </section>
 
-                let delayTime = deletingActive ? 40 : 90;
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>My Professional Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>HTML5, CSS3, JavaScript, Responsive UI/UX Design & Interactive Layouts.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-file-excel"></i>
+                <h3>Data Entry & Office</h3>
+                <p>MS Word, MS Excel, PowerPoint, Fast Typing Expert, PDF to Word Conversion with 100% Accuracy.</p>
+            </div>
+        </div>
+    </section>
 
-                if (!deletingActive && cIndex === activeRole.length) {
-                    delayTime = 1800;
-                    deletingActive = true;
-                } else if (deletingActive && cIndex === 0) {
-                    deletingActive = false;
-                    rIndex = (rIndex + 1) % rolesList.length;
-                }
+    <!-- Two-Column Side-by-Side Services & Projects Section -->
+    <section id="services" class="section">
+        <h2>My Services & Live Projects</h2>
+        <p class="section-subtitle">Ek taraf Web Development ke live projects aur doosri taraf Data Entry services.</p>
+        
+        <div class="split-services-container">
+            
+            <!-- Left Side: Web Development Projects -->
+            <div class="split-box web-box">
+                <div class="box-header">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web Development</h3>
+                </div>
+                <p class="box-desc">Maine modern aur fully responsive websites design ki hain. Neeche diye gaye live projects par click karke unhe live dekh sakte hain:</p>
+                
+                <ul class="project-links-list">
+                    <li>
+                        <strong>Luxury Real Estate Platform</strong>
+                        <a href="https://luxuryhome-estates-five.vercel.app/" target="_blank" class="live-btn">Visit Live <i class="fas fa-external-link-alt"></i></a>
+                    </li>
+                    <li>
+                        <strong>The Royal Bean Cafe</strong>
+                        <a href="https://royal-bean-cafe.vercel.app/" target="_blank" class="live-btn">Visit Live <i class="fas fa-external-link-alt"></i></a>
+                    </li>
+                    <li>
+                        <strong>Ironclad Athletics Gym</strong>
+                        <a href="https://ironclad-gym-bhopal.netlify.app/" target="_blank" class="live-btn">Visit Live <i class="fas fa-external-link-alt"></i></a>
+                    </li>
+                </ul>
 
-                setTimeout(runTypewriter, delayTime);
-            }
-            runTypewriter();
+                <div class="custom-work-prompt">
+                    <p>💡 <em>Note: Upar di gayi websites keval basic samples/examples hain jo clients ko dikhane ke liye banayi hain[span_1](start_span)[span_1](end_span). Agar aapko isse bhi behtar, advanced, ya apni pasand ke kisi bhi naye topic par custom website banvani ho, toh turant mujhse sampark karein[span_2](start_span)[span_2](end_span)!</em></p>
+                    <button class="btn-detail" onclick="openModal('web')">Read Full Web Details</button>
+                </div>
+            </div>
 
-            // 2. Dark / Light Theme Mode Switcher
-            const themeBtn = document.getElementById("theme-btn");
-            const bodyTag = document.body;
-            const htmlTag = document.getElementById("html-root");
-            const iconTag = document.getElementById("theme-icon");
+            <!-- Right Side: Data Entry & Office Services -->
+            <div class="split-box data-box">
+                <div class="box-header">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>Data Entry & Office</h3>
+                </div>
+                <p class="box-desc">Fast speed aur high accuracy ke sath professional office aur document management services:</p>
+                
+                <ul class="project-links-list">
+                    <li>
+                        <strong>MS Word Documentation</strong>
+                        <span>Reports, Typing & Formatting</span>
+                    </li>
+                    <li>
+                        <strong>MS Excel Management</strong>
+                        <span>Spreadsheets, Formulas & Cleaning</span>
+                    </li>
+                    <li>
+                        <strong>PDF & Image Conversion</strong>
+                        <span>Fast Typing & File Formatting</span>
+                    </li>
+                </ul>
 
-            if (themeBtn) {
-                themeBtn.addEventListener("click", function () {
-                    if (bodyTag.classList.contains("dark")) {
-                        bodyTag.classList.remove("dark");
-                        bodyTag.classList.add("light");
-                        htmlTag.classList.remove("dark");
-                        iconTag.className = "fa-solid fa-sun";
-                    } else {
-                        bodyTag.classList.remove("light");
-                        bodyTag.classList.add("dark");
-                        htmlTag.classList.add("dark");
-                        iconTag.className = "fa-solid fa-moon";
-                    }
-                });
-            }
+                <div class="custom-work-prompt">
+                    <p>💡 <em>Aapke data entry ya typing project ko fast aur error-free complete karunga.</em></p>
+                    <button class="btn-detail" onclick="openModal('data')">Read Full Data Entry Details</button>
+                </div>
+            </div>
 
-            // 3. Modal Popups for Excel and Word
-            const modal = document.getElementById("info-modal");
-            const modalHeading = document.getElementById("modal-heading");
-            const modalBody = document.getElementById("modal-content-body");
-            const excelBtn = document.getElementById("excel-btn");
-            const wordBtn = document.getElementById("word-btn");
-            const closeTop = document.getElementById("modal-close-top");
-            const closeBtn = document.getElementById("modal-close-btn");
+        </div>
+    </section>
 
-            function closeModal() {
-                if (modal) modal.classList.add("hidden");
-            }
+    <!-- Modal Popup for Details -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Service Title</h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
-            if (excelBtn) {
-                excelBtn.addEventListener("click", function () {
-                    if (modalHeading) modalHeading.innerHTML = `<i class="fa-solid fa-table text-emerald-400"></i> MS Excel Professional Work & Services`;
-                    if (modalBody) {
-                        modalBody.innerHTML = `
-                            <div class="inner-card p-3.5 rounded-xl space-y-2">
-                                <p class="font-bold text-emerald-400 text-xs">📊 Mera Data Entry Aur Spreadsheet Kaam:</p>
-                                <p class="opacity-90 text-[11px] leading-relaxed">Main Excel par raw data ko clean formatting, structured tables aur automated formulas ke sath manage karta hoon taaki clients ko 100% accurate result mile.</p>
-                            </div>
-                            <div class="inner-card p-3 rounded-xl space-y-2 text-[11px]">
-                                <p class="font-bold text-sky-400">✨ Key Highlights & Expertise:</p>
-                                <ul class="list-disc list-inside space-y-1 opacity-80">
-                                    <li>Data Organization, Cleaning & Formatting</li>
-                                    <li>Advanced Formulas (SUM, VLOOKUP, AVERAGE)</li>
-                                    <li>PDF / Image
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <h2>Get In Touch With Me</h2>
+        <p class="contact-msg">Agar aapko koi bhi web development ya data entry ka kaam karwana ho, toh niche form fill karke direct mere WhatsApp par bhej sakte hain.</p>
+        
+        <!-- Social Links with Correct Number & ID -->
+        <div class="social-contact-links">
+            <a href="https://wa.me/919243266485" target="_blank" class="social-btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp (9243266485)
+            </a>
+            <a href="https://instagram.com/mr_aadi_singh_.002" target="_blank" class="social-btn instagram-btn">
+                <i class="fab fa-instagram"></i> Follow on Instagram (@mr_aadi_singh_.002)
+            </a>
+        </div>
+
+        <form class="contact-form" onsubmit="handleWhatsAppSubmit(event)">
+            <!-- Pehla Dibba: Naam -->
+            <div class="form-group">
+                <label>1. Aapka Naam (Your Name)</label>
+                <input type="text" id="clientName" placeholder="Apna naam yahan likhein..." required>
+            </div>
+            
+            <!-- Doosra Dibba: Kaunsa Kaam -->
+            <div class="form-group">
+                <label>2. Kaunsa Kaam Karwana Hai? (Select Service)</label>
+                <select id="clientService" required>
+                    <option value="" disabled selected>-- Select Service --</option>
+                    <option value="Web Development">Web Development (Website)</option>
+                    <option value="MS Word">MS Word Typing & Formatting</option>
+                    <option value="MS Excel">MS Excel & Data Entry</option>
+                    <option value="Other Office Work">Other Office / Document Work</option>
+                </select>
+            </div>
+
+            <!-- Teesra Dibba: Detailed Requirement -->
+            <div class="form-group">
+                <label>3. Project Details / Requirements</label>
+                <textarea id="clientMessage" rows="4" placeholder="Apne kaam ki puri detail yahan batayein..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary whatsapp-send-btn">
+                <i class="fab fa-whatsapp"></i> Send Message Directly to WhatsApp
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Aditya Shrivas. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
