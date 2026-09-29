@@ -1,127 +1,102 @@
-// Typing Animation Effect for Hero Section
-const words = ["Expert Web Developer", "MS Excel & Data Entry Specialist", "BSc Bio Student (Mehgaon, Bhind)"];
-let i = 0;
+// Typing Text Animation for Roles
+const roles = [
+    "🚀 Web Developer & Data Entry Specialist",
+    "💻 HTML, CSS & JavaScript Creator",
+    "📊 MS Excel & Professional Typing Expert",
+    "✨ Custom Website Designer"
+];
 
-function typingEffect() {
-    let word = words[i].split("");
-    var loopTyping = function() {
-        if (word.length > 0) {
-            document.getElementById('typed-text').innerHTML += word.shift();
-        } else {
-            setTimeout(deletingEffect, 2000);
-            return;
-        }
-        setTimeout(loopTyping, 100);
-    };
-    loopTyping();
-}
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typedTextElement = document.getElementById("typedText");
 
-function deletingEffect() {
-    let word = words[i].split("");
-    var loopDeleting = function() {
-        if (word.length > 0) {
-            word.pop();
-            document.getElementById('typed-text').innerHTML = word.join("");
-        } else {
-            if (words.length > (i + 1)) {
-                i++;
-            } else {
-                i = 0;
-            }
-            setTimeout(typingEffect, 500);
-            return;
-        }
-        setTimeout(loopDeleting, 50);
-    };
-    loopDeleting();
-}
-
-typingEffect();
-
-// Modal Content Data
-const serviceDetails = {
-    web: {
-        title: "💻 Web Development Projects & Custom Services",
-        content: `
-            <p>🌟 Yeh mere kuch sample live projects hain jo maine clients ko dikhane ke liye design kiye hain:</p>
-            <ul>
-                <li>🏡 <strong>Luxury Real Estate:</strong> Modern property showcase aur booking UI.</li>
-                <li>☕ <strong>The Royal Bean Cafe:</strong> Interactive restaurant menu aur table reservation system.</li>
-                <li>💪 <strong>Ironclad Athletics:</strong> Fitness portal with membership plans.</li>
-            </ul>
-            <p>🚀 <strong>Custom Order Note:</strong> Yeh websites sample hain. Agar aapko apni pasand ke kisi bhi naye topic par custom website banvani ho, toh WhatsApp par sampark karein!</p>
-        `
-    },
-    data: {
-        title: "📊 MS Word, Excel & Data Entry Services",
-        content: `
-            <p>💼 Professional office aur data entry services jo main pure focus ke sath provide karta hoon:</p>
-            <ul>
-                <li>📝 <strong>MS Word:</strong> Professional documents formatting, typing, reports.</li>
-                <li>📈 <strong>MS Excel:</strong> Spreadsheet management, data cleaning, formulas.</li>
-                <li>⚡ <strong>Typing & Conversion:</strong> High-speed typing aur 100% accuracy.</li>
-            </ul>
-            <p>🎯 <strong>Quality Guarantee:</strong> Aapka har ek data entry project pure focus aur fast speed ke sath complete kiya jayega.</p>
-        `
+function typeEffect() {
+    const currentRole = roles[roleIndex];
+    
+    if (isDeleting) {
+        typedTextElement.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
     }
-};
 
-// Open Modal
-function openModal(key) {
-    const modal = document.getElementById('serviceModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
+    let typingSpeed = isDeleting ? 40 : 80;
 
-    if (serviceDetails[key]) {
-        modalTitle.innerText = serviceDetails[key].title;
-        modalBody.innerHTML = serviceDetails[key].content;
-        modal.style.display = 'flex';
+    if (!isDeleting && charIndex === currentRole.length) {
+        typingSpeed = 2000; // Pause at full word
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typingSpeed = 500;
     }
+
+    setTimeout(typeEffect, typingSpeed);
 }
 
-// Close Modal
-function closeModal() {
-    document.getElementById('serviceModal').style.display = 'none';
+document.addEventListener("DOMContentLoaded", () => {
+    if (typedTextElement) {
+        setTimeout(typeEffect, 500);
+    }
+});
+
+// Excel Modal Functions
+function openExcelModal() {
+    document.getElementById('excelModal').style.display = 'block';
 }
 
+function closeExcelModal() {
+    document.getElementById('excelModal').style.display = 'none';
+}
+
+// Word Modal Functions
+function openWordModal() {
+    document.getElementById('wordModal').style.display = 'block';
+}
+
+function closeWordModal() {
+    document.getElementById('wordModal').style.display = 'none';
+}
+
+// Window click par modal close hone ke liye
 window.onclick = function(event) {
-    const modal = document.getElementById('serviceModal');
-    if (event.target == modal) {
-        modal.style.display = 'none';
+    const excelModal = document.getElementById('excelModal');
+    const wordModal = document.getElementById('wordModal');
+    if (event.target == excelModal) {
+        excelModal.style.display = 'none';
+    }
+    if (event.target == wordModal) {
+        wordModal.style.display = 'none';
     }
 }
 
-// ⭐ Mobile Touch & Laptop Click Glow Highlight Effect ⭐
+// Quick Form WhatsApp integration
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('clientName').value;
+    const service = document.getElementById('clientService').value;
+    const message = document.getElementById('clientMessage').value;
+
+    const whatsappUrl = `https://wa.me/919243266485?text=Hello%20Aditya,%20My%20name%20is%20${encodeURIComponent(name)}.%20Selected%20Service:%20${encodeURIComponent(service)}.%20Details:%20${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, '_blank');
+}
+
+// Mobile & Laptop Touch/Click Glow Highlight Effect
 document.addEventListener('pointerdown', function(e) {
-    const card = e.target.closest('.skill-card, .split-box');
+    const card = e.target.closest('.card');
     
     if (card) {
-        // Purane highlighted cards se class remove karein
-        document.querySelectorAll('.skill-card, .split-box').forEach(el => {
+        document.querySelectorAll('.card').forEach(el => {
             el.classList.remove('active-highlight');
         });
         
-        // Naye clicked card par highlight add karein
         card.classList.add('active-highlight');
         
-        // 1.5 second baad glow automatic hat jaye
         setTimeout(() => {
             card.classList.remove('active-highlight');
         }, 1500);
     }
 });
-
-// WhatsApp Form Submit
-function handleWhatsAppSubmit(event) {
-    event.preventDefault();
-    
-    const name = document.getElementById('clientName').value;
-    const service = document.getElementById('clientService').value;
-    const message = document.getElementById('clientMessage').value;
-    
-    const phoneNumber = "919243266485";
-    const text = `Hello Aditya,\nMera naam ${name} hai.\nMujhe ${service} ka kaam karwana hai.\n\nDetails: ${message}`;
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
-    
-    window.open(url, '_blank');
-}
