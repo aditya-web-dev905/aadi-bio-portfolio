@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Shrivas | Bio Portfolio & Developer</title>
+    <title>Aditya Shrivas | Professional Bio Portfolio & Developer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -25,39 +25,40 @@
     <style>
         body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
         
-        /* Dark Theme Style */
-        body.dark { background-color: #0b0f19; color: #f3f4f6; }
-        .dark .glass-card {
-            background: rgba(17, 24, 39, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        /* Dark Theme Styling */
+        body.dark { background-color: #090d16; color: #f1f5f9; }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
         }
-        .dark .inner-box {
-            background: rgba(15, 23, 42, 0.6);
+        .dark .inner-card {
+            background: rgba(30, 41, 59, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        /* Light Theme Style (White Theme) */
-        body.light { background-color: #f1f5f9; color: #0f172a; }
-        .light .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        /* Light Theme Styling (White Theme) */
+        body.light { background-color: #f8fafc; color: #0f172a; }
+        .light .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.05);
         }
-        .light .inner-box {
-            background: rgba(248, 250, 252, 0.9);
-            border: 1px solid rgba(226, 232, 240, 1);
+        .light .inner-card {
+            background: rgba(241, 245, 249, 0.9);
+            border: 1px solid rgba(203, 213, 225, 0.8);
             color: #1e293b;
         }
 
-        .instagram-gradient {
+        .insta-gradient {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
 
-        .typewriter-cursor {
+        .cursor-blink {
             display: inline-block;
             width: 2px;
             background-color: #38bdf8;
@@ -73,7 +74,7 @@
 
     <main class="w-full max-w-lg mx-auto space-y-6 pb-12">
         
-        <!-- Top Header Status Bar -->
+        <!-- Top Status Bar -->
         <div class="flex items-center justify-between">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold shadow-sm">
                 <span class="relative flex h-2 w-2">
@@ -83,165 +84,141 @@
                 Available for Work
             </div>
 
-            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card text-amber-400 text-xs font-semibold">
-                <i class="fa-solid fa-sparkles text-[10px]"></i> BIO PORTFOLIO
-            </div>
-
-            <!-- Theme Toggle Button (White / Black Switcher) -->
-            <button onclick="toggleTheme()" id="theme-toggle-btn" class="w-9 h-9 rounded-full glass-card flex items-center justify-center text-amber-300 text-sm hover:scale-105 transition-transform cursor-pointer shadow-sm" title="Switch Theme">
+            <!-- Theme Switcher Button -->
+            <button onclick="toggleThemeMode()" id="theme-btn" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-amber-400 text-sm hover:scale-110 transition-transform cursor-pointer shadow-sm" title="Toggle Theme">
                 <i id="theme-icon" class="fa-solid fa-moon"></i>
             </button>
         </div>
 
-        <!-- Hero Intro Section -->
-        <div class="space-y-3 pt-2">
-            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight flex items-center gap-2">
-                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">Aditya Shrivas</span> 👋
-            </h1>
-            
-            <!-- Automatic Typewriter Text -->
-            <div class="flex items-center gap-2 font-semibold text-sm h-6">
-                <span class="text-slate-400">🚀</span>
-                <span id="typewriter-text" class="text-sky-400"></span><span class="typewriter-cursor">&nbsp;</span>
+        <!-- Header Profile Section -->
+        <div class="glass-panel rounded-3xl p-6 space-y-4 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+                <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center text-white text-3xl font-black shadow-lg shadow-sky-500/20">
+                    AS
+                </div>
+                <div class="space-y-1 text-center sm:text-left">
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                        Aditya Shrivas
+                    </h1>
+                    <!-- Typewriter Text -->
+                    <div class="flex items-center justify-center sm:justify-start gap-2 font-semibold text-xs sm:text-sm h-6">
+                        <span id="typewriter-target" class="text-sky-400"></span><span class="cursor-blink">&nbsp;</span>
+                    </div>
+                </div>
             </div>
-
-            <div class="flex items-center gap-1.5 text-slate-400 text-xs font-medium pt-1">
+            <div class="flex items-center justify-center sm:justify-start gap-1.5 text-slate-400 text-xs font-medium pt-1">
                 <i class="fa-solid fa-location-dot text-rose-500"></i> Bhind, Madhya Pradesh, India
             </div>
         </div>
 
         <!-- About Me Section -->
-        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
-                <i class="fa-solid fa-laptop"></i> About Me
+        <div class="glass-panel rounded-2xl p-5 space-y-3 shadow-xl">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
+                <i class="fa-solid fa-user-shield"></i> About Me
             </h2>
-            <div class="space-y-3 text-xs sm:text-sm leading-relaxed font-normal opacity-90">
-                <p>Hello everyone! My name is <strong>Aditya Shrivas</strong>. Main abhi web development sikh raha hoon aur sath hi professional data entry aur office management ka kaam bhi kar raha hoon.</p>
-                <p>Mera maqsad clients ko behtareen websites aur 100% accurate data entry solutions provide karna hai.</p>
+            <div class="space-y-2 text-xs sm:text-sm leading-relaxed opacity-90">
+                <p>Hello! Main <strong>Aditya Shrivas</strong> hoon. Main ek passionate web developer aur data entry specialist hoon jo clients ke liye high-quality digital solutions aur clean data management services provide karta hoon.</p>
+                <p>Mera maqsad aapke business ya personal project ko professional look dena aur accurate results deliver karna hai.</p>
             </div>
         </div>
 
         <!-- Professional Skills Section -->
-        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
+        <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
                 <i class="fa-solid fa-screwdriver-wrench"></i> Professional Skills
             </h2>
             
-            <div class="space-y-3">
-                <div class="inner-box p-3.5 rounded-xl space-y-2">
+            <div class="grid grid-cols-1 gap-3">
+                <div class="inner-card p-3.5 rounded-xl space-y-2">
                     <h3 class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
-                        <i class="fa-solid fa-laptop-code"></i> Web Development
+                        <i class="fa-solid fa-code"></i> Web Development
                     </h3>
-                    <div class="space-y-1.5 text-xs">
-                        <div class="p-2 rounded-lg inner-box flex items-center gap-2">
-                            <i class="fa-solid fa-globe text-sky-400"></i> HTML, CSS & JavaScript
-                        </div>
-                        <div class="p-2 rounded-lg inner-box flex items-center gap-2">
-                            <i class="fa-solid fa-rocket text-amber-400"></i> Custom Website Creation
-                        </div>
-                    </div>
+                    <p class="text-xs opacity-80">HTML, CSS, JavaScript, Responsive Layouts, and Modern Custom Website Design.</p>
                 </div>
 
-                <div class="inner-box p-3.5 rounded-xl space-y-2">
-                    <h3 class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
-                        <i class="fa-solid fa-chart-column"></i> Data Entry & Office Work
+                <div class="inner-card p-3.5 rounded-xl space-y-2">
+                    <h3 class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-table"></i> Data Entry & Office Work
                     </h3>
-                    <div class="space-y-1.5 text-xs">
-                        <div class="p-2 rounded-lg inner-box flex items-center gap-2">
-                            <i class="fa-solid fa-file-excel text-emerald-400"></i> MS Excel & Spreadsheet Work
-                        </div>
-                        <div class="p-2 rounded-lg inner-box flex items-center gap-2">
-                            <i class="fa-solid fa-file-word text-blue-400"></i> MS Word & Document Typing
-                        </div>
-                        <div class="p-2 rounded-lg inner-box flex items-center gap-2">
-                            <i class="fa-solid fa-bolt text-amber-400"></i> Fast & Accurate Typing Work
-                        </div>
-                    </div>
+                    <p class="text-xs opacity-80">MS Excel Spreadsheets, Formulas, MS Word Documentation, Fast Typing, & Data Cleaning.</p>
                 </div>
             </div>
         </div>
 
-        <!-- My Live Web Development Projects Section -->
-        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
+        <!-- Live Web Development Projects -->
+        <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
                 <i class="fa-solid fa-rocket"></i> My Live Web Development Projects
             </h2>
 
             <div class="space-y-3">
-                <div class="inner-box p-4 rounded-xl space-y-2">
+                <div class="inner-card p-4 rounded-xl space-y-2">
                     <h3 class="text-sm font-bold flex items-center gap-1.5">💪 IroncladAthletics</h3>
                     <p class="text-xs opacity-80 leading-relaxed">A professional fitness platform featuring BMI & calorie calculators, membership packages, and modern dark-mode athletic styling.</p>
-                    <a href="https://ironclad-gym-bhopal.netlify.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
+                    <a href="https://ironclad-gym-bhopal.netlify.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
                         View Live Website &rarr;
                     </a>
                 </div>
 
-                <div class="inner-box p-4 rounded-xl space-y-2">
+                <div class="inner-card p-4 rounded-xl space-y-2">
                     <h3 class="text-sm font-bold flex items-center gap-1.5">☕ The Royal Bean Cafe</h3>
                     <p class="text-xs opacity-80 leading-relaxed">A premium, responsive dark and gold-themed cafe & lounge website featuring rich UI, interactive menus, and WhatsApp booking integration.</p>
-                    <a href="https://royal-bean-cafe.vercel.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
+                    <a href="https://royal-bean-cafe.vercel.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
                         View Live Website &rarr;
                     </a>
                 </div>
 
-                <div class="inner-box p-4 rounded-xl space-y-2">
+                <div class="inner-card p-4 rounded-xl space-y-2">
                     <h3 class="text-sm font-bold flex items-center gap-1.5">🏡 Luxury Home Estates</h3>
                     <p class="text-xs opacity-80 leading-relaxed">A high-end real estate web platform showcasing luxury properties, modern layouts, and immersive property exploration.</p>
-                    <a href="https://luxuryhome-estates-five.vercel.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
+                    <a href="https://luxuryhome-estates-five.vercel.app" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1">
                         View Live Website &rarr;
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Data Entry & Office Works (Samples) Section -->
-        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
-                <i class="fa-solid fa-chart-pie"></i> Data Entry & Office Works (Samples)
+        <!-- Data Entry & Office Works (Interactive Samples) -->
+        <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 flex items-center gap-2">
+                <i class="fa-solid fa-briefcase"></i> Data Entry & Office Work (Samples)
             </h2>
 
             <div class="space-y-3">
                 <!-- Excel Sample Card -->
-                <div class="inner-box p-4 rounded-xl space-y-2">
-                    <h3 class="text-sm font-bold flex items-center gap-1.5">📊 ProData Manager & Entry Suite</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Professional data entry, MS Excel spreadsheets, and accurate document typing service sample with verified accuracy.</p>
-                    <a href="javascript:void(0)" onclick="openExcelModal()" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
-                        View Excel Sample Details &rarr;
-                    </a>
+                <div class="inner-card p-4 rounded-xl space-y-2">
+                    <h3 class="text-sm font-bold flex items-center gap-1.5 text-emerald-400">📊 MS Excel Data Management Suite</h3>
+                    <p class="text-xs opacity-80 leading-relaxed">Click here to see how I organize spreadsheets, manage entries, and apply automated formulas.</p>
+                    <button onclick="openExcelDetails()" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 pt-1 cursor-pointer">
+                        View Excel Work Interface &rarr;
+                    </button>
                 </div>
 
                 <!-- Word Sample Card -->
-                <div class="inner-box p-4 rounded-xl space-y-2">
-                    <h3 class="text-sm font-bold flex items-center gap-1.5">📝 ProDoc Word Suite</h3>
-                    <p class="text-xs opacity-80 leading-relaxed">Professional MS Word document formatting, official business reports, and clean typographic layout sample.</p>
-                    <a href="javascript:void(0)" onclick="openWordModal()" class="inline-flex items-center gap-1 text-xs font-bold text-sky-400 hover:text-sky-300 pt-1 cursor-pointer">
-                        View MS Word Sample Details &rarr;
-                    </a>
+                <div class="inner-card p-4 rounded-xl space-y-2">
+                    <h3 class="text-sm font-bold flex items-center gap-1.5 text-blue-400">📝 MS Word Professional Document Suite</h3>
+                    <p class="text-xs opacity-80 leading-relaxed">Click here to see my document typing, official report formatting, and layout styles.</p>
+                    <button onclick="openWordDetails()" class="inline-flex items-center gap-1 text-xs font-bold text-blue-400 hover:text-blue-300 pt-1 cursor-pointer">
+                        View MS Word Work Interface &rarr;
+                    </button>
                 </div>
             </div>
         </div>
 
         <!-- Let's Connect Section -->
-        <div class="glass-card rounded-2xl p-5 space-y-4 shadow-xl">
-            <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
-                <i class="fa-solid fa-handshake"></i> Let's Connect
+        <div class="glass-panel rounded-2xl p-5 space-y-4 shadow-xl">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <i class="fa-solid fa-handshake"></i> Let's Connect For Work
             </h2>
-            <div class="space-y-3 text-xs leading-relaxed opacity-90">
-                <p class="flex items-start gap-2">
-                    <i class="fa-solid fa-lightbulb text-amber-400 mt-0.5"></i>
-                    <span>Web Development, Data Entry, ya koi bhi office computer work ke liye mujhse contact karein - affordable price mein best quality service ke sath!</span>
-                </p>
-                <div class="inner-box p-3 rounded-xl italic opacity-90">
-                    ✨ "Aapka project, meri zimmedari! Bina kisi jhik-jhik ke direct connect karein."
-                </div>
-            </div>
+            <p class="text-xs opacity-90 leading-relaxed">
+                Aapko apni website banvani ho ya koi data entry / office ka kaam karwana ho, aap mujhse seedha contact kar sakte hain! Affordable price aur behtareen quality ki guarantee.
+            </p>
 
-            <!-- Action Buttons (WhatsApp & Instagram) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <a href="https://wa.me/919999999999?text=Hi%20Aditya,%20I%20want%20to%20discuss%20a%20project." target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-900/20">
+                <a href="https://wa.me/919999999999?text=Hi%20Aditya,%20I%20want%20to%20discuss%20a%20project%20with%20you." target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-900/20">
                     <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp
                 </a>
-                <a href="https://instagram.com/" target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl instagram-gradient text-white font-bold text-xs transition-colors shadow-lg">
+                <a href="https://instagram.com/" target="_blank" class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl insta-gradient text-white font-bold text-xs transition-colors shadow-lg">
                     <i class="fa-brands fa-instagram text-base"></i> Instagram Profile
                 </a>
             </div>
@@ -249,23 +226,24 @@
 
     </main>
 
-    <!-- Professional Data Entry / Excel & Word Preview Modal -->
-    <div id="sample-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card rounded-2xl p-5 sm:p-6 max-w-lg w-full space-y-4 shadow-2xl border border-sky-500/20">
+    <!-- Professional Popup Modal for Excel / Word Details -->
+    <div id="info-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-panel rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl border border-sky-500/30">
             <div class="flex items-center justify-between border-b border-slate-700/50 pb-3">
-                <h3 id="modal-title" class="text-sm sm:text-base font-bold text-sky-400 flex items-center gap-2"></h3>
-                <button onclick="closeSampleModal()" class="w-8 h-8 rounded-full inner-box flex items-center justify-center text-slate-400 hover:text-white cursor-pointer">
+                <h3 id="modal-heading" class="text-sm sm:text-base font-bold text-sky-400 flex items-center gap-2"></h3>
+                <button onclick="closeModalWindow()" class="w-8 h-8 rounded-full inner-card flex items-center justify-center text-slate-400 hover:text-white cursor-pointer">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             
-            <div id="modal-body-content" class="space-y-3 text-xs sm:text-sm">
-                <!-- Dynamic Content Will Load Here -->
+            <div id="modal-content-body" class="space-y-3 text-xs sm:text-sm">
+                <!-- Content injected dynamically -->
             </div>
 
-            <div class="pt-2 flex justify-end border-t border-slate-700/50 pt-3">
-                <button onclick="closeSampleModal()" class="py-2.5 px-6 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition-colors cursor-pointer">
-                    Close Preview
+            <div class="pt-3 border-t border-slate-700/50 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400 italic">Want quality work? Hire me today!</span>
+                <button onclick="closeModalWindow()" class="py-2.5 px-5 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition-colors cursor-pointer">
+                    Close Window
                 </button>
             </div>
         </div>
@@ -273,96 +251,113 @@
 
     <!-- JavaScript Actions -->
     <script>
-        // Automatic Typewriter Animation for Title
-        const titles = ["Web Developer", "Data Entry Expert", "MS Excel & Word Specialist", "Custom Website Creator"];
-        let titleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        // Typewriter Animation Script
+        const rolesList = ["Web Developer", "Data Entry Specialist", "MS Excel & Word Expert", "Custom Website Creator"];
+        let rIndex = 0;
+        let cIndex = 0;
+        let deletingActive = false;
 
-        function typeWriter() {
-            const currentTitle = titles[titleIndex];
-            const targetElement = document.getElementById("typewriter-text");
-            if (!targetElement) return;
+        function runTypewriter() {
+            const activeRole = rolesList[rIndex];
+            const elem = document.getElementById("typewriter-target");
+            if (!elem) return;
 
-            if (isDeleting) {
-                targetElement.innerText = currentTitle.substring(0, charIndex - 1);
-                charIndex--;
+            if (deletingActive) {
+                elem.innerText = activeRole.substring(0, cIndex - 1);
+                cIndex--;
             } else {
-                targetElement.innerText = currentTitle.substring(0, charIndex + 1);
-                charIndex++;
+                elem.innerText = activeRole.substring(0, cIndex + 1);
+                cIndex++;
             }
 
-            let speed = isDeleting ? 50 : 100;
+            let delayTime = deletingActive ? 40 : 90;
 
-            if (!isDeleting && charIndex === currentTitle.length) {
-                speed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                titleIndex = (titleIndex + 1) % titles.length;
+            if (!deletingActive && cIndex === activeRole.length) {
+                delayTime = 1800;
+                deletingActive = true;
+            } else if (deletingActive && cIndex === 0) {
+                deletingActive = false;
+                rIndex = (rIndex + 1) % rolesList.length;
             }
 
-            setTimeout(typeWriter, speed);
+            setTimeout(runTypewriter, delayTime);
         }
 
-        // White & Black Theme Toggle Function
-        function toggleTheme() {
-            const body = document.body;
-            const root = document.getElementById("html-root");
-            const icon = document.getElementById("theme-icon");
+        // Dark / Light Theme Mode Switcher
+        function toggleThemeMode() {
+            const bodyTag = document.body;
+            const htmlTag = document.getElementById("html-root");
+            const iconTag = document.getElementById("theme-icon");
 
-            if (body.classList.contains("dark")) {
-                body.classList.remove("dark");
-                body.classList.add("light");
-                root.classList.remove("dark");
-                icon.className = "fa-solid fa-sun";
+            if (bodyTag.classList.contains("dark")) {
+                bodyTag.classList.remove("dark");
+                bodyTag.classList.add("light");
+                htmlTag.classList.remove("dark");
+                iconTag.className = "fa-solid fa-sun";
             } else {
-                body.classList.remove("light");
-                body.classList.add("dark");
-                root.classList.add("dark");
-                icon.className = "fa-solid fa-moon";
+                bodyTag.classList.remove("light");
+                bodyTag.classList.add("dark");
+                htmlTag.classList.add("dark");
+                iconTag.className = "fa-solid fa-moon";
             }
         }
 
-        // Excel Sample Detailed Interface
-        function openExcelModal() {
-            document.getElementById("modal-title").innerHTML = `<i class="fa-solid fa-file-excel text-emerald-400"></i> MS Excel Data Entry & Spreadsheet Work`;
+        // Excel Detailed Interface Content
+        function openExcelDetails() {
+            document.getElementById("modal-heading").innerHTML = `<i class="fa-solid fa-table text-emerald-400"></i> MS Excel Professional Work & Services`;
             
-            const content = `
-                <div class="inner-box p-3 rounded-xl space-y-2">
-                    <p class="font-semibold text-emerald-400 text-xs">📊 Mera Data Entry Kaam Aur Tarika</p>
-                    <p class="opacity-90 text-[11px] leading-relaxed">Main Excel mein raw data ko clean tables, formatting aur formulas ke sath organize karta hoon taaki client ko data samajhne mein koi mushkil na ho.</p>
+            const htmlContent = `
+                <div class="inner-card p-3.5 rounded-xl space-y-2">
+                    <p class="font-bold text-emerald-400 text-xs">📊 Mera Data Entry Aur Spreadsheet Kaam:</p>
+                    <p class="opacity-90 text-[11px] leading-relaxed">Main Excel par bade se bada data ekdum clean formatting aur 100% accuracy ke sath manage karta hoon taaki clients ko ek professional sheet mile.</p>
                 </div>
-                <div class="space-y-2 text-[11px]">
-                    <div class="inner-box p-2.5 rounded-lg">
-                        <strong>✨ Main Features:</strong>
-                        <ul class="list-disc list-inside mt-1 space-y-1 opacity-80">
-                            <li>Clean Data Entry & Formatting (100% Accuracy)</li>
-                            <li>Formulas & Calculations (SUM, VLOOKUP, etc.)</li>
-                            <li>PDF/CSV se Excel conversion</li>
-                            <li>Fast delivery with neat table design</li>
-                        </ul>
-                    </div>
+                <div class="inner-card p-3 rounded-xl space-y-2 text-[11px]">
+                    <p class="font-bold text-sky-400">✨ Key Highlights & Expertise:</p>
+                    <ul class="list-disc list-inside space-y-1 opacity-80">
+                        <li>Data Organization & Cleaning</li>
+                        <li>Advanced Formulas (SUM, VLOOKUP, AVERAGE)</li>
+                        <li>PDF / Image to Excel Conversion</li>
+                        <li>Clean Table Borders & Color Formatting</li>
+                    </ul>
                 </div>
-                <p class="text-[11px] text-slate-400 italic">"Agar aapko bhi apne business ya personal use ke liye Excel report banwani hai, toh aap mujhe direct WhatsApp par contact kar sakte hain!"</p>
+                <p class="text-[11px] text-slate-400 italic">"Agar aapko bhi Excel report ya data entry ka koi kaam karwana hai, toh aap mujhe WhatsApp par message kar sakte hain."</p>
             `;
-            document.getElementById("modal-body-content").innerHTML = content;
-            document.getElementById("sample-modal").classList.remove("hidden");
+            document.getElementById("modal-content-body").innerHTML = htmlContent;
+            document.getElementById("info-modal").classList.remove("hidden");
         }
 
-        // Word Sample Detailed Interface
-        function openWordModal() {
-            document.getElementById("modal-title").innerHTML = `<i class="fa-solid fa-file-word text-blue-400"></i> MS Word Typing & Document Formatting`;
+        // Word Detailed Interface Content
+        function openWordDetails() {
+            document.getElementById("modal-heading").innerHTML = `<i class="fa-solid fa-file-word text-blue-400"></i> MS Word Document Typing & Formatting`;
             
-            const content = `
-                <div class="inner-box p-3 rounded-xl space-y-2">
-                    <p class="font-semibold text-blue-400 text-xs">📝 Professional Typing & Document Layout</p>
-                    <p class="opacity-90 text-[11px] leading-relaxed">Main official letters, project reports, notes aur agreements ko clean typography, proper margins aur headings ke sath type karta hoon.</p>
+            const htmlContent = `
+                <div class="inner-card p-3.5 rounded-xl space-y-2">
+                    <p class="font-bold text-blue-400 text-xs">📝 Mera Document Typing Aur Formatting Kaam:</p>
+                    <p class="opacity-90 text-[11px] leading-relaxed">Main official letters, project reports, notes aur articles ko proper font styling, spacing aur clean headings ke sath type karta hoon.</p>
                 </div>
-                <div class="space-y-2 text-[11px]">
-                    <div class="inner-box p-2.5 rounded-lg">
-                        <strong>✨ Main Features:</strong>
-                        <ul class="list-disc list-inside mt-1 space-y-1 opacity-80">
-                            <li>Fast & Error-free Document Typing</li>
-                            <li>Professional Font Styling & Spacing</li>
-                            <li>Hand
+                <div class="inner-card p-3 rounded-xl space-y-2 text-[11px]">
+                    <p class="font-bold text-sky-400">✨ Key Highlights & Expertise:</p>
+                    <ul class="list-disc list-inside space-y-1 opacity-80">
+                        <li>Fast & Error-Free Document Typing</li>
+                        <li>Professional Paragraph Spacing & Margins</li>
+                        <li>Handwritten Notes to Digital Word Setup</li>
+                        <li>Print & PDF Ready Output</li>
+                    </ul>
+                </div>
+                <p class="text-[11px] text-slate-400 italic">"Kisi bhi tarah ke document typing ya file formatting ke kaam ke liye aap mujhe seedha connect kar sakte hain."</p>
+            `;
+            document.getElementById("modal-content-body").innerHTML = htmlContent;
+            document.getElementById("info-modal").classList.remove("hidden");
+        }
+
+        function closeModalWindow() {
+            document.getElementById("info-modal").classList.add("hidden");
+        }
+
+        // Initialize Typewriter on Load
+        window.addEventListener("DOMContentLoaded", () => {
+            runTypewriter();
+        });
+    </script>
+</body>
+</html>
