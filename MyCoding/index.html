@@ -68,11 +68,27 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        /* Click Ripple Effect Animation */
+        .click-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.4);
+            transform: scale(0);
+            animation: ripple-effect 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
-<body class="dark min-h-screen flex flex-col items-center justify-between p-4 sm:p-6">
+<body class="dark min-h-screen flex flex-col items-center justify-between p-4 sm:p-6 relative">
 
-    <main class="w-full max-w-lg mx-auto space-y-6 pb-12">
+    <main class="w-full max-w-lg mx-auto space-y-6 pb-12 z-10">
         
         <!-- Top Status Bar with Trust Badge -->
         <div class="flex items-center justify-between">
@@ -276,9 +292,9 @@
         let deletingActive = false;
 
         function runTypewriter() {
-            const activeRole = rolesList[rIndex];
             const elem = document.getElementById("typewriter-target");
             if (!elem) return;
+            const activeRole = rolesList[rIndex];
 
             if (deletingActive) {
                 elem.innerText = activeRole.substring(0, cIndex - 1);
@@ -320,7 +336,7 @@
             }
         }
 
-        // Excel Detailed Interface Content
+        // Excel Detailed Interface Content Popup
         function openExcelDetails() {
             document.getElementById("modal-heading").innerHTML = `<i class="fa-solid fa-table text-emerald-400"></i> MS Excel Professional Work & Services`;
             
@@ -344,7 +360,7 @@
             document.getElementById("info-modal").classList.remove("hidden");
         }
 
-        // Word Detailed Interface Content
+        // Word Detailed Interface Content Popup
         function openWordDetails() {
             document.getElementById("modal-heading").innerHTML = `<i class="fa-solid fa-file-word text-blue-400"></i> MS Word Document Typing & Formatting`;
             
@@ -353,10 +369,4 @@
                     <p class="font-bold text-blue-400 text-xs">📝 Mera Document Typing Aur Formatting Kaam:</p>
                     <p class="opacity-90 text-[11px] leading-relaxed">Main official letters, project reports, notes aur articles ko proper font styling, spacing aur clean headings ke sath type karta hoon.</p>
                 </div>
-                <div class="inner-card p-3 rounded-xl space-y-2 text-[11px]">
-                    <p class="font-bold text-sky-400">✨ Key Highlights & Expertise:</p>
-                    <ul class="list-disc list-inside space-y-1 opacity-80">
-                        <li>Fast & Error-Free Document Typing</li>
-                        <li>Professional Paragraph Spacing & Margins</li>
-                        <li>Handwritten Notes to Digital Word Setup</li>
-                        <li>Print & PDF Ready Output<
+                <div class="inner
