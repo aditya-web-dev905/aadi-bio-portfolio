@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Shrivas | Professional Bio Portfolio & Developer</title>
+    <title>Aditya Shrivas | Professional Bio Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -28,7 +28,7 @@
         /* Dark Theme Styling */
         body.dark { background-color: #07090e; color: #f1f5f9; }
         .dark .glass-panel {
-            background: rgba(13, 19, 32, 0.8);
+            background: rgba(13, 19, 32, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -77,6 +77,7 @@
             transform: scale(0);
             animation: ripple-effect 0.6s linear;
             pointer-events: none;
+            z-index: 9999;
         }
         @keyframes ripple-effect {
             to {
@@ -101,7 +102,7 @@
             </div>
 
             <!-- Theme Switcher Button -->
-            <button onclick="toggleThemeMode()" id="theme-btn" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-amber-400 text-sm hover:scale-110 transition-transform cursor-pointer shadow-sm" title="Toggle Theme">
+            <button id="theme-btn" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-amber-400 text-sm hover:scale-110 transition-transform cursor-pointer shadow-sm" title="Toggle Theme">
                 <i id="theme-icon" class="fa-solid fa-moon"></i>
             </button>
         </div>
@@ -223,7 +224,7 @@
                 <div class="inner-card p-4 rounded-xl space-y-2">
                     <h3 class="text-sm font-bold flex items-center gap-1.5 text-emerald-400">📊 MS Excel Data Management Suite</h3>
                     <p class="text-xs opacity-80 leading-relaxed">Click here to check my professional spreadsheet organization and automated formula structuring.</p>
-                    <button onclick="openExcelDetails()" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 pt-1 cursor-pointer">
+                    <button id="excel-btn" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 pt-1 cursor-pointer">
                         View Excel Work Interface &rarr;
                     </button>
                 </div>
@@ -232,7 +233,7 @@
                 <div class="inner-card p-4 rounded-xl space-y-2">
                     <h3 class="text-sm font-bold flex items-center gap-1.5 text-blue-400">📝 MS Word Professional Document Suite</h3>
                     <p class="text-xs opacity-80 leading-relaxed">Click here to check my official report formatting, typography layout, and typing samples.</p>
-                    <button onclick="openWordDetails()" class="inline-flex items-center gap-1 text-xs font-bold text-blue-400 hover:text-blue-300 pt-1 cursor-pointer">
+                    <button id="word-btn" class="inline-flex items-center gap-1 text-xs font-bold text-blue-400 hover:text-blue-300 pt-1 cursor-pointer">
                         View MS Word Work Interface &rarr;
                     </button>
                 </div>
@@ -265,7 +266,7 @@
         <div class="glass-panel rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl border border-sky-500/30">
             <div class="flex items-center justify-between border-b border-slate-700/50 pb-3">
                 <h3 id="modal-heading" class="text-sm sm:text-base font-bold text-sky-400 flex items-center gap-2"></h3>
-                <button onclick="closeModalWindow()" class="w-8 h-8 rounded-full inner-card flex items-center justify-center text-slate-400 hover:text-white cursor-pointer">
+                <button id="modal-close-top" class="w-8 h-8 rounded-full inner-card flex items-center justify-center text-slate-400 hover:text-white cursor-pointer">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -276,97 +277,96 @@
 
             <div class="pt-3 border-t border-slate-700/50 flex items-center justify-between">
                 <span class="text-[11px] text-slate-400 italic">Looking for quality work? Let's talk!</span>
-                <button onclick="closeModalWindow()" class="py-2.5 px-5 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition-colors cursor-pointer">
+                <button id="modal-close-btn" class="py-2.5 px-5 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition-colors cursor-pointer">
                     Close Window
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript Actions -->
+    <!-- JavaScript Actions (Fully Event-Bound) -->
     <script>
-        // Typewriter Animation Script
-        const rolesList = ["Web Developer", "Data Entry Specialist", "MS Excel & Word Expert", "Custom Website Creator"];
-        let rIndex = 0;
-        let cIndex = 0;
-        let deletingActive = false;
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. Typewriter Animation Script
+            const rolesList = ["Web Developer", "Data Entry Specialist", "MS Excel & Word Expert", "Custom Website Creator"];
+            let rIndex = 0;
+            let cIndex = 0;
+            let deletingActive = false;
+            const typewriterElem = document.getElementById("typewriter-target");
 
-        function runTypewriter() {
-            const elem = document.getElementById("typewriter-target");
-            if (!elem) return;
-            const activeRole = rolesList[rIndex];
+            function runTypewriter() {
+                if (!typewriterElem) return;
+                const activeRole = rolesList[rIndex];
 
-            if (deletingActive) {
-                elem.innerText = activeRole.substring(0, cIndex - 1);
-                cIndex--;
-            } else {
-                elem.innerText = activeRole.substring(0, cIndex + 1);
-                cIndex++;
+                if (deletingActive) {
+                    typewriterElem.innerText = activeRole.substring(0, cIndex - 1);
+                    cIndex--;
+                } else {
+                    typewriterElem.innerText = activeRole.substring(0, cIndex + 1);
+                    cIndex++;
+                }
+
+                let delayTime = deletingActive ? 40 : 90;
+
+                if (!deletingActive && cIndex === activeRole.length) {
+                    delayTime = 1800;
+                    deletingActive = true;
+                } else if (deletingActive && cIndex === 0) {
+                    deletingActive = false;
+                    rIndex = (rIndex + 1) % rolesList.length;
+                }
+
+                setTimeout(runTypewriter, delayTime);
             }
+            runTypewriter();
 
-            let delayTime = deletingActive ? 40 : 90;
-
-            if (!deletingActive && cIndex === activeRole.length) {
-                delayTime = 1800;
-                deletingActive = true;
-            } else if (deletingActive && cIndex === 0) {
-                deletingActive = false;
-                rIndex = (rIndex + 1) % rolesList.length;
-            }
-
-            setTimeout(runTypewriter, delayTime);
-        }
-
-        // Dark / Light Theme Mode Switcher
-        function toggleThemeMode() {
+            // 2. Dark / Light Theme Mode Switcher
+            const themeBtn = document.getElementById("theme-btn");
             const bodyTag = document.body;
             const htmlTag = document.getElementById("html-root");
             const iconTag = document.getElementById("theme-icon");
 
-            if (bodyTag.classList.contains("dark")) {
-                bodyTag.classList.remove("dark");
-                bodyTag.classList.add("light");
-                htmlTag.classList.remove("dark");
-                iconTag.className = "fa-solid fa-sun";
-            } else {
-                bodyTag.classList.remove("light");
-                bodyTag.classList.add("dark");
-                htmlTag.classList.add("dark");
-                iconTag.className = "fa-solid fa-moon";
+            if (themeBtn) {
+                themeBtn.addEventListener("click", function () {
+                    if (bodyTag.classList.contains("dark")) {
+                        bodyTag.classList.remove("dark");
+                        bodyTag.classList.add("light");
+                        htmlTag.classList.remove("dark");
+                        iconTag.className = "fa-solid fa-sun";
+                    } else {
+                        bodyTag.classList.remove("light");
+                        bodyTag.classList.add("dark");
+                        htmlTag.classList.add("dark");
+                        iconTag.className = "fa-solid fa-moon";
+                    }
+                });
             }
-        }
 
-        // Excel Detailed Interface Content Popup
-        function openExcelDetails() {
-            document.getElementById("modal-heading").innerHTML = `<i class="fa-solid fa-table text-emerald-400"></i> MS Excel Professional Work & Services`;
-            
-            const htmlContent = `
-                <div class="inner-card p-3.5 rounded-xl space-y-2">
-                    <p class="font-bold text-emerald-400 text-xs">📊 Mera Data Entry Aur Spreadsheet Kaam:</p>
-                    <p class="opacity-90 text-[11px] leading-relaxed">Main Excel par raw data ko clean formatting, structured tables aur automated formulas ke sath manage karta hoon taaki clients ko 100% accurate result mile.</p>
-                </div>
-                <div class="inner-card p-3 rounded-xl space-y-2 text-[11px]">
-                    <p class="font-bold text-sky-400">✨ Key Highlights & Expertise:</p>
-                    <ul class="list-disc list-inside space-y-1 opacity-80">
-                        <li>Data Organization, Cleaning & Formatting</li>
-                        <li>Advanced Formulas (SUM, VLOOKUP, AVERAGE)</li>
-                        <li>PDF / Image to Excel Data Conversion</li>
-                        <li>Professional Table Borders & Color Styles</li>
-                    </ul>
-                </div>
-                <p class="text-[11px] text-slate-400 italic">"Agar aapko bhi Excel report ya data entry ka koi kaam karwana hai, toh aap mujhe WhatsApp par message kar sakte hain."</p>
-            `;
-            document.getElementById("modal-content-body").innerHTML = htmlContent;
-            document.getElementById("info-modal").classList.remove("hidden");
-        }
+            // 3. Modal Popups for Excel and Word
+            const modal = document.getElementById("info-modal");
+            const modalHeading = document.getElementById("modal-heading");
+            const modalBody = document.getElementById("modal-content-body");
+            const excelBtn = document.getElementById("excel-btn");
+            const wordBtn = document.getElementById("word-btn");
+            const closeTop = document.getElementById("modal-close-top");
+            const closeBtn = document.getElementById("modal-close-btn");
 
-        // Word Detailed Interface Content Popup
-        function openWordDetails() {
-            document.getElementById("modal-heading").innerHTML = `<i class="fa-solid fa-file-word text-blue-400"></i> MS Word Document Typing & Formatting`;
-            
-            const htmlContent = `
-                <div class="inner-card p-3.5 rounded-xl space-y-2">
-                    <p class="font-bold text-blue-400 text-xs">📝 Mera Document Typing Aur Formatting Kaam:</p>
-                    <p class="opacity-90 text-[11px] leading-relaxed">Main official letters, project reports, notes aur articles ko proper font styling, spacing aur clean headings ke sath type karta hoon.</p>
-                </div>
-                <div class="inner
+            function closeModal() {
+                if (modal) modal.classList.add("hidden");
+            }
+
+            if (excelBtn) {
+                excelBtn.addEventListener("click", function () {
+                    if (modalHeading) modalHeading.innerHTML = `<i class="fa-solid fa-table text-emerald-400"></i> MS Excel Professional Work & Services`;
+                    if (modalBody) {
+                        modalBody.innerHTML = `
+                            <div class="inner-card p-3.5 rounded-xl space-y-2">
+                                <p class="font-bold text-emerald-400 text-xs">📊 Mera Data Entry Aur Spreadsheet Kaam:</p>
+                                <p class="opacity-90 text-[11px] leading-relaxed">Main Excel par raw data ko clean formatting, structured tables aur automated formulas ke sath manage karta hoon taaki clients ko 100% accurate result mile.</p>
+                            </div>
+                            <div class="inner-card p-3 rounded-xl space-y-2 text-[11px]">
+                                <p class="font-bold text-sky-400">✨ Key Highlights & Expertise:</p>
+                                <ul class="list-disc list-inside space-y-1 opacity-80">
+                                    <li>Data Organization, Cleaning & Formatting</li>
+                                    <li>Advanced Formulas (SUM, VLOOKUP, AVERAGE)</li>
+                                    <li>PDF / Image
